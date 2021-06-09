@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import Layout from './components/Layout/Layout';
 import Home from './pages/Home';
 import Volunteer from './pages/Volunteer';
 
@@ -12,14 +13,15 @@ const App = () => {
 
     return (
         <div className='App'>
-            <h1>Hello world ! 😪</h1>
-            <Switch>
-                <Route path='/' exact component={Home} />
-                <Route path='/volunteer/:id' component={Volunteer} />
-                <Route path='*' exact>
-                    <Redirect to='/' />
-                </Route>
-            </Switch>
+            <Layout>
+                <Switch>
+                    <Route path='/' exact component={Home} />
+                    <Route path='/volunteer/:id' component={Volunteer} />
+                    <Route path='*' exact>
+                        <Redirect to='/' />
+                    </Route>
+                </Switch>
+            </Layout>
         </div>
     );
 };
