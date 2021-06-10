@@ -17,9 +17,9 @@
     },
     "dependencies": {
         "cors": "^2.8.5",
+        "coviconnect": "file:client",
         "dotenv": "^10.0.0",
         "express": "^4.17.1",
-        "coviconnect": "file:client",
         "helmet": "^4.6.0",
         "mongoose": "^5.12.13"
     }
