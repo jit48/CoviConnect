@@ -1,0 +1,44 @@
+@use '../../styles/utils';
+
+.labeledinput {
+    border: 0.2em solid utils.color(grey, base);
+    border-radius: utils.$border-radius;
+
+    &:focus-within {
+        border: 0.2em solid utils.color(black, light);
+    }
+
+    legend {
+        color: utils.color(black, light);
+        font-weight: bold;
+        margin-left: 1rem;
+        padding-inline-start: 0.4rem;
+        padding-inline-end: 0.4rem;
+    }
+
+    input {
+        all: unset;
+        width: -webkit-fill-available;
+        font-size: 1rem;
+        padding: 0.6rem;
+        padding-bottom: 1rem;
+        padding-left: 1rem;
+        font-weight: bold;
+        letter-spacing: 0.07rem;
+    }
+}
+
+.input {
+    all: unset;
+    width: -webkit-fill-available;
+    font-size: 1rem;
+    padding: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.07rem;
+    border: 0.2em solid utils.color(grey, base);
+    border-radius: utils.$border-radius;
+
+    &:focus-within {
+        border: 0.2em solid utils.color(black, light);
+    }
+}

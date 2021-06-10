@@ -20,4 +20,18 @@ $palette: (
         light: hsl(220, 20%, 95%),
         lighter: hsl(220, 20%, 98%),
     ),
+    red: (
+        darker: hsl(0, 60%, 10%),
+        dark: hsl(0, 60%, 30%),
+        base: hsl(0, 60%, 50%),
+        light: hsl(0, 60%, 60%),
+        lighter: hsl(0, 60%, 70%),
+    ),
+    black: (
+        darker: hsl(220, 20%, 10%),
+        dark: hsl(220, 20%, 20%),
+        base: hsl(220, 20%, 30%),
+        light: hsl(220, 20%, 40%),
+        lighter: hsl(220, 20%, 50%),
+    ),
 );
