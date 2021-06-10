@@ -1,0 +1,19 @@
+@use './colors';
+
+$font-regular: 'Raleway', sans-serif;
+$font-heading: 'Montserrat', sans-serif;
+$border-radius: 0.8em;
+$duration: 250ms;
+
+@mixin center {
+    margin: 0 auto;
+    width: 80%;
+
+    @media (max-width: 800px) {
+        width: 100%;
+    }
+}
+
+@function color($color, $variant) {
+    @return map-get(map-get(colors.$palette, $color), $variant);
+}
