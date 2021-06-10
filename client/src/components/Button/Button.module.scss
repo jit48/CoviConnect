@@ -1,0 +1,60 @@
+@use '../../styles/utils';
+
+.btn {
+    all: unset;
+    font-size: 1rem;
+    padding: 0.7em 1.5em;
+    border-radius: #{utils.$border-radius - 0.2em};
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    color: utils.color(grey, lighter);
+    background-color: utils.color(purple, base);
+    box-shadow: 0 0.2em 0.6em 0 transparentize(utils.color(purple, lighter), 0.7);
+    cursor: pointer;
+    transition: box-shadow utils.$duration ease-out;
+
+    &:hover {
+        box-shadow: 0 0 0.6em 0 transparentize(utils.color(purple, lighter), 0.2);
+    }
+
+    @media (max-width: 800px) {
+        &:hover {
+            box-shadow: 0 0.2em 0.6em 0 transparentize(utils.color(purple, lighter), 0.7);
+        }
+        &:active {
+            box-shadow: 0 0 0.6em 0 transparentize(utils.color(purple, lighter), 0.2);
+        }
+    }
+}
+
+.primary {
+    background-color: utils.color(green, base);
+    box-shadow: 0 0.2em 0.6em 0 transparentize(utils.color(green, lighter), 0.7);
+    &:hover {
+        box-shadow: 0 0 0.6em 0 transparentize(utils.color(green, lighter), 0.2);
+    }
+    @media (max-width: 800px) {
+        &:hover {
+            box-shadow: 0 0.2em 0.6em 0 transparentize(utils.color(green, lighter), 0.7);
+        }
+        &:active {
+            box-shadow: 0 0 0.6em 0 transparentize(utils.color(green, lighter), 0.2);
+        }
+    }
+}
+
+.secondary {
+    background-color: utils.color(red, base);
+    box-shadow: 0 0.2em 0.6em 0 transparentize(utils.color(red, lighter), 0.7);
+    &:hover {
+        box-shadow: 0 0 0.6em 0 transparentize(utils.color(red, lighter), 0.2);
+    }
+    @media (max-width: 800px) {
+        &:hover {
+            box-shadow: 0 0.2em 0.6em 0 transparentize(utils.color(red, lighter), 0.7);
+        }
+        &:active {
+            box-shadow: 0 0 0.6em 0 transparentize(utils.color(red, lighter), 0.2);
+        }
+    }
+}
