@@ -6,7 +6,7 @@
     "engines": {
     "node": "16.x",
     "npm": "7.x"
-    }
+    },
     "scripts": {
         "start": "node index.js",
         "dev:backend": "nodemon index.js",
