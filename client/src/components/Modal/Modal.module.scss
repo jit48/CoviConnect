@@ -1,0 +1,37 @@
+@use '../../styles/utils';
+
+.backdrop {
+    z-index: 100;
+    position: absolute;
+    inset: 0;
+    background-color: transparentize(utils.color(black, darker), 0.4);
+    backdrop-filter: blur(10px);
+}
+
+.modal {
+    z-index: 110;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    border-radius: utils.$border-radius;
+    padding: 1.5rem;
+    background-color: utils.color(grey, lighter);
+
+    .close {
+        cursor: pointer;
+        float: right;
+        width: 1.5rem;
+        height: 1.5rem;
+        color: utils.color(grey, dark);
+    }
+
+    .modalcontent {
+        margin-top: 2rem;
+    }
+
+    @media (max-width: 800px) {
+        width: 90%;
+    }
+}
