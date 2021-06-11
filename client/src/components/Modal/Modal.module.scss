@@ -20,11 +20,7 @@
     background-color: utils.color(grey, lighter);
 
     .close {
-        cursor: pointer;
         float: right;
-        width: 1.5rem;
-        height: 1.5rem;
-        color: utils.color(grey, dark);
     }
 
     .modalcontent {
