@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const URI = `database url`;
+const URI = `mongodb+srv://coviConnect:${process.env.DB_PASSWORD}@cluster0.54myv.mongodb.net/coviconnect?retryWrites=true&w=majority`;
 const corsOptions = {
     origin: `${process.env.FRONTEND}`,
 };
@@ -16,12 +16,12 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// mongoose
-//     .connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
-//     .then(() => {
-//         console.log('Database Connected');
-//     })
-//     .catch((error) => console.log(error));
+mongoose
+    .connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
+        console.log('Database Connected');
+    })
+    .catch((error) => console.log(error));
 
 app.get('/', async (req, res) => {
     try {
@@ -42,7 +42,7 @@ app.get('/', async (req, res) => {
 
 app.listen(PORT, () => {
     if (process.env.NODE_ENV == 'production') {
-        console.log(`Server Running : https://backend-deploy.com \nClient Running : ${process.env.FRONTEND}`);
+        console.log(`Server Running : https://coviconnect-api.herokuapp.com \nClient Running : ${process.env.FRONTEND}`);
     } else {
         console.log(`Server Running : http://localhost:${PORT}`);
     }
