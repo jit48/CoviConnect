@@ -4,10 +4,13 @@ import api from '../axios';
 import styles from '../styles/Volunteer.module.scss';
 
 import Input from '../components/Input/Input';
-import CreatePost from '../components/CreatePost/CreatePost';
+import Button from '../components/Button/Button';
+import CreatePost from '../components/Volunteer/CreatePost/CreatePost';
+import Post from '../components/Volunteer/Post/Post';
 
 const Volunteer = () => {
     const { id } = useParams();
+    const [authorised, setAuthorised] = useState(true);
     const [volunteer, setVolunteer] = useState({
         name: 'John Doe',
         gender: 'male',
@@ -19,50 +22,99 @@ const Volunteer = () => {
     const [posts, setPosts] = useState([
         {
             title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
-            location: 'Ahmedabad, Gujarat',
-            //facility specific details
+            postId: '1',
+            type: 'bed',
+            info: {
+                hospitalName: 'Lorem ipsum dolor sit.',
+                location: 'Ahmedabad, Gujarat',
+                beds: 25,
+            },
         },
         {
             title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
-            location: 'Ahmedabad, Gujarat',
-            //facility specific details
+            postId: '2',
+            type: 'ambulance',
+            info: {
+                hospitalName: 'Lorem ipsum dolor sit.',
+                location: 'Ahmedabad, Gujarat',
+                beds: 25,
+            },
         },
         {
             title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
-            location: 'Ahmedabad, Gujarat',
-            //facility specific details
+            type: 'bloodbank',
+            postId: '3',
+            info: {
+                hospitalName: 'Lorem ipsum dolor sit.',
+                location: 'Ahmedabad, Gujarat',
+                beds: 25,
+            },
         },
         {
             title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
-            location: 'Ahmedabad, Gujarat',
-            //facility specific details
+            type: 'diagnosticcenter',
+            postId: '4',
+            info: {
+                hospitalName: 'Lorem ipsum dolor sit.',
+                location: 'Ahmedabad, Gujarat',
+                beds: 25,
+            },
         },
         {
             title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
-            location: 'Ahmedabad, Gujarat',
-            //facility specific details
+            type: 'meals',
+            postId: '5',
+            info: {
+                hospitalName: 'Lorem ipsum dolor sit.',
+                location: 'Ahmedabad, Gujarat',
+                beds: 25,
+            },
         },
         {
             title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
-            location: 'Ahmedabad, Gujarat',
-            //facility specific details
+            type: 'oxygen',
+            postId: '6',
+            info: {
+                hospitalName: 'Lorem ipsum dolor sit.',
+                location: 'Ahmedabad, Gujarat',
+                beds: 25,
+            },
         },
         {
             title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
-            location: 'Ahmedabad, Gujarat',
-            //facility specific details
+            type: 'pharmacies',
+            postId: '7',
+            info: {
+                hospitalName: 'Lorem ipsum dolor sit.',
+                location: 'Ahmedabad, Gujarat',
+                beds: 25,
+            },
         },
     ]);
 
-    //fetch voluteer data from backend
-    // useEffect(() => {
-    //     (async () => {
-    //         const volunteer = await api.get(`/volunteer/${id}`).then((res) => res.data);
-    //         const posts = await api.get(`/post/${id}`).then((res) => res.data);
-    //         setVoluteer(volunteer);
-    //         setPosts(posts);
-    //     })();
-    // }, []);
+    const getPost = async () => {
+        // const volunteer = await api.get(`/volunteer/${id}`).then((res) => res.data);
+        // const posts = await api.get(`/post/${id}`).then((res) => res.data);
+        // // sort posts by date newest -> oldest
+        // posts.sort((a,b)=>{
+        //     if(a.date > b.date) return 1;
+        //     if(a.date < b.date) return -1;
+        //     return 0;
+        // })
+        // setVolunteer(volunteer);
+        // setPosts(posts);
+        console.log('getting post');
+    };
+
+    const deletePost = async (id) => {
+        // api.delete(`/post/${id}`)
+        console.log('deleting post', id);
+        getPost();
+    };
+
+    useEffect(() => {
+        getPost();
+    }, [posts]);
 
     return (
         <section className={styles.volunteer}>
@@ -111,6 +163,7 @@ const Volunteer = () => {
                             </b>
                             <span>{volunteer.bio}</span>
                         </p>
+                        <Button>Edit Profile</Button>
                     </div>
                     <div className={styles.createpost}>
                         <p>
@@ -124,10 +177,13 @@ const Volunteer = () => {
                 <div className={styles.posts}>
                     {posts.map((post, i) => {
                         return (
-                            <div key={i}>
-                                <p>{post.title}</p>
-                                <p>{post.location}</p>
-                            </div>
+                            <Post
+                                key={i}
+                                authorised={authorised ? 1 : 0}
+                                volunteer={volunteer}
+                                deletePost={() => deletePost(post.postId)}
+                                post={post}
+                            />
                         );
                     })}
                 </div>
