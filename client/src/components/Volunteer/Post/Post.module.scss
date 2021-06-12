@@ -1,0 +1,41 @@
+@use '../../../styles/utils';
+
+.post {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    border: 0.2em solid utils.color(grey, base);
+    border-radius: utils.$border-radius;
+
+    .volunteer {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+
+        img {
+            --size: 3rem;
+            width: var(--size);
+            height: var(--size);
+            border-radius: 50%;
+            border: 0.2em solid utils.color(purple, light);
+        }
+
+        div:nth-of-type(1) {
+            span {
+                font-size: 0.9rem;
+            }
+        }
+
+        div:nth-of-type(2) {
+            display: flex;
+            gap: 1rem;
+            margin-left: auto;
+        }
+    }
+}
+
+hr {
+    border: 1px solid utils.color(grey, base);
+}
