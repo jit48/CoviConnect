@@ -64,7 +64,7 @@
                 color: utils.color(black, base);
             }
 
-            button {
+            & > button {
                 width: -webkit-fill-available;
                 text-align: center;
             }
