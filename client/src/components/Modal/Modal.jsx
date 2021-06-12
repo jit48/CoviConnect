@@ -1,9 +1,14 @@
 import styles from './Modal.module.scss';
 import { Close } from '../UI/Icons';
 import IconButton from '../IconButton/IconButton';
+import { useEffect } from 'react';
 
 const Modal = (props) => {
     const { handleModal, children, open } = props;
+
+    useEffect(() => {
+        open ? (document.body.style.overflow = 'hidden') : (document.body.style.overflow = 'auto');
+    }, [open]);
 
     return (
         <>
