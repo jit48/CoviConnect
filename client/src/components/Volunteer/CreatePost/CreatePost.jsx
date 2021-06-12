@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react';
 import classes from './CreatePost.module.css';
 
-import Modal from '../../UI/Modal/Modal';
+import Modal from '../../Modal/Modal';
 import Button from '../../Button/Button';
 import Beds from './Facilities/Beds';
 import Oxygen from './Facilities/Oxygen';
