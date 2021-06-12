@@ -1,0 +1,9 @@
+.InputContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.InputContainer label{
+    font-size: large;
+}

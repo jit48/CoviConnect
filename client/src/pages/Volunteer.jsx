@@ -4,8 +4,7 @@ import api from '../axios';
 import styles from '../styles/Volunteer.module.scss';
 
 import Input from '../components/Input/Input';
-import Button from '../components/Button/Button';
-import { Search } from '../components/UI/Icons';
+import CreatePost from '../components/CreatePost/CreatePost';
 
 const Volunteer = () => {
     const { id } = useParams();
@@ -17,14 +16,51 @@ const Volunteer = () => {
         contact: '9874567215',
         bio: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem at assumenda dicta repellat aliquam, animi cum consequatur possimus veniam?',
     });
-    const [post, setPost] = useState();
+    const [posts, setPosts] = useState([
+        {
+            title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
+            location: 'Ahmedabad, Gujarat',
+            //facility specific details
+        },
+        {
+            title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
+            location: 'Ahmedabad, Gujarat',
+            //facility specific details
+        },
+        {
+            title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
+            location: 'Ahmedabad, Gujarat',
+            //facility specific details
+        },
+        {
+            title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
+            location: 'Ahmedabad, Gujarat',
+            //facility specific details
+        },
+        {
+            title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
+            location: 'Ahmedabad, Gujarat',
+            //facility specific details
+        },
+        {
+            title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
+            location: 'Ahmedabad, Gujarat',
+            //facility specific details
+        },
+        {
+            title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
+            location: 'Ahmedabad, Gujarat',
+            //facility specific details
+        },
+    ]);
 
     //fetch voluteer data from backend
     // useEffect(() => {
     //     (async () => {
     //         const volunteer = await api.get(`/volunteer/${id}`).then((res) => res.data);
-    //         const post = await api.get(`/post/${id}`).then((res) => res.data);
+    //         const posts = await api.get(`/post/${id}`).then((res) => res.data);
     //         setVoluteer(volunteer);
+    //         setPosts(posts);
     //     })();
     // }, []);
 
@@ -81,13 +117,19 @@ const Volunteer = () => {
                             Having any leads that might help many covid patients to get sufficient care ? Create a post to let everyone know
                             about it.
                         </p>
-                        <Button variant='primary'>Create Post</Button>
+                        <CreatePost />
                     </div>
                     {/* <div className={styles.recruitments}></div> */}
                 </div>
                 <div className={styles.posts}>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem quia, ipsa natus temporibus animi repudiandae
-                    praesentium laboriosam inventore sint eligendi.
+                    {posts.map((post, i) => {
+                        return (
+                            <div key={i}>
+                                <p>{post.title}</p>
+                                <p>{post.location}</p>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </section>
