@@ -1,6 +1,8 @@
 import { Fragment, useState } from 'react';
-import Modal from '../Modal/Modal';
-import Button from '../Button/Button';
+import classes from './CreatePost.module.css';
+
+import Modal from '../../UI/Modal/Modal';
+import Button from '../../Button/Button';
 import Beds from './Facilities/Beds';
 import Oxygen from './Facilities/Oxygen';
 import Ambulance from './Facilities/Ambulance';
@@ -8,13 +10,12 @@ import BloodBank from './Facilities/BloodBank';
 import Meals from './Facilities/Meals';
 import Diagnostic from './Facilities/DiagnosticCenter';
 import Pharmacies from './Facilities/Pharmacies';
-import classes from './CreatePost.module.css';
 
 const CreatePost = () => {
     const [showModal, setShowModal] = useState(false);
     const [facility, setFacility] = useState('none');
 
-    const ModalHandler = () => {
+    const modalHandler = () => {
         setShowModal((prevState) => {
             return !prevState;
         });
@@ -31,10 +32,10 @@ const CreatePost = () => {
 
     return (
         <Fragment>
-            <Button variant='primary' onClick={ModalHandler}>
+            <Button variant='primary' onClick={modalHandler}>
                 Create Post
             </Button>
-            <Modal open={showModal} handleModal={ModalHandler}>
+            <Modal open={showModal} handleModal={modalHandler}>
                 {facility === 'none' ? (
                     <Fragment>
                         <h1>Post an update on ?</h1>
@@ -56,7 +57,7 @@ const CreatePost = () => {
                             <label>Pharmacies</label>
                         </div>
                         <br />
-                        <Button variant='secondary' onClick={ModalHandler}>
+                        <Button variant='secondary' onClick={modalHandler}>
                             Back
                         </Button>
                     </Fragment>
