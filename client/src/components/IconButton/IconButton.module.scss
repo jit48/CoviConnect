@@ -1,0 +1,57 @@
+@use '../../styles/utils';
+
+.iconbtn {
+    all: unset;
+    cursor: pointer;
+
+    svg {
+        --size: 1.5rem;
+        width: var(--size);
+        height: var(--size);
+        color: utils.color(gray, dark);
+        transition: color utils.$duration ease-out;
+    }
+
+    &:hover svg {
+        color: utils.color(purple, base);
+    }
+
+    @media (max-width: 800px) {
+        &:hover svg {
+            color: utils.color(gray, dark);
+        }
+        &:active svg {
+            color: utils.color(purple, base);
+        }
+    }
+}
+
+.primary {
+    &:hover svg {
+        color: utils.color(green, base);
+    }
+
+    @media (max-width: 800px) {
+        &:hover svg {
+            color: utils.color(gray, dark);
+        }
+        &:active svg {
+            color: utils.color(green, base);
+        }
+    }
+}
+
+.secondary {
+    &:hover svg {
+        color: utils.color(red, base);
+    }
+
+    @media (max-width: 800px) {
+        &:hover svg {
+            color: utils.color(gray, dark);
+        }
+        &:active svg {
+            color: utils.color(red, base);
+        }
+    }
+}

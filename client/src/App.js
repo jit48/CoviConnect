@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import api from './axios';
+
 import Layout from './components/Layout/Layout';
 import Home from './pages/Home';
 import Volunteer from './pages/Volunteer';
 
 const App = () => {
     useEffect(() => {
-        fetch(process.env.REACT_APP_BACKEND)
-            .then((res) => res.json())
-            .then((data) => console.log(data));
+        api.get('/').then((res) => console.log(res.data));
     }, []);
 
     return (
