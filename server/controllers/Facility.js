@@ -9,7 +9,7 @@ export const postBed = async (req, res) => {
         const postData = new Facility({
             volunteerID: 1234,
             volunteerName: "Hello",
-            type: "Beds",
+            type: "bed",
             votes: 0,
             info: {
                 hospitalName: req.body.hospitalName, 
@@ -31,7 +31,7 @@ export const postAmbulance = async (req, res) => {
         const postData = new Facility({
             volunteerID: 1234,
             volunteerName: "Hello",
-            type: "Ambulance",
+            type: "ambulance",
             votes: 0,
             info: {
                 serviceProvider: req.body.providerName, 
@@ -53,7 +53,7 @@ export const postBloodBank = async (req, res) => {
         const postData = new Facility({
             volunteerID: 1234,
             volunteerName: "Hello",
-            type: "BloodBank",
+            type: "bloodbank",
             votes: 0,
             info: {
                 serviceProvider: req.body.providerName, 
@@ -76,7 +76,7 @@ export const postDiagnostic = async (req, res) => {
         const postData = new Facility({
             volunteerID: 1234,
             volunteerName: "Hello",
-            type: "Diagnostic",
+            type: "diagnosticcenter",
             votes: 0,
             info: {
                 diagnosticName: req.body.centreName, 
@@ -98,7 +98,7 @@ export const postMeals = async (req, res) => {
         const postData = new Facility({
             volunteerID: 1234,
             volunteerName: "Hello",
-            type: "Meals",
+            type: "meals",
             votes: 0,
             info: {
                 serviceProvider: req.body.providerName, 
@@ -121,7 +121,7 @@ export const postOxygen = async (req, res) => {
         const postData = new Facility({
             volunteerID: 1234,
             volunteerName: "Hello",
-            type: "Oxygen",
+            type: "oxygen",
             votes: 0,
             info: {
                 serviceProvider: req.body.providerName, 
@@ -143,7 +143,7 @@ export const postPharmacy = async (req, res) => {
         const postData = new Facility({
             volunteerID: 1234,
             volunteerName: "Hello",
-            type: "Pharmacy",
+            type: "pharmacies",
             votes: 0,
             info: {
                 serviceProvider: req.body.providerName, 
