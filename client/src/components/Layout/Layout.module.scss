@@ -14,8 +14,8 @@
 }
 
 .content {
-    height: 200vh;
     padding: 1rem;
+    min-height: 100vh;
     border-radius: utils.$border-radius;
     background: utils.color(grey, lighter);
     & > div {

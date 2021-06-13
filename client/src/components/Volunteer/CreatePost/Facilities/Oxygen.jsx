@@ -1,11 +1,10 @@
 import { Fragment, useState } from "react";
-import Button from "../../Button/Button";
-import api from "../../../axios";
-import Input from "../../Input/Input";
+import Button from "../../../Button/Button";
+import api from "../../../../axios";
+import Input from "../../../Input/Input";
 import classes from '../CreatePost.module.css';
 
-
-const Ambulance  = (props) => {
+const Oxygen = (props) => {
 
     const [ data, setData ] = useState({
         providerName: '',
@@ -16,7 +15,7 @@ const Ambulance  = (props) => {
     const [ postSuccess, setPostSuccess ] = useState('none');
 
     const postData = () => {
-        api.post('/facility/ambulance', data)
+        api.post('/facility/oxygen', data)
         .then((res) => {
             setPostSuccess('success');
         })
@@ -29,7 +28,7 @@ const Ambulance  = (props) => {
         <Fragment>
                 {postSuccess==='none' ? 
                     (<div>
-                        <h1>Post an update on Ambulance Service</h1>
+                        <h1>Post an update on Oxygen service</h1>
                         <br/>
                         <Input type="text" label="Service Provider" onChange={(event)=> {setData({...data, providerName: event.target.value})}}/>
                         <br/>
@@ -45,7 +44,7 @@ const Ambulance  = (props) => {
                     : postSuccess==='success' ? <h1>You have Successfully posted !!</h1>: <h1>Error in Posting. Try Again !</h1>
                 }
         </Fragment>
-    )
-}
+    );
+};
 
-export default Ambulance ;
+export default Oxygen;
