@@ -1,6 +1,7 @@
 @use '../../styles/utils';
 
 .labeledinput {
+    width: 100%;
     border: 0.2em solid utils.color(grey, base);
     border-radius: utils.$border-radius;
 
