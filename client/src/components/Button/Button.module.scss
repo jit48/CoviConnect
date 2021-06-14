@@ -4,6 +4,7 @@
     all: unset;
     font-size: 1rem;
     padding: 0.7em 1.5em;
+    height: fit-content;
     border-radius: #{utils.$border-radius - 0.2em};
     font-weight: bold;
     letter-spacing: 0.1em;
