@@ -26,9 +26,15 @@ const App = () => {
                     {!user.isAuthorised && <Route path='/register' exact component={Register} />}
                     {!user.isAuthorised && <Route path='/login' exact component={Login} />}
                     <PrivateRoute path='/dashboard' component={user.isVolunteer ? Volunteer : Ngo} />
-                    <Route path='*' exact>
-                        <Redirect to='/' />
-                    </Route>
+                    {user.isAuthorised ? (
+                        <Route path={['/login', '/register']} exact>
+                            <Redirect to='/dashboard' />
+                        </Route>
+                    ) : (
+                        <Route path='*' exact>
+                            <Redirect to='/' />
+                        </Route>
+                    )}
                 </Switch>
             </Layout>
         </div>
