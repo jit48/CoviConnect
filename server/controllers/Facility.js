@@ -168,3 +168,4 @@ export const postPharmacy = async (req, res) => {
         res.status(409).json({ message: error.message });
     } 
 }
+
