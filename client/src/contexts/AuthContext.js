@@ -52,10 +52,16 @@ export const AuthProvider = ({ children }) => {
         (async () => {
             const token = localStorage.getItem('token');
             const isVolunteer = localStorage.getItem('isVolunteer') === 'true';
+            const expires = Date.now() >= +localStorage.getItem('expires') * 1000;
 
             if (!token) {
                 console.log('No previous session');
                 setUser({});
+            } else if (expires) {
+                setUser({});
+                localStorage.removeItem('token');
+                localStorage.removeItem('expires');
+                localStorage.removeItem('isVolunteer');
             } else if (isVolunteer) {
                 const res = await getVolunteer(token);
                 setUser({ user: res, isAuthorised: true, isVolunteer: true, token: token });
