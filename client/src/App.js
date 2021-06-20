@@ -5,6 +5,7 @@ import api from './axios';
 import Layout from './components/Layout/Layout';
 import Home from './pages/Home';
 import Volunteer from './pages/Volunteer';
+import NGOdashboard from './components/NGO/NGOdashboard';
 
 const App = () => {
     useEffect(() => {
@@ -17,6 +18,7 @@ const App = () => {
                 <Switch>
                     <Route path='/' exact component={Home} />
                     <Route path='/volunteer/:id' component={Volunteer} />
+                    <Route path='/ngo/dashboard/:id' component={NGOdashboard} />
                     <Route path='*' exact>
                         <Redirect to='/' />
                     </Route>

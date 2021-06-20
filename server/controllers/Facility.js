@@ -13,7 +13,10 @@ export const postBed = async (req, res) => {
             votes: 0,
             info: {
                 hospitalName: req.body.hospitalName, 
-                location: req.body.location, 
+                location: req.body.location,
+                date: new Date().toLocaleString(),
+                address: req.body.address,
+                phnumber: req.body.phnum, 
                 beds: req.body.beds
             }
         });
@@ -35,7 +38,8 @@ export const postAmbulance = async (req, res) => {
             votes: 0,
             info: {
                 serviceProvider: req.body.providerName, 
-                location: req.body.location, 
+                location: req.body.location,
+                date: new Date().toLocaleString(), 
                 contactNum: req.body.contactNum
             }
         });
@@ -57,7 +61,8 @@ export const postBloodBank = async (req, res) => {
             votes: 0,
             info: {
                 serviceProvider: req.body.providerName, 
-                location: req.body.location, 
+                location: req.body.location,
+                date: new Date().toLocaleString(), 
                 contactNum: req.body.contactNum
             }
         });
@@ -80,7 +85,8 @@ export const postDiagnostic = async (req, res) => {
             votes: 0,
             info: {
                 diagnosticName: req.body.centreName, 
-                location: req.body.location, 
+                location: req.body.location,
+                date: new Date().toLocaleString(), 
                 contactNum: req.body.contactNum
             }
         });
@@ -102,7 +108,8 @@ export const postMeals = async (req, res) => {
             votes: 0,
             info: {
                 serviceProvider: req.body.providerName, 
-                location: req.body.location, 
+                location: req.body.location,
+                date: new Date().toLocaleString(), 
                 contactNum: req.body.contactNum
             }
         });
@@ -125,7 +132,8 @@ export const postOxygen = async (req, res) => {
             votes: 0,
             info: {
                 serviceProvider: req.body.providerName, 
-                location: req.body.location, 
+                location: req.body.location,
+                date: new Date().toLocaleString(), 
                 contactNum: req.body.contactNum
             }
         });
@@ -147,7 +155,8 @@ export const postPharmacy = async (req, res) => {
             votes: 0,
             info: {
                 serviceProvider: req.body.providerName, 
-                location: req.body.location, 
+                location: req.body.location,
+                date: new Date().toLocaleString(), 
                 contactNum: req.body.contactNum
             }
         });
