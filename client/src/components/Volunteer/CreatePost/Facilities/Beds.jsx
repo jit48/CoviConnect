@@ -9,7 +9,9 @@ const Beds = (props) => {
     const [ data, setData ] = useState({
         hospitalName: '',
         location: '',
-        beds: 0
+        beds: 0,
+        address: '',
+        phnum: 0
     })
     const [ postSuccess, setPostSuccess ] = useState('none');
 
@@ -32,7 +34,11 @@ const Beds = (props) => {
                 <br/>
                 <Input type="text" label="Hospital Name" onChange={(event)=> {setData({...data, hospitalName: event.target.value})}}/>
                 <br/>
-                <Input type="text" label="Location" onChange={(event)=> {setData({...data, location: event.target.value})}}/>
+                <Input type="text" label="City" onChange={(event)=> {setData({...data, location: event.target.value})}}/>
+                <br/>
+                <Input type="text" label="Full Address" onChange={(event)=> {setData({...data, address: event.target.value})}}/>
+                <br/>
+                <Input type="tel" label="Hospital Contact Number" onChange={(event)=> {setData({...data, phnum: event.target.value})}}/>
                 <br/>
                 <Input type="number" label="Beds Available" onChange={(event)=> {setData({...data, beds: event.target.value})}}/>
                 <br/>

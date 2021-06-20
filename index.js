@@ -5,6 +5,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import mongoose from 'mongoose';
 import routes from './server/routes/Facility.js';
+import bodyParser from 'body-parser';
 import user from "./server/routes/User.js"; 
 
 const app = express();
@@ -16,8 +17,8 @@ const corsOptions = {
 
 app.use(helmet());
 app.use(cors(corsOptions));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit: '30mb', extended: true }))
+app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 
 app.use('/', routes);
 // app.use("/user", user);

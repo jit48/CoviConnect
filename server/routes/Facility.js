@@ -1,5 +1,6 @@
 import express from 'express';
 import { postBed, postAmbulance, postBloodBank, postDiagnostic, postMeals, postOxygen, postPharmacy } from '../controllers/Facility.js';
+import { postFundRaise, fetchData } from "../controllers/FundRaise.js";
 import { downVotes, getFacility, updateVotes} from '../controllers/GetAllFacilities.js';
 import { userUpvotes } from "../controllers/User.js";
 
@@ -16,6 +17,8 @@ router.post('/facility/diagnostic', postDiagnostic);
 router.post('/facility/meals', postMeals);
 router.post('/facility/oxygen', postOxygen);
 router.post('/facility/pharmacy', postPharmacy);
+router.post('/fundraise', postFundRaise);
+router.get('/fundraise', fetchData)
 router.post("/user/upVotedPosts", userUpvotes);
 
 
