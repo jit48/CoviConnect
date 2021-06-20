@@ -1,15 +1,21 @@
 import Facility from '../models/Facility.js';
+import Volunteer from '../models/Volunteer.js';
 import jwt from 'jsonwebtoken';
 
 const getVolunteerID = (token) => {
     const volunteer = jwt.decode(token);
     return volunteer.id;
 };
+const getVolunteerName = async (token) => {
+    const volunteer = await Volunteer.findById(getVolunteerID(token));
+    return volunteer.name;
+};
 
 export const postBed = async (req, res) => {
     try {
         const postData = new Facility({
             volunteerID: getVolunteerID(req.header('x-auth-token')),
+            volunteerName: await getVolunteerName(req.header('x-auth-token')),
             type: 'bed',
             votes: req.body.votes,
             info: {
@@ -31,10 +37,11 @@ export const postAmbulance = async (req, res) => {
     try {
         const postData = new Facility({
             volunteerID: getVolunteerID(req.header('x-auth-token')),
+            volunteerName: await getVolunteerName(req.header('x-auth-token')),
             type: 'ambulance',
             votes: req.body.votes,
             info: {
-                serviceProvider: req.body.info.providerName,
+                serviceProvider: req.body.info.serviceProvider,
                 location: req.body.info.location,
                 contactNum: req.body.info.contactNum,
             },
@@ -52,10 +59,11 @@ export const postBloodBank = async (req, res) => {
     try {
         const postData = new Facility({
             volunteerID: getVolunteerID(req.header('x-auth-token')),
+            volunteerName: await getVolunteerName(req.header('x-auth-token')),
             type: 'bloodbank',
             votes: req.body.votes,
             info: {
-                serviceProvider: req.body.info.providerName,
+                serviceProvider: req.body.info.serviceProvider,
                 location: req.body.info.location,
                 contactNum: req.body.info.contactNum,
             },
@@ -73,6 +81,7 @@ export const postDiagnostic = async (req, res) => {
     try {
         const postData = new Facility({
             volunteerID: getVolunteerID(req.header('x-auth-token')),
+            volunteerName: await getVolunteerName(req.header('x-auth-token')),
             type: 'diagnosticcenter',
             votes: req.body.votes,
             info: {
@@ -94,6 +103,7 @@ export const postMeals = async (req, res) => {
     try {
         const postData = new Facility({
             volunteerID: getVolunteerID(req.header('x-auth-token')),
+            volunteerName: await getVolunteerName(req.header('x-auth-token')),
             type: 'meals',
             votes: req.body.votes,
             info: {
@@ -115,6 +125,7 @@ export const postOxygen = async (req, res) => {
     try {
         const postData = new Facility({
             volunteerID: getVolunteerID(req.header('x-auth-token')),
+            volunteerName: await getVolunteerName(req.header('x-auth-token')),
             type: 'oxygen',
             votes: req.body.votes,
             info: {
@@ -136,6 +147,7 @@ export const postPharmacy = async (req, res) => {
     try {
         const postData = new Facility({
             volunteerID: getVolunteerID(req.header('x-auth-token')),
+            volunteerName: await getVolunteerName(req.header('x-auth-token')),
             type: 'pharmacies',
             votes: req.body.votes,
             info: {
