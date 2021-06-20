@@ -16,45 +16,49 @@ function BedCard(props) {
         </div>
         <div className="info">
           <div>
-            <p>
-              <b>Hospital Name: </b>
-              {facility.info.hospitalName}
-            </p>
+            <p>{/* <b>Hospital Name: </b> */}</p>
+            <h2>{facility.info.hospitalName}</h2>
           </div>
           <div className="location">
-            <p>
+            {/* <p>
               <b>Address: </b>
               {facility.info.address}
-            </p>
-            <p>
+            </p> */}
+            <h3>
+              <b>Address: </b>
+              {facility.info.hospitalName}
+            </h3>
+            {/* <p>
               <b>Location: </b>
               {facility.info.location}
-            </p>
+            </p> */}
+            <h3>
+              <b>Location: </b>
+              {facility.info.location}
+            </h3>
           </div>
           <div className="hospital">
-            <p>
+            {/* <p>
               <b>Contact Number: </b>
               {facility.info.phnumber}
-            </p>
+            </p> */}
+            <h3>
+              <b>Contact Number: </b>
+              {facility.info.phnumber}
+            </h3>
           </div>
           <div className="hospital">
-            <p>
+            {/* <p>
               <b>Number Of Beds Available: </b>
               {facility.info.beds}
-            </p>
+            </p> */}
+            <h3>
+              <b>Number Of Beds Available: </b>
+              {facility.info.beds}
+            </h3>
           </div>
           <div className="creator">
-            <div>
-              <p>
-                <b>Created By: </b> {facility.volunteerName}
-              </p>
-            </div>
-            <div>
-              <p>
-                <b>Created On: </b>
-                {facility.info.date}
-              </p>
-            </div>
+            <h3>{`Created By ${facility.volunteerName} On ${facility.info.date}`}</h3>
           </div>
         </div>
       </div>
