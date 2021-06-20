@@ -1,5 +1,5 @@
 const Ambulance = (props) => {
-    return <h1>Ambulance</h1>;
+    return <h2>{JSON.stringify(props.post)}</h2>;
 };
 
 export default Ambulance;

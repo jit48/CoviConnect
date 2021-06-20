@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import styles from './Post.module.scss';
-import api from '../../../axios';
 
 import IconButton from '../../IconButton/IconButton';
 import Modal from '../../Modal/Modal';

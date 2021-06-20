@@ -12,7 +12,11 @@ const Beds = (props) => {
     });
 
     const postData = () => {
-        api.post('/facility/beds', data).then((res) => {
+        api.post('/facility/beds', data, {
+            headers: {
+                'x-auth-token': '',
+            },
+        }).then((res) => {
             console.log(res);
         });
     };
