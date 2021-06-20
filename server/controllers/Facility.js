@@ -5,7 +5,6 @@ import Facility from '../models/Facility.js';
 const router = express.Router();
 
 export const postBed = async (req, res) => {
-    
     console.log(req.body);
     try {
         const postData = new Facility({
@@ -26,3 +25,4 @@ export const postBed = async (req, res) => {
         res.status(409).json({ message: error.message });
     }
 }
+

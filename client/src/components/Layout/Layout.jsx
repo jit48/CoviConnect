@@ -1,11 +1,9 @@
 import styles from './Layout.module.scss';
-
+import Navbar from '../UI/Navbar';
 const Layout = (props) => {
     return (
         <main className={styles.layout}>
-            <nav className={styles.navbar}>
-                <div>Navbar</div>
-            </nav>
+            <Navbar />
             <section className={styles.content}>
                 <div>{props.children}</div>
             </section>
