@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import api from '../axios';
+import { useAuth } from '../contexts/AuthContext';
 import styles from '../styles/Volunteer.module.scss';
+import api from '../axios';
 
 import Input from '../components/Input/Input';
 import Button from '../components/Button/Button';
@@ -9,111 +9,32 @@ import CreatePost from '../components/Volunteer/CreatePost/CreatePost';
 import Post from '../components/Volunteer/Post/Post';
 
 const Volunteer = () => {
-    const { id } = useParams();
-    const [authorised, setAuthorised] = useState(true);
-    const [volunteer, setVolunteer] = useState({
-        name: 'John Doe',
-        gender: 'male',
-        address: 'Ahmedabad, Gujarat',
-        email: 'voluteeremail@email.com',
-        contact: '9874567215',
-        bio: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem at assumenda dicta repellat aliquam, animi cum consequatur possimus veniam?',
-    });
-    const [posts, setPosts] = useState([
-        {
-            title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
-            postId: '1',
-            type: 'bed',
-            info: {
-                hospitalName: 'Lorem ipsum dolor sit.',
-                location: 'Ahmedabad, Gujarat',
-                beds: 25,
-            },
-        },
-        {
-            title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
-            postId: '2',
-            type: 'ambulance',
-            info: {
-                hospitalName: 'Lorem ipsum dolor sit.',
-                location: 'Ahmedabad, Gujarat',
-                beds: 25,
-            },
-        },
-        {
-            title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
-            type: 'bloodbank',
-            postId: '3',
-            info: {
-                hospitalName: 'Lorem ipsum dolor sit.',
-                location: 'Ahmedabad, Gujarat',
-                beds: 25,
-            },
-        },
-        {
-            title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
-            type: 'diagnosticcenter',
-            postId: '4',
-            info: {
-                hospitalName: 'Lorem ipsum dolor sit.',
-                location: 'Ahmedabad, Gujarat',
-                beds: 25,
-            },
-        },
-        {
-            title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
-            type: 'meals',
-            postId: '5',
-            info: {
-                hospitalName: 'Lorem ipsum dolor sit.',
-                location: 'Ahmedabad, Gujarat',
-                beds: 25,
-            },
-        },
-        {
-            title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
-            type: 'oxygen',
-            postId: '6',
-            info: {
-                hospitalName: 'Lorem ipsum dolor sit.',
-                location: 'Ahmedabad, Gujarat',
-                beds: 25,
-            },
-        },
-        {
-            title: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius quidem',
-            type: 'pharmacies',
-            postId: '7',
-            info: {
-                hospitalName: 'Lorem ipsum dolor sit.',
-                location: 'Ahmedabad, Gujarat',
-                beds: 25,
-            },
-        },
-    ]);
+    const {
+        user: { user, isAuthorised, token },
+        logout,
+    } = useAuth();
+
+    const [posts, setPosts] = useState([]);
 
     const getPost = async () => {
-        // const volunteer = await api.get(`/volunteer/${id}`).then((res) => res.data);
-        // const posts = await api.get(`/post/${id}`).then((res) => res.data);
-        // // sort posts by date newest -> oldest
+        const posts = await api.get(`/volunteer/posts`, { headers: { 'x-auth-token': token } }).then((res) => res.data);
+        // sort posts by date newest -> oldest
         // posts.sort((a,b)=>{
         //     if(a.date > b.date) return 1;
         //     if(a.date < b.date) return -1;
         //     return 0;
         // })
-        // setVolunteer(volunteer);
-        // setPosts(posts);
-        console.log('getting post');
+        setPosts(posts);
     };
 
     const deletePost = async (id) => {
-        // api.delete(`/post/${id}`)
-        console.log('deleting post', id);
-        getPost();
+        api.delete(`/facility/${id}`, { headers: { 'x-auth-token': token } });
+        await getPost();
     };
 
     useEffect(() => {
         getPost();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [posts]);
 
     return (
@@ -124,7 +45,7 @@ const Volunteer = () => {
             <div className={styles.main}>
                 <div className={styles.left}>
                     <div className={styles.profile}>
-                        {volunteer.gender === 'male' ? (
+                        {user.gender === 'male' ? (
                             <img src='https://glossophs.sa.edu.au/wp-content/uploads/2018/09/placeholder-profile-sq.jpg' alt='profile' />
                         ) : (
                             <img
@@ -137,33 +58,36 @@ const Volunteer = () => {
                             <b>
                                 <em>Name</em>
                             </b>
-                            <span>{volunteer.name}</span>
+                            <span>{user.name}</span>
                         </p>
                         <p>
                             <b>
                                 <em>Address</em>
                             </b>
-                            <span>{volunteer.address}</span>
+                            <span>{user.address}</span>
                         </p>
                         <p>
                             <b>
                                 <em>Email</em>
                             </b>
-                            <span>{volunteer.email}</span>
+                            <span>{user.email}</span>
                         </p>
                         <p>
                             <b>
                                 <em>Contact</em>
                             </b>
-                            <span>{volunteer.contact}</span>
+                            <span>{user.contact}</span>
                         </p>
                         <p>
                             <b>
                                 <em>Bio</em>
                             </b>
-                            <span>{volunteer.bio}</span>
+                            <span>{user.bio}</span>
                         </p>
                         <Button>Edit Profile</Button>
+                        <Button variant='secondary' onClick={logout}>
+                            Sign Out
+                        </Button>
                     </div>
                     <div className={styles.createpost}>
                         <p>
@@ -172,18 +96,11 @@ const Volunteer = () => {
                         </p>
                         <CreatePost />
                     </div>
-                    {/* <div className={styles.recruitments}></div> */}
                 </div>
                 <div className={styles.posts}>
                     {posts.map((post, i) => {
                         return (
-                            <Post
-                                key={i}
-                                authorised={authorised ? 1 : 0}
-                                volunteer={volunteer}
-                                deletePost={() => deletePost(post.postId)}
-                                post={post}
-                            />
+                            <Post key={i} authorised={isAuthorised} volunteer={user} deletePost={() => deletePost(post._id)} post={post} />
                         );
                     })}
                 </div>

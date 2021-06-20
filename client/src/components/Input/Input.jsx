@@ -1,17 +1,17 @@
 import styles from './Input.module.scss';
 
 const Input = (props) => {
-    const { label, type, name, placeholder, ref, onChange } = props;
+    const { label, innerRef, ...rest } = props;
 
     return (
         <>
             {label ? (
                 <fieldset className={styles.labeledinput}>
                     <legend>{label}</legend>
-                    <input id={label.toLowerCase()} type={type} name={name} placeholder={placeholder} ref={ref} onChange={onChange} />
+                    <input ref={innerRef} {...rest} />
                 </fieldset>
             ) : (
-                <input className={styles.input} type={type} name={name} placeholder={placeholder} ref={ref} onChange={onChange} />
+                <input className={styles.input} ref={innerRef} {...rest} />
             )}
         </>
     );
