@@ -17,7 +17,7 @@ export const postBed = async (req, res) => {
             volunteerID: getVolunteerID(req.header('x-auth-token')),
             volunteerName: await getVolunteerName(req.header('x-auth-token')),
             type: 'bed',
-            votes: req.body.votes,
+            votes: 0,
             info: {
                 hospitalName: req.body.info.hospitalName,
                 location: req.body.info.location,
@@ -39,7 +39,7 @@ export const postAmbulance = async (req, res) => {
             volunteerID: getVolunteerID(req.header('x-auth-token')),
             volunteerName: await getVolunteerName(req.header('x-auth-token')),
             type: 'ambulance',
-            votes: req.body.votes,
+            votes: 0,
             info: {
                 serviceProvider: req.body.info.serviceProvider,
                 location: req.body.info.location,
@@ -61,7 +61,7 @@ export const postBloodBank = async (req, res) => {
             volunteerID: getVolunteerID(req.header('x-auth-token')),
             volunteerName: await getVolunteerName(req.header('x-auth-token')),
             type: 'bloodbank',
-            votes: req.body.votes,
+            votes: 0,
             info: {
                 serviceProvider: req.body.info.serviceProvider,
                 location: req.body.info.location,
@@ -83,7 +83,7 @@ export const postDiagnostic = async (req, res) => {
             volunteerID: getVolunteerID(req.header('x-auth-token')),
             volunteerName: await getVolunteerName(req.header('x-auth-token')),
             type: 'diagnosticcenter',
-            votes: req.body.votes,
+            votes: 0,
             info: {
                 diagnosticName: req.body.info.diagnosticName,
                 location: req.body.info.location,
@@ -105,7 +105,7 @@ export const postMeals = async (req, res) => {
             volunteerID: getVolunteerID(req.header('x-auth-token')),
             volunteerName: await getVolunteerName(req.header('x-auth-token')),
             type: 'meals',
-            votes: req.body.votes,
+            votes: 0,
             info: {
                 serviceProvider: req.body.info.serviceProvider,
                 location: req.body.info.location,
@@ -127,7 +127,7 @@ export const postOxygen = async (req, res) => {
             volunteerID: getVolunteerID(req.header('x-auth-token')),
             volunteerName: await getVolunteerName(req.header('x-auth-token')),
             type: 'oxygen',
-            votes: req.body.votes,
+            votes: 0,
             info: {
                 serviceProvider: req.body.info.serviceProvider,
                 location: req.body.info.location,
@@ -149,7 +149,7 @@ export const postPharmacy = async (req, res) => {
             volunteerID: getVolunteerID(req.header('x-auth-token')),
             volunteerName: await getVolunteerName(req.header('x-auth-token')),
             type: 'pharmacies',
-            votes: req.body.votes,
+            votes: 0,
             info: {
                 serviceProvider: req.body.info.serviceProvider,
                 location: req.body.info.location,
