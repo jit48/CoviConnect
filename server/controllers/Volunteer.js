@@ -12,18 +12,27 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-        return res.status(400).json({ msg: 'Please enter all fields' });
+        return res.status(400).json({ method: 'SIGN_IN', status: res.statusCode, message: 'Required fields are empty. Enter all fields.' });
     }
+
+    if (!/^[^s@]+@[^s@]+$/.test(email))
+        return res.status(400).json({ method: 'SIGN_IN', status: res.statusCode, message: 'Invalid email. Try signing in again.' });
 
     try {
         const volunteer = await Volunteer.findOne({ email });
-        if (!volunteer) throw Error('User does not exists');
+        if (!volunteer)
+            return res.status(404).json({ method: 'SIGN_IN', status: res.statusCode, message: `User with the email ${email} not found.` });
 
         const isMatch = await bcrypt.compare(password, volunteer.password);
-        if (!isMatch) throw Error('Invalid credentials');
+        if (!isMatch) return res.status(406).json({ method: 'SIGN_IN', status: res.statusCode, message: `Invalid password credentials.` });
 
         const token = jwt.sign({ id: volunteer._id }, process.env.JWT_SECRET, { expiresIn: 3600 });
-        if (!token) throw Error("Couldn't sign the token");
+        if (!token)
+            return res.status(500).json({
+                method: 'SIGN_IN',
+                status: res.statusCode,
+                message: `Couldn't sign the authentication token. Try signing in again.`,
+            });
 
         res.status(200).json({
             token,
@@ -34,7 +43,7 @@ export const login = async (req, res) => {
             },
         });
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        res.status(500).json({ method: 'SERVER', status: res.statusCode, message: error.message });
     }
 };
 
