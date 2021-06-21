@@ -51,18 +51,30 @@ export const register = async (req, res) => {
     const { name, email, password, contact, gender, bio, address } = req.body;
 
     if (!name || !email || !password || !contact || !gender || !bio || !address) {
-        return res.status(400).json({ msg: 'PLese enter all fields' });
+        return res.status(400).json({ method: 'SIGN_UP', status: res.statusCode, message: 'Required fields are empty. Enter all fields.' });
     }
+
+    if (!/^[^s@]+@[^s@]+$/.test(email))
+        return res.status(400).json({ method: 'SIGN_UP', status: res.statusCode, message: 'Invalid email. Try signing up again.' });
 
     try {
         const volunteer = await Volunteer.findOne({ email });
-        if (volunteer) throw Error('User already exists');
+        if (volunteer)
+            return res
+                .status(400)
+                .json({ method: 'SIGN_UP', status: res.statusCode, message: `User with the email ${email} already exists.` });
 
         const salt = await bcrypt.genSalt(10);
-        if (!salt) throw Error('Something went wrong with bcrypt');
+        if (!salt)
+            return res
+                .status(500)
+                .json({ method: 'SIGN_UP', status: res.statusCode, message: `Error generating hashing salt. Try registering again.` });
 
         const hash = await bcrypt.hash(password, salt);
-        if (!hash) throw Error('Something went wrong hashing password');
+        if (!hash)
+            return res
+                .status(500)
+                .json({ method: 'SIGN_UP', status: res.statusCode, message: `Error generating hashed password. Try registering again.` });
 
         const newVolunteer = new Volunteer({
             name,
@@ -75,20 +87,18 @@ export const register = async (req, res) => {
         });
 
         const savedVolunteer = await newVolunteer.save();
-        if (!savedVolunteer) throw Error('Something went wrong saving the user');
+        if (!savedVolunteer)
+            return res
+                .status(500)
+                .json({ method: 'SIGN_UP', status: res.statusCode, message: `Error registering user. Try registering again.` });
 
-        const token = jwt.sign({ id: savedVolunteer._id }, process.env.JWT_SECRET, { expiresIn: 3600 });
-
-        res.status(200).json({
-            token,
-            volunteer: {
-                id: savedVolunteer._id,
-                name: savedVolunteer.name,
-                email: savedVolunteer.email,
-            },
+        res.status(201).json({
+            method: 'SIGN_UP',
+            status: res.statusCode,
+            message: `User with email ${savedVolunteer.email} successfully registered.`,
         });
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        res.status(500).json({ method: 'SERVER', status: res.statusCode, message: error.message });
     }
 };
 
