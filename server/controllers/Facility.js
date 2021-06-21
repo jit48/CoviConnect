@@ -4,11 +4,13 @@ import jwt from 'jsonwebtoken';
 
 const getVolunteerID = (token) => {
     const volunteer = jwt.decode(token);
-    return volunteer.id;
+    if (!volunteer) throw Error('Error decoding jwt token.');
+    else return volunteer.id;
 };
 const getVolunteerName = async (token) => {
     const volunteer = await Volunteer.findById(getVolunteerID(token));
-    return volunteer.name;
+    if (!volunteer) throw Error('Cannot get volunteer details.');
+    else return volunteer.name;
 };
 
 export const postBed = async (req, res) => {
@@ -169,34 +171,50 @@ export const getAllPosts = async (req, res) => {
         const facilities = await Facility.find({});
         res.status(200).json(facilities);
     } catch (error) {
-        res.status(409).json({ message: error.message });
+        res.status(500).json({ method: 'SERVER', status: res.statusCode, message: error.message });
     }
 };
 
 export const editPost = async (req, res) => {
     try {
         const post = await Facility.findById(req.params.postId);
+
+        if (!post)
+            return res
+                .status(404)
+                .json({ method: 'FACILITY', status: res.statusCode, message: `Cannot find post with id: ${req.params.postId}.` });
+
         if (post.volunteerID === getVolunteerID(req.header('x-auth-token'))) {
             const updatedPost = await Facility.findByIdAndUpdate(req.params.postId, req.body, { new: true });
             res.status(200).json(updatedPost);
         } else {
-            throw Error('Unauthorised to update');
+            return res.status(401).json({ method: 'FACILITY', status: res.statusCode, message: `Unauthorised to update.` });
         }
     } catch (error) {
-        res.status(409).json({ message: error.message });
+        res.status(500).json({ method: 'SERVER', status: res.statusCode, message: error.message });
     }
 };
 
 export const deletePost = async (req, res) => {
     try {
         const post = await Facility.findById(req.params.postId);
+
+        if (!post)
+            return res
+                .status(404)
+                .json({ method: 'FACILITY', status: res.statusCode, message: `Cannot find post with id: ${req.params.postId}.` });
+
         if (post.volunteerID === getVolunteerID(req.header('x-auth-token'))) {
             await Facility.findByIdAndDelete(req.params.postId);
-            res.status(200).json({ msg: 'deleted' });
+            res.status(200).json({
+                method: 'FACILITY',
+                status: res.statusCode,
+                message: `Post with id: ${req.params.postId} successfully deleted.`,
+            });
         } else {
-            throw Error('Unauthorised to delete');
+            return res.status(401).json({ method: 'FACILITY', status: res.statusCode, message: `Unauthorised to delete.` });
         }
     } catch (error) {
-        res.status(409).json({ message: error.message });
+        res.status(500).json({ method: 'SERVER', status: res.statusCode, message: error.message });
     }
 };
