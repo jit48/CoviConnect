@@ -28,6 +28,7 @@ const App = () => {
                     {!user.isAuthorised && <Route path='/register' exact component={Register} />}
                     {!user.isAuthorised && <Route path='/login' exact component={Login} />}
                     <PrivateRoute path='/dashboard' component={user.isVolunteer ? Volunteer : Ngo} />
+                    <Route path='/facility/:type' component={Facility} />
                     {user.isAuthorised ? (
                         <Route path={['/login', '/register']} exact>
                             <Redirect to='/dashboard' />

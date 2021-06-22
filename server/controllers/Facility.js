@@ -21,12 +21,12 @@ export const postBed = async (req, res) => {
             type: 'bed',
             votes: 0,
             info: {
-                hospitalName: req.body.hospitalName, 
-                location: req.body.location,
+                hospitalName: req.body.info.hospitalName, 
+                location: req.body.info.location,
                 date: new Date().toLocaleString(),
-                address: req.body.address,
-                phnumber: req.body.phnum, 
-                beds: req.body.beds
+                address: req.body.info.address,
+                phnumber: req.body.info.phnum, 
+                beds: req.body.info.beds
             }
         });
 
@@ -46,10 +46,10 @@ export const postAmbulance = async (req, res) => {
             type: 'ambulance',
             votes: 0,
             info: {
-                serviceProvider: req.body.providerName, 
-                location: req.body.location,
+                serviceProvider: req.body.info.serviceProvider, 
+                location: req.body.info.location,
                 date: new Date().toLocaleString(), 
-                contactNum: req.body.contactNum
+                contactNum: req.body.info.contactNum
             }
         });
 
@@ -69,10 +69,10 @@ export const postBloodBank = async (req, res) => {
             type: 'bloodbank',
             votes: 0,
             info: {
-                serviceProvider: req.body.providerName, 
-                location: req.body.location,
+                serviceProvider: req.body.info.serviceProvider, 
+                location: req.body.info.location,
                 date: new Date().toLocaleString(), 
-                contactNum: req.body.contactNum
+                contactNum: req.body.info.contactNum
             }
         });
 
@@ -93,9 +93,9 @@ export const postDiagnostic = async (req, res) => {
             votes: 0,
             info: {
                 diagnosticName: req.body.centreName, 
-                location: req.body.location,
+                location: req.body.info.location,
                 date: new Date().toLocaleString(), 
-                contactNum: req.body.contactNum
+                contactNum: req.body.info.contactNum
             }
         });
 
@@ -115,10 +115,10 @@ export const postMeals = async (req, res) => {
             type: 'meals',
             votes: 0,
             info: {
-                serviceProvider: req.body.providerName, 
-                location: req.body.location,
+                serviceProvider: req.body.info.serviceProvider, 
+                location: req.body.info.location,
                 date: new Date().toLocaleString(), 
-                contactNum: req.body.contactNum
+                contactNum: req.body.info.contactNum
             }
         });
 
@@ -138,10 +138,10 @@ export const postOxygen = async (req, res) => {
             type: 'oxygen',
             votes: 0,
             info: {
-                serviceProvider: req.body.providerName, 
-                location: req.body.location,
+                serviceProvider: req.body.info.serviceProvider, 
+                location: req.body.info.location,
                 date: new Date().toLocaleString(), 
-                contactNum: req.body.contactNum
+                contactNum: req.body.info.contactNum
             }
         });
 
@@ -161,10 +161,10 @@ export const postPharmacy = async (req, res) => {
             type: 'pharmacies',
             votes: 0,
             info: {
-                serviceProvider: req.body.providerName, 
-                location: req.body.location,
+                serviceProvider: req.body.info.serviceProvider, 
+                location: req.body.info.location,
                 date: new Date().toLocaleString(), 
-                contactNum: req.body.contactNum
+                contactNum: req.body.info.contactNum
             }
         });
 

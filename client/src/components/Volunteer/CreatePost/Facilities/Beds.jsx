@@ -9,15 +9,10 @@ const Beds = (props) => {
         hospitalName: '',
         location: '',
         beds: 0,
-<<<<<<< HEAD
         address: '',
         phnum: 0
     })
     const [ postSuccess, setPostSuccess ] = useState('none');
-=======
-    });
-    const [postSuccess, setPostSuccess] = useState('none');
->>>>>>> 58596dee2fd9c8312ded94872fd28aae862de781
 
     const postData = () => {
         api.post('/facility/beds', data, {
@@ -36,7 +31,6 @@ const Beds = (props) => {
 
     return (
         <Fragment>
-<<<<<<< HEAD
             {postSuccess==='none' ? 
             (
             <div>
@@ -55,45 +49,8 @@ const Beds = (props) => {
                 <div className={classes.buttonContainer}>
                     <Button variant='secondary' onClick={props.facilityHomeHandler}>Back</Button>
                     <Button variant='primary' onClick={postData}>Post</Button>
-=======
-            {postSuccess === 'none' ? (
-                <div>
-                    <h1>Post an update on Beds</h1>
-                    <br />
-                    <Input
-                        type='text'
-                        label='Hospital Name'
-                        onChange={(event) => {
-                            setData({ ...data, hospitalName: event.target.value });
-                        }}
-                    />
-                    <br />
-                    <Input
-                        type='text'
-                        label='Location'
-                        onChange={(event) => {
-                            setData({ ...data, location: event.target.value });
-                        }}
-                    />
-                    <br />
-                    <Input
-                        type='number'
-                        label='Beds Available'
-                        onChange={(event) => {
-                            setData({ ...data, beds: event.target.value });
-                        }}
-                    />
-                    <br />
-                    <div className={classes.buttonContainer}>
-                        <Button variant='secondary' onClick={props.facilityHomeHandler}>
-                            Back
-                        </Button>
-                        <Button variant='primary' onClick={postData}>
-                            Post
-                        </Button>
-                    </div>
->>>>>>> 58596dee2fd9c8312ded94872fd28aae862de781
                 </div>
+            </div>
             ) : postSuccess === 'success' ? (
                 <h1>You have Successfully posted !!</h1>
             ) : (
