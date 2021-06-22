@@ -7,6 +7,8 @@ import PrivateRoute from './PrivateRoute';
 import Layout from './components/Layout/Layout';
 import Home from './pages/Home';
 import Volunteer from './pages/Volunteer';
+import NGOdashboard from './components/NGO/NGOdashboard';
+import Facility from './pages/Facility';
 import Ngo from './pages/Ngo';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -19,13 +21,14 @@ const App = () => {
     }, []);
 
     return (
-        <div className='App'>
+        <div>
             <Layout>
                 <Switch>
                     <Route path='/' exact component={Home} />
                     {!user.isAuthorised && <Route path='/register' exact component={Register} />}
                     {!user.isAuthorised && <Route path='/login' exact component={Login} />}
                     <PrivateRoute path='/dashboard' component={user.isVolunteer ? Volunteer : Ngo} />
+                    <Route path='/facility/:type' component={Facility} />
                     {user.isAuthorised ? (
                         <Route path={['/login', '/register']} exact>
                             <Redirect to='/dashboard' />
