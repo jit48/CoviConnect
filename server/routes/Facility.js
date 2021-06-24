@@ -3,7 +3,7 @@ import { postBed, postAmbulance, postBloodBank, postDiagnostic, postMeals, postO
 import { postFundRaise, fetchData } from "../controllers/FundRaise.js";
 import { downVotes, getFacility, updateVotes} from '../controllers/GetAllFacilities.js';
 import { userUpvotes } from "../controllers/User.js";
-
+import {postNgoRecruit} from '../controllers/NgoRecruit.js';
 
 const router = express.Router();
 
@@ -20,8 +20,6 @@ router.post('/facility/pharmacy', postPharmacy);
 router.post('/fundraise', postFundRaise);
 router.get('/fundraise', fetchData)
 router.post("/user/upVotedPosts", userUpvotes);
-
-
-
+router.post('/ngoRecruit',postNgoRecruit);
 
 export default router;

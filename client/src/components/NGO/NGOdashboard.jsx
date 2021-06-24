@@ -1,5 +1,6 @@
 import { Fragment, useState } from "react";
 import RaiseFund from "./RaiseFund/RaiseFund";
+import PostReqruitment from "./PostReqruitment/PostReqruitment";
 import api from "../../axios";
 
 const NGOdashboard = () => {
@@ -20,6 +21,8 @@ const NGOdashboard = () => {
             {fund.map((elem)=> {
                 return elem.title;
             })}
+            <br /><br />
+            <PostReqruitment />
         </Fragment>
     )
 }
