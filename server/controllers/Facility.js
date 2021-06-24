@@ -22,10 +22,9 @@ export const postBed = async (req, res) => {
             votes: 0,
             info: {
                 hospitalName: req.body.info.hospitalName,
-                location: req.body.info.location,
                 date: new Date().toLocaleString(),
                 address: req.body.info.address,
-                phnumber: req.body.info.phnum,
+                contactNum: req.body.info.contactNum,
                 beds: req.body.info.beds,
             },
         });
