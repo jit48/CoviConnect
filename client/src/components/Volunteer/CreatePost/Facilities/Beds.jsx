@@ -13,10 +13,9 @@ const Beds = (props) => {
 
     const [data, setData] = useState({
         hospitalName: '',
-        location: '',
         beds: 0,
         address: '',
-        phnum: 0,
+        contactNum: 0,
     });
     const [postSuccess, setPostSuccess] = useState('none');
 
@@ -46,15 +45,7 @@ const Beds = (props) => {
                     <br />
                     <Input
                         type='text'
-                        label='City'
-                        onChange={(event) => {
-                            setData({ ...data, location: event.target.value });
-                        }}
-                    />
-                    <br />
-                    <Input
-                        type='text'
-                        label='Full Address'
+                        label='Address'
                         onChange={(event) => {
                             setData({ ...data, address: event.target.value });
                         }}
@@ -62,9 +53,9 @@ const Beds = (props) => {
                     <br />
                     <Input
                         type='tel'
-                        label='Hospital Contact Number'
+                        label='Contact'
                         onChange={(event) => {
-                            setData({ ...data, phnum: event.target.value });
+                            setData({ ...data, contactNum: event.target.value });
                         }}
                     />
                     <br />

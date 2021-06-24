@@ -1,5 +1,6 @@
 import { Fragment, useState } from 'react';
 import classes from './CreatePost.module.css';
+import RadioInput from '../../RadioInput/RadioInput';
 
 import Modal from '../../Modal/Modal';
 import Button from '../../Button/Button';
@@ -41,20 +42,19 @@ const CreatePost = () => {
                         <h1>Post an update on ?</h1>
                         <br />
                         <div className={classes.InputContainer}>
-                            <input type='radio' name='Choice' value='Beds' onClick={facilityHandler} />
-                            <label>Beds</label>
-                            <input type='radio' name='Choice' value='Oxygen' onClick={facilityHandler} />
-                            <label>Oxygen</label>
-                            <input type='radio' name='Choice' value='Ambulance' onClick={facilityHandler} />
-                            <label>Ambulance</label>
-                            <input type='radio' name='Choice' value='Meals' onClick={facilityHandler} />
-                            <label>Meals</label>
-                            <input type='radio' name='Choice' value='BloodBank' onClick={facilityHandler} />
-                            <label>Blood Bank</label>
-                            <input type='radio' name='Choice' value='DiagnosticCenter' onClick={facilityHandler} />
-                            <label>Diagnostic Center</label>
-                            <input type='radio' name='Choice' value='Pharmacies' onClick={facilityHandler} />
-                            <label>Pharmacies</label>
+                            <RadioInput type='radio' name='Choice' value='Beds' label='Available Beds' onClick={facilityHandler} />
+                            <RadioInput type='radio' name='Choice' value='Oxygen' label='Oxygen Cylinders' onClick={facilityHandler} />
+                            <RadioInput type='radio' name='Choice' value='Ambulance' label='Ambulance Service' onClick={facilityHandler} />
+                            <RadioInput type='radio' name='Choice' value='Meals' label='Free Meal Service' onClick={facilityHandler} />
+                            <RadioInput type='radio' name='Choice' value='BloodBank' label='Blood Bank Leads' onClick={facilityHandler} />
+                            <RadioInput
+                                type='radio'
+                                name='Choice'
+                                value='DiagnosticCenter'
+                                label='Diagnostic Centres'
+                                onClick={facilityHandler}
+                            />
+                            <RadioInput type='radio' name='Choice' value='Pharmacies' label='Pharmacies' onClick={facilityHandler} />
                         </div>
                         <br />
                         <Button variant='secondary' onClick={modalHandler}>
