@@ -11,12 +11,6 @@ const Ambulance = (props) => {
         user: { token },
     } = useAuth();
 
-    // {
-    //     serviceProvider: req.body.info.serviceProvider,
-    //     location: req.body.info.location,
-    //     contactNum: req.body.info.contactNum,
-    // }
-
     const [data, setData] = useState({
         serviceProvider: '',
         location: '',
