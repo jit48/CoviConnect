@@ -18,24 +18,19 @@ const Volunteer = () => {
 
     const getPost = async () => {
         const posts = await api.get(`/volunteer/posts`, { headers: { 'x-auth-token': token } }).then((res) => res.data);
-        // sort posts by date newest -> oldest
-        // posts.sort((a,b)=>{
-        //     if(a.date > b.date) return 1;
-        //     if(a.date < b.date) return -1;
-        //     return 0;
-        // })
+        posts.sort((a, b) => new Date(b.info.date) - new Date(a.info.date));
         setPosts(posts);
     };
 
     const deletePost = async (id) => {
         api.delete(`/facility/${id}`, { headers: { 'x-auth-token': token } });
         await getPost();
+        setPosts((posts) => posts.filter((post) => post._id !== id));
     };
 
     useEffect(() => {
         getPost();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [posts]);
+    }, []);
 
     return (
         <section className={styles.volunteer}>
