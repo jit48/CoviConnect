@@ -19,14 +19,16 @@ const Pharmacies = (props) => {
 
     const [postSuccess, setPostSuccess] = useState('none');
 
-    const postData = () => {
-        api.post('/facility/pharmacies', { info: data }, { headers: { 'x-auth-token': token } })
+    const postData = async () => {
+        await api
+            .post('/facility/pharmacies', { info: data }, { headers: { 'x-auth-token': token } })
             .then((res) => {
                 setPostSuccess('success');
             })
             .catch(() => {
                 setPostSuccess('unsuccessful');
             });
+        props.getPost();
     };
 
     return (
