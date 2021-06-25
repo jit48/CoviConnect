@@ -1,13 +1,12 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
+const Schema = mongoose.Schema;
 
-const FacilitySchema = mongoose.Schema({
-    volunteerID: Number,
+const FacilitySchema = new Schema({
+    volunteerID: String,
     volunteerName: String,
     type: String,
     votes: Number,
-    info: Object
-})
+    info: Object,
+});
 
-var Facility = mongoose.model('Facility', FacilitySchema);
-
-export default Facility;
+export default mongoose.model('facilities', FacilitySchema);
