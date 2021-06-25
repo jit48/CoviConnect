@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import styles from '../styles/Volunteer.module.scss';
@@ -39,6 +39,7 @@ const Volunteer = () => {
 
     useEffect(() => {
         getPost();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [posts]);
 
     return (
@@ -88,7 +89,6 @@ const Volunteer = () => {
                             </b>
                             <span>{user.bio}</span>
                         </p>
-                        <Button>Edit Profile</Button>
                         <Button variant='secondary' onClick={logout}>
                             Sign Out
                         </Button>
