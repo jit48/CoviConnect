@@ -12,6 +12,7 @@ import Facility from './pages/Facility';
 import Ngo from './pages/Ngo';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import AdoptionCard from './components/Facility/Adoption/AdoptionCard';
 
 const App = () => {
     const { user } = useAuth();
@@ -27,6 +28,7 @@ const App = () => {
                     <Route path='/' exact component={Home} />
                     {!user.isAuthorised && <Route path='/register' exact component={Register} />}
                     {!user.isAuthorised && <Route path='/login' exact component={Login} />}
+                    <Route path='/facility/adoption' component={AdoptionCard} />
                     <PrivateRoute path='/dashboard' component={user.isVolunteer ? Volunteer : Ngo} />
                     <Route path='/facility/:type' component={Facility} />
                     {user.isAuthorised ? (

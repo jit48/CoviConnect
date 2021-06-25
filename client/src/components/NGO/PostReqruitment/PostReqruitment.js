@@ -3,7 +3,7 @@ import Modal from "../../Modal/Modal";
 import Button from "../../Button/Button";
 import Input from "../../Input/Input";
 import api from "../../../axios";
-import FileBase from 'react-file-base64';
+
 
 const PostReqruitment = () => {
 
@@ -24,7 +24,7 @@ const PostReqruitment = () => {
     } 
 
     const submitForm = () => {
-        api.post('/ngoRecruit', data)
+        api.post('/ngo/ngoRecruit', data)
         .then(()=>{
             setOpenModal((prevState)=>{
                 return !prevState;

@@ -11,6 +11,7 @@ import DiagnosticCard from "../components/Facility/DiagnosticCard";
 import MealsCard from "../components/Facility/MealsCard";
 import PharmacyCard from "../components/Facility/PharmacyCard";
 import AmbulanceCard from "../components/Facility/Ambulance/AmbulanceCard";
+import AdoptionCard from "../components/Facility/Adoption/AdoptionCard";
 
 function Facility() {
   const { type } = useParams();
@@ -58,6 +59,8 @@ function Facility() {
               return <PharmacyCard key={item._id} facility={item.info} />;
             if (item.type === "ambulance")
               return <AmbulanceCard key={item._id} facility={item.info} />;
+            {/* if (item.type === "adoption")
+              return <AdoptionCard key={item._id} facility={item.info} />; */}
           })
         : "No Results Found"}
     </div>

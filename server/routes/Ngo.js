@@ -10,6 +10,6 @@ router.post('/login', login);
 router.post('/register', register);
 router.get('/', auth, validate);
 router.get('/adoptions', auth, adoptions);
-router.post('/ngoRecruit',postNgoRecruit);
+router.post('/ngo/ngoRecruit',postNgoRecruit);
 
 export default router;
