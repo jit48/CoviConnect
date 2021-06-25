@@ -7,11 +7,11 @@ import PrivateRoute from './PrivateRoute';
 import Layout from './components/Layout/Layout';
 import Home from './pages/Home';
 import Volunteer from './pages/Volunteer';
-import NGOdashboard from './components/NGO/NGOdashboard';
 import Facility from './pages/Facility';
 import Ngo from './pages/Ngo';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Recruitments from './pages/Recruitments';
 
 const App = () => {
     const { user } = useAuth();
@@ -28,6 +28,7 @@ const App = () => {
                     {!user.isAuthorised && <Route path='/register' exact component={Register} />}
                     {!user.isAuthorised && <Route path='/login' exact component={Login} />}
                     <PrivateRoute path='/dashboard' component={user.isVolunteer ? Volunteer : Ngo} />
+                    <PrivateRoute path='/recruitments' component={Recruitments} />
                     <Route path='/facility/:type' component={Facility} />
                     {user.isAuthorised ? (
                         <Route path={['/login', '/register']} exact>

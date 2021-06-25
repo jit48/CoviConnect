@@ -104,7 +104,7 @@ export const register = async (req, res) => {
 export const validate = async (req, res) => {
     try {
         const ngo = await Ngo.findById(getNgoID(req.header('x-auth-token'))).select('-password');
-        res.ststus(200).json(ngo);
+        res.status(200).json(ngo);
     } catch (error) {
         res.status(500).json({ method: 'SERVER', status: res.statusCode, message: error.message });
     }

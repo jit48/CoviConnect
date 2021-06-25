@@ -4,7 +4,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import mongoose from 'mongoose';
-import user from "./server/routes/User.js"; 
+import user from './server/routes/User.js';
 import volunteerRoutes from './server/routes/Volunteer.js';
 import ngoRoutes from './server/routes/Ngo.js';
 import facilityRoutes from './server/routes/Facility.js';
@@ -18,15 +18,15 @@ const corsOptions = {
 
 app.use(helmet());
 app.use(cors(corsOptions));
-app.use(express.json({ limit: '30mb', extended: true }))
-app.use(express.urlencoded({ limit: '30mb', extended: true }))
+app.use(express.json({ limit: '30mb', extended: true }));
+app.use(express.urlencoded({ limit: '30mb', extended: true }));
 
 app.use('/volunteer', volunteerRoutes);
 app.use('/ngo', ngoRoutes);
 app.use('/facility', facilityRoutes);
 
 mongoose
-    .connect(URI, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+    .connect(URI, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false })
     .then(() => {
         console.log('Database Connected');
     })

@@ -21,13 +21,12 @@ export const postBed = async (req, res) => {
             type: 'bed',
             votes: 0,
             info: {
-                hospitalName: req.body.info.hospitalName, 
-                location: req.body.info.location,
+                hospitalName: req.body.info.hospitalName,
                 date: new Date().toLocaleString(),
                 address: req.body.info.address,
-                phnumber: req.body.info.phnum, 
-                beds: req.body.info.beds
-            }
+                contactNum: req.body.info.contactNum,
+                beds: req.body.info.beds,
+            },
         });
 
         postData.save();
@@ -46,11 +45,11 @@ export const postAmbulance = async (req, res) => {
             type: 'ambulance',
             votes: 0,
             info: {
-                serviceProvider: req.body.info.serviceProvider, 
+                serviceProvider: req.body.info.serviceProvider,
                 location: req.body.info.location,
-                date: new Date().toLocaleString(), 
-                contactNum: req.body.info.contactNum
-            }
+                date: new Date().toLocaleString(),
+                contactNum: req.body.info.contactNum,
+            },
         });
 
         postData.save();
@@ -69,11 +68,11 @@ export const postBloodBank = async (req, res) => {
             type: 'bloodbank',
             votes: 0,
             info: {
-                serviceProvider: req.body.info.serviceProvider, 
+                serviceProvider: req.body.info.serviceProvider,
                 location: req.body.info.location,
-                date: new Date().toLocaleString(), 
-                contactNum: req.body.info.contactNum
-            }
+                date: new Date().toLocaleString(),
+                contactNum: req.body.info.contactNum,
+            },
         });
 
         postData.save();
@@ -92,11 +91,11 @@ export const postDiagnostic = async (req, res) => {
             type: 'diagnosticcenter',
             votes: 0,
             info: {
-                diagnosticName: req.body.centreName, 
+                centreName: req.body.info.centreName,
                 location: req.body.info.location,
-                date: new Date().toLocaleString(), 
-                contactNum: req.body.info.contactNum
-            }
+                date: new Date().toLocaleString(),
+                contactNum: req.body.info.contactNum,
+            },
         });
 
         postData.save();
@@ -115,11 +114,11 @@ export const postMeals = async (req, res) => {
             type: 'meals',
             votes: 0,
             info: {
-                serviceProvider: req.body.info.serviceProvider, 
+                serviceProvider: req.body.info.serviceProvider,
                 location: req.body.info.location,
-                date: new Date().toLocaleString(), 
-                contactNum: req.body.info.contactNum
-            }
+                date: new Date().toLocaleString(),
+                contactNum: req.body.info.contactNum,
+            },
         });
 
         postData.save();
@@ -138,11 +137,11 @@ export const postOxygen = async (req, res) => {
             type: 'oxygen',
             votes: 0,
             info: {
-                serviceProvider: req.body.info.serviceProvider, 
+                serviceProvider: req.body.info.serviceProvider,
                 location: req.body.info.location,
-                date: new Date().toLocaleString(), 
-                contactNum: req.body.info.contactNum
-            }
+                date: new Date().toLocaleString(),
+                contactNum: req.body.info.contactNum,
+            },
         });
 
         postData.save();
@@ -161,11 +160,11 @@ export const postPharmacy = async (req, res) => {
             type: 'pharmacies',
             votes: 0,
             info: {
-                serviceProvider: req.body.info.serviceProvider, 
+                serviceProvider: req.body.info.serviceProvider,
                 location: req.body.info.location,
-                date: new Date().toLocaleString(), 
-                contactNum: req.body.info.contactNum
-            }
+                date: new Date().toLocaleString(),
+                contactNum: req.body.info.contactNum,
+            },
         });
 
         postData.save();
