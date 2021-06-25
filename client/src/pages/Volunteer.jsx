@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import styles from '../styles/Volunteer.module.scss';
 import api from '../axios';
@@ -10,27 +11,35 @@ import Post from '../components/Volunteer/Post/Post';
 
 const Volunteer = () => {
     const {
-        user: { user, isAuthorised, token },
+        user: { user, token },
         logout,
     } = useAuth();
 
     const [posts, setPosts] = useState([]);
 
     const getPost = async () => {
-        const posts = await api.get(`/volunteer/posts`, { headers: { 'x-auth-token': token } }).then((res) => res.data);
-        posts.sort((a, b) => new Date(b.info.date) - new Date(a.info.date));
-        setPosts(posts);
+        const resPosts = await api.get(`/volunteer/posts`, { headers: { 'x-auth-token': token } }).then((res) => res.data);
+        resPosts.sort((a, b) => new Date(b.info.date) - new Date(a.info.date));
+        if (resPosts.length !== posts.length) {
+            setPosts(resPosts);
+        }
     };
 
     const deletePost = async (id) => {
-        api.delete(`/facility/${id}`, { headers: { 'x-auth-token': token } });
-        await getPost();
-        setPosts((posts) => posts.filter((post) => post._id !== id));
+        await api.delete(`/facility/${id}`, { headers: { 'x-auth-token': token } });
+        getPost();
+    };
+
+    const editPost = async (id, data) => {
+        await api.put(`/facility/${id}`, data, { headers: { 'x-auth-token': token } });
+        const resPosts = await api.get(`/volunteer/posts`, { headers: { 'x-auth-token': token } }).then((res) => res.data);
+        resPosts.sort((a, b) => new Date(b.info.date) - new Date(a.info.date));
+        setPosts(resPosts);
     };
 
     useEffect(() => {
         getPost();
-    }, []);
+    }, [posts]);
 
     return (
         <section className={styles.volunteer}>
@@ -89,14 +98,21 @@ const Volunteer = () => {
                             Having any leads that might help many covid patients to get sufficient care ? Create a post to let everyone know
                             about it.
                         </p>
-                        <CreatePost />
+                        <CreatePost getPost={getPost} />
+                    </div>
+                    <div className={styles.recruitments}>
+                        <p>
+                            <b>Connect with NGO</b> and get your posts reach more needy people. Apply to get recruited under a Non-Profit
+                            Organisation.
+                        </p>
+                        <Button variant='primary'>
+                            <NavLink to='/recruitments'>Apply Now</NavLink>
+                        </Button>
                     </div>
                 </div>
                 <div className={styles.posts}>
                     {posts.map((post, i) => {
-                        return (
-                            <Post key={i} authorised={isAuthorised} volunteer={user} deletePost={() => deletePost(post._id)} post={post} />
-                        );
+                        return <Post key={i} volunteer={user} deletePost={() => deletePost(post._id)} editPost={editPost} post={post} />;
                     })}
                 </div>
             </div>
