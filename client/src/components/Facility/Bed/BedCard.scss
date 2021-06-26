@@ -17,12 +17,11 @@ b{
 }
 .info{
   margin: 5px ;
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-evenly;
-  border-bottom: 2px solid utils.color(purple,lighter);
   border-radius: 5px;
 }
 
@@ -33,12 +32,17 @@ b{
   display: flex;
   align-items: center;
   justify-content: center;
+  color: utils.color(purple,light);
 }
-.location h1,h2,h3,h4,h5,h6{
+.location h1{
   margin : 5px 20px ;
 }
 .location p{
   margin-right: 20px;
+}
+.location i{
+  color: red;
+  margin: 0 5px 0 0;
 }
 .creator{
   display: flex;
@@ -46,12 +50,33 @@ b{
 }
 .creator h1,h2,h3,h4,h5,h6{
   margin : 5px 20px ;
-  
 }
 .creator p{
   margin-right:10px;
 }
+.hospital i{
+  color: red;
+  margin: 0 5px 0 0;
+  transform : rotate(-30deg)
+}
 
+.Name{
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.Name i{
+  color: utils.color(grey,light);
+  margin : 5px 10px ;
+}
+
+.creatorName{
+  color: white;
+  background-color: utils.color(purple,lighter);
+  border-radius: 5px;
+  padding: 10px;
+  margin : 5px 3px 5px 20px;
+}
 @media only screen and (max-width: 600px) {
   .info p{
    margin: 0 0 0 0;

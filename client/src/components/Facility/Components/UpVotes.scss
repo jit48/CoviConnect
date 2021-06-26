@@ -1,5 +1,9 @@
 @use "../../../styles/utils";
 
+// .upVotes{
+//     height: 20px;
+// }
+
 .score{
     display: flex;
     flex-direction: column;
@@ -9,6 +13,8 @@
 }
 
 .score i{
+    margin: 0;
+    padding: 0;
     color: utils.color(purple,light);
 }
 

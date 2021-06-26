@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import Facility from '../models/Facility.js';
-
+import { geoAddress } from '../Helpers/mapKey.js';
 const router = express.Router();
 
 export const postBed = async (req, res) => {
@@ -22,7 +22,7 @@ export const postBed = async (req, res) => {
         });
 
         postData.save();
-
+        // geoAddress(req.body.address);
         res.status(201).json(postData);
     } catch (error) {
         res.status(409).json({ message: error.message });

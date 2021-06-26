@@ -2,13 +2,19 @@
 
 
 .navbar{
+    position: sticky;
+    top: 0px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     padding: 1rem;
+    z-index: 2;
+    background-color: utils.color(grey,light);
+    box-shadow: 1px 1px 8px 1px #888888;
 }
 .navbar__logo{
     // margin: 0 20px;
+    position: relative;
     font-size: 1.5rem;
     font-weight: bold;
 }

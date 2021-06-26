@@ -2,15 +2,20 @@ import React, { useState } from "react";
 import "./UpVotes.scss";
 import axios from "../../../axios";
 
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 import Snackbars from "./Snackbar";
 function UpVotes(props) {
   const { facility, handleUpVotes } = props;
   const [updateVote, setUpdateVote] = useState(facility);
   const [showSnackBar, setShowSnackBar] = useState(false);
+  const [loading, isLoading] = useState(true);
   const handleScoreIncrease = async () => {
+    isLoading(false);
     const update = await axios
       .patch(`facility/updateVote/${facility._id}`)
       .then((res) => res.data);
+      isLoading(true);
     if (update.votes >= 0) {
       setUpdateVote(update);
       const upvote = await axios
@@ -38,9 +43,9 @@ function UpVotes(props) {
     <div className="upVotes">
       <div className="score">
         <i class="fas fa-3x fa-sort-up" onClick={handleScoreIncrease}></i>
-        <div className={`${updateVote.votes === 0 ? "red" : ""}`}>
+        {loading ? <div className={`${updateVote.votes === 0 ? "red" : ""}`}>
           {updateVote.votes}
-        </div>
+        </div> : <CircularProgress />}
         <i class="fas fa-3x fa-sort-down" onClick={handleScoreDecrease}></i>
       </div>
       {showSnackBar ? (

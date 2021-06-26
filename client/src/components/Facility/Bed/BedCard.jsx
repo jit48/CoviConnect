@@ -16,49 +16,41 @@ function BedCard(props) {
         </div>
         <div className="info">
           <div>
-            <p>{/* <b>Hospital Name: </b> */}</p>
             <h2>{facility.info.hospitalName}</h2>
           </div>
           <div className="location">
-            {/* <p>
-              <b>Address: </b>
+            <h3>
+              <b>
+                <i className="fas fa-map-marker-alt"></i>{" "}
+              </b>
               {facility.info.address}
-            </p> */}
-            <h3>
-              <b>Address: </b>
-              {facility.info.hospitalName}
-            </h3>
-            {/* <p>
-              <b>Location: </b>
-              {facility.info.location}
-            </p> */}
-            <h3>
-              <b>Location: </b>
-              {facility.info.location}
             </h3>
           </div>
           <div className="hospital">
-            {/* <p>
-              <b>Contact Number: </b>
-              {facility.info.phnumber}
-            </p> */}
             <h3>
-              <b>Contact Number: </b>
+              <b>
+                <i class="fas fa-phone-volume"></i>
+              </b>
               {facility.info.phnumber}
             </h3>
           </div>
           <div className="hospital">
-            {/* <p>
-              <b>Number Of Beds Available: </b>
-              {facility.info.beds}
-            </p> */}
             <h3>
               <b>Number Of Beds Available: </b>
               {facility.info.beds}
             </h3>
           </div>
           <div className="creator">
-            <h3>{`Created By ${facility.volunteerName} On ${facility.info.date}`}</h3>
+            <div className="Name">
+              <div className="creatorName">
+                <i class="fas fa-user-cog"></i>
+                {facility.volunteerName}
+              </div>
+              <div className="creatorName">
+              <i class="fas fa-calendar-alt"></i>
+                {facility.info.date}
+              </div>
+            </div>
           </div>
         </div>
       </div>

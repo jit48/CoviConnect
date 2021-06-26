@@ -55,6 +55,20 @@ const facilities = [
         discription:"Know Where to get Tested.",
 
     },
+    {
+        img:Diagnostic,
+        type:"Diagnostic Centers",
+        link:"diagnostic",
+        discription:"Know Where to get Tested.",
+
+    },
+    {
+        img:Diagnostic,
+        type:"Diagnostic Centers",
+        link:"diagnostic",
+        discription:"Know Where to get Tested.",
+
+    },
 ]
 
 export default facilities;
