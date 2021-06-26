@@ -6,6 +6,7 @@ import BloodBank from "../Images/BloodBank.png"
 import Meals from "../Images/Meals.png"
 import Diagnostic from "../Images/Diagnostic.png"
 import Pharmacy from "../Images/Pharmacy.png"
+import Donate from "../Images/Donate.png"
 
 const facilities = [
     {
@@ -54,6 +55,12 @@ const facilities = [
         link:"diagnostic",
         discription:"Know Where to get Tested.",
 
+    },
+    {
+        img:Donate,
+        type:"Donate",
+        link:"donate",
+        discription:"Your extra is someone’s need.",
     },
 ]
 

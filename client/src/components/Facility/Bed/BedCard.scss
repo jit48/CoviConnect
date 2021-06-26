@@ -34,9 +34,9 @@ b{
   align-items: center;
   justify-content: center;
 }
-.location h1,h2,h3,h4,h5,h6{
+.location {h1,h2,h3,h4,h5,h6{
   margin : 5px 20px ;
-}
+}}
 .location p{
   margin-right: 20px;
 }
@@ -44,10 +44,10 @@ b{
   display: flex;
   align-items: center;
 }
-.creator h1,h2,h3,h4,h5,h6{
+.creator {h1,h2,h3,h4,h5,h6{
   margin : 5px 20px ;
   
-}
+}}
 .creator p{
   margin-right:10px;
 }
