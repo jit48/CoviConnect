@@ -1,0 +1,10 @@
+@use "../../../styles/utils";
+
+.donationInfo{
+    display: flex;
+    justify-content: space-between;
+}
+
+.donationInfo_Details{
+    padding-left: 5%;
+}
