@@ -4,8 +4,14 @@ import Button from "../../Button/Button";
 import Input from "../../Input/Input";
 import api from "../../../axios";
 import FileBase from 'react-file-base64';
+import { useAuth } from '../../../contexts/AuthContext';
 
 const RaiseFund = () => {
+
+    const {
+        user: { user, isAuthorised, token },
+        logout,
+    } = useAuth();
 
     const [ openModal, setOpenModal ] = useState(false);
     const [ data, setData ] = useState({
@@ -15,7 +21,11 @@ const RaiseFund = () => {
         email: '',
         reason: '',
         file: null,
-        amount: 0
+        amount: 0,
+        ngoname: user.name,
+        ngoid: user._id,
+        ngocontact: user.contact,
+        ngoemail: user.email
     })
 
 
@@ -26,7 +36,11 @@ const RaiseFund = () => {
     } 
 
     const submitForm = () => {
-        api.post('/fundraise', data)
+        api.post('/ngo/fundraise', data,{
+            headers: {
+                'x-auth-token': token,
+            },
+        })
         .then(()=>{
             alert("Submitted");
         })

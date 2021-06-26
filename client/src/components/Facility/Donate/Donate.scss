@@ -1,0 +1,13 @@
+@use "../../../styles/utils";
+
+.funds{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.fundCard{
+    padding: 10px;
+    box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.33);
+    -webkit-box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.33);
+    -moz-box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.33);;
+}

@@ -33,35 +33,24 @@
     align-items: center;
     justify-content: center;
 }
-.location {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        margin: 5px 20px;
-    }
-}
-.location p {
-    margin-right: 20px;
+
+.location {h1,h2,h3,h4,h5,h6{
+  margin : 5px 20px ;
+}}
+.location p{
+  margin-right: 20px;
 }
 .creator {
     display: flex;
     align-items: center;
 }
-.creator {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        margin: 5px 20px;
-    }
-}
-.creator p {
-    margin-right: 10px;
+
+.creator {h1,h2,h3,h4,h5,h6{
+  margin : 5px 20px ;
+  
+}}
+.creator p{
+  margin-right:10px;
 }
 
 @media only screen and (max-width: 600px) {

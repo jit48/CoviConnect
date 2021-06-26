@@ -7,7 +7,12 @@ const fundraiseSchema = mongoose.Schema({
     email: String,
     reason: String,
     file: String,
-    amount: Number
+    amount: Number,
+    ngoid: String,
+    ngoname: String,
+    ngocontact: Number,
+    ngoemail: String,
+    raised: Number
 });
 
 var FundRaise = mongoose.model('FundRaise', fundraiseSchema);
