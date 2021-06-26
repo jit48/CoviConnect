@@ -7,24 +7,24 @@ import Oxygen from './Facilities/Oxygen';
 import Pharmacies from './Facilities/Pharmacies';
 
 const EditPost = (props) => {
-    const { post } = props;
+    const { post, editPost } = props;
 
     return (
         <>
             {post.type === 'bed' ? (
-                <Bed post={post} />
+                <Bed editPost={editPost} post={post} />
             ) : post.type === 'ambulance' ? (
-                <Ambulance post={post} />
+                <Ambulance editPost={editPost} post={post} />
             ) : post.type === 'bloodbank' ? (
-                <BloodBank post={post} />
+                <BloodBank editPost={editPost} post={post} />
             ) : post.type === 'diagnosticcenter' ? (
-                <DiagnosticCenter post={post} />
+                <DiagnosticCenter editPost={editPost} post={post} />
             ) : post.type === 'meals' ? (
-                <Meals post={post} />
+                <Meals editPost={editPost} post={post} />
             ) : post.type === 'oxygen' ? (
-                <Oxygen post={post} />
+                <Oxygen editPost={editPost} post={post} />
             ) : (
-                <Pharmacies post={post} />
+                <Pharmacies editPost={editPost} post={post} />
             )}
         </>
     );

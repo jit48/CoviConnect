@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import NGOdashboard from '../components/NGO/NGOdashboard'
 import Button from '../components/Button/Button';
+import NGOdashboard from '../components/NGO/NGOdashboard';
 
 const Ngo = () => {
     const { logout } = useAuth();
@@ -14,6 +15,7 @@ const Ngo = () => {
             <Button variant='secondary' onClick={logout}>
                 Sign Out
             </Button>
+            <NGOdashboard />
         </h1>
     );
 };
