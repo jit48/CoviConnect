@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./UpVotes.scss";
 import axios from "../../../axios";
 
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import Snackbars from "./Snackbar";
 function UpVotes(props) {
@@ -15,7 +15,7 @@ function UpVotes(props) {
     const update = await axios
       .patch(`facility/updateVote/${facility._id}`)
       .then((res) => res.data);
-      isLoading(true);
+    isLoading(true);
     if (update.votes >= 0) {
       setUpdateVote(update);
       const upvote = await axios
@@ -28,9 +28,11 @@ function UpVotes(props) {
   };
   const handleScoreDecrease = async () => {
     if (updateVote.votes > 0) {
+      isLoading(false);
       const update = await axios
         .patch(`facility/downVote/${facility._id}`)
         .then((res) => res.data);
+      isLoading(true);
       setUpdateVote(update);
     } else {
       setShowSnackBar(true);
@@ -43,9 +45,13 @@ function UpVotes(props) {
     <div className="upVotes">
       <div className="score">
         <i class="fas fa-3x fa-sort-up" onClick={handleScoreIncrease}></i>
-        {loading ? <div className={`${updateVote.votes === 0 ? "red" : ""}`}>
-          {updateVote.votes}
-        </div> : <CircularProgress />}
+        {loading ? (
+          <div className={`${updateVote.votes === 0 ? "red" : ""}`}>
+            {updateVote.votes}
+          </div>
+        ) : (
+          ""
+        )}
         <i class="fas fa-3x fa-sort-down" onClick={handleScoreDecrease}></i>
       </div>
       {showSnackBar ? (

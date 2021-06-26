@@ -41,7 +41,9 @@
   border: 2px solid utils.color(purple, light);
   border-radius: 50px;
 }
-
+.searchBar input[type = "text"]:focus {
+  outline: none;
+}
 .searchBar input::placeholder {
   color: utils.color(grey, darker);
 }
@@ -63,4 +65,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .facility{
+    margin: 0;
+    padding: 0 8px;
+    width: 100%;
+  }
+  .searchBar input{
+    border-radius: 5px;
+  }
+  .searchBar button {
+    margin-left: 10px;
+    height: 5vh;
+    width: 25%;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: utils.color(purple, light);
+  }
 }

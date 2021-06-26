@@ -19,20 +19,20 @@ function BedCard(props) {
             <h2>{facility.info.hospitalName}</h2>
           </div>
           <div className="location">
-            <h3>
+            <p>
               <b>
                 <i className="fas fa-map-marker-alt"></i>{" "}
               </b>
               {facility.info.address}
-            </h3>
+            </p>
           </div>
           <div className="hospital">
-            <h3>
+            <p>
               <b>
-                <i class="fas fa-phone-volume"></i>
+                <i class="fas fa-phone-alt"></i>{" "}
               </b>
               {facility.info.phnumber}
-            </h3>
+            </p>
           </div>
           <div className="hospital">
             <h3>
@@ -44,11 +44,11 @@ function BedCard(props) {
             <div className="Name">
               <div className="creatorName">
                 <i class="fas fa-user-cog"></i>
-                {facility.volunteerName}
+                <p>{facility.volunteerName}</p>
               </div>
-              <div className="creatorName">
-              <i class="fas fa-calendar-alt"></i>
-                {facility.info.date}
+              <div className="creatorDate">
+                <i class="fas fa-calendar-alt"></i>
+                <p>{facility.info.date}</p>
               </div>
             </div>
           </div>
