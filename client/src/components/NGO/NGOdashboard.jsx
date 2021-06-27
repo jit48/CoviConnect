@@ -4,22 +4,26 @@ import api from "../../axios";
 
 const NGOdashboard = () => {
 
-    const [ fund, setFund ] = useState([{}]);
+    const [ fund, setFund ] = useState([]);
 
     const fetchData = () => {
-        api.get('/fundraise')
+        api.get('/ngo/fundraise')
         .then((res)=> {
-            setFund(res.data)
+            setFund(res.data);
         })
+        // console.log(fund);
     }
 
     return(
         <Fragment>
             <RaiseFund />
             <button onClick={fetchData}>Show Fund</button>
-            {fund.map((elem)=> {
-                return elem.title;
-            })}
+            {fund.map((elem)=> (
+                <div>
+                    <p>{elem.title}</p>
+                    <img src={elem.file} alt="image" />
+                </div>
+            ))}
         </Fragment>
     )
 }

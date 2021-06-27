@@ -1,6 +1,11 @@
 import Facility from '../models/Facility.js';
 import Volunteer from '../models/Volunteer.js';
 import jwt from 'jsonwebtoken';
+import FundRaise from '../models/FundRaise.js';
+import { response } from 'express';
+import Razorpay from 'razorpay';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const getVolunteerID = (token) => {
     const volunteer = jwt.decode(token);
@@ -226,3 +231,49 @@ export const deletePost = async (req, res) => {
         res.status(500).json({ method: 'SERVER', status: res.statusCode, message: error.message });
     }
 };
+
+export const getDonateData = (req, res) => {
+    try {
+        const id = req.params.id;
+
+        FundRaise.find({_id: id}, function(err, data){
+            if(err){
+                res.status(404).json({method: 'FUND_RAISE', status: res.statusCode, message: 'Cannot find data with given Id'})
+            }
+            else{
+                res.status(200).json(data);
+
+            }
+        })
+
+    } catch (error) {
+        res.status(500).json({mathod: 'SERVER', status: res.statusCode, message: error.message});
+    }
+}
+
+export const razorpay = (req, res) => {
+    var instance = new Razorpay({ key_id: process.env.RAZORPAY_KEY, key_secret: process.env.RAZORPAY_SECRECT})
+    const id = req.params.id;
+    const amount = req.body.amount;
+
+    FundRaise.find({_id: id}, function(err, data){
+        if(err){
+            console.log(err);
+        }
+        else{
+           data[0].raised = data[0].raised + amount;
+
+        }
+    })
+
+    var options = {
+    amount: amount.toString(),  
+    currency: "INR",
+    receipt: "order_rcptid_11"
+    };
+    instance.orders.create(options, function(err, order) {
+        res.json({
+            id: response.id
+        })
+    });
+}

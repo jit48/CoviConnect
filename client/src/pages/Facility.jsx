@@ -12,6 +12,7 @@ import MealsCard from "../components/Facility/MealsCard";
 import PharmacyCard from "../components/Facility/PharmacyCard";
 import AmbulanceCard from "../components/Facility/Ambulance/AmbulanceCard";
 
+
 function Facility() {
   const { type } = useParams();
   const [facility, setfacility] = useState([]);
