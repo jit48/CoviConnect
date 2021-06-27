@@ -12,8 +12,10 @@ import DiagnosticCenter from './Facilities/DiagnosticCenter';
 import Meals from './Facilities/Meals';
 import Oxygen from './Facilities/Oxygen';
 import Pharmacies from './Facilities/Pharmacies';
-
 import EditPost from '../EditPost/EditPost';
+
+import Male from '../../../Images/Male.jpg';
+import Female from '../../../Images/Female.jpg';
 
 const Post = (props) => {
     const { volunteer, post, deletePost, editPost, ...rest } = props;
@@ -26,14 +28,7 @@ const Post = (props) => {
     return (
         <div className={styles.post} {...rest}>
             <div className={styles.volunteer}>
-                {volunteer.gender === 'male' ? (
-                    <img src='https://glossophs.sa.edu.au/wp-content/uploads/2018/09/placeholder-profile-sq.jpg' alt='profile' />
-                ) : (
-                    <img
-                        src='https://media.istockphoto.com/vectors/person-gray-photo-placeholder-woman-vector-id1132192691?b=1&k=6&m=1132192691&s=612x612&w=0&h=ybIyjqMBpfyC2XROY-JULFj4smZhZIHPtmFCuF1Mtzs='
-                        alt='profile'
-                    />
-                )}
+                {volunteer.gender === 'male' ? <img src={Male} alt='profile' /> : <img src={Female} alt='profile' />}
                 <div>
                     <h3>{volunteer.name}</h3>
                     <span>{volunteer.address}</span>

@@ -9,6 +9,9 @@ import Button from '../components/Button/Button';
 import CreatePost from '../components/Volunteer/CreatePost/CreatePost';
 import Post from '../components/Volunteer/Post/Post';
 
+import Male from '../Images/Male.jpg';
+import Female from '../Images/Female.jpg';
+
 const Volunteer = () => {
     const {
         user: { user, token },
@@ -50,14 +53,7 @@ const Volunteer = () => {
             <div className={styles.main}>
                 <div className={styles.left}>
                     <div className={styles.profile}>
-                        {user.gender === 'male' ? (
-                            <img src='https://glossophs.sa.edu.au/wp-content/uploads/2018/09/placeholder-profile-sq.jpg' alt='profile' />
-                        ) : (
-                            <img
-                                src='https://media.istockphoto.com/vectors/person-gray-photo-placeholder-woman-vector-id1132192691?b=1&k=6&m=1132192691&s=612x612&w=0&h=ybIyjqMBpfyC2XROY-JULFj4smZhZIHPtmFCuF1Mtzs='
-                                alt='profile'
-                            />
-                        )}
+                        {user.gender === 'male' ? <img src={Male} alt='profile' /> : <img src={Female} alt='profile' />}
 
                         <p>
                             <b>
@@ -102,8 +98,8 @@ const Volunteer = () => {
                     </div>
                     <div className={styles.recruitments}>
                         <p>
-                            <b>Connect with NGO</b> and get your posts reach more needy people. Apply to get recruited under a Non-Profit
-                            Organisation.
+                            <b>Connect with NGO</b> and get your posts reach more needy people. Apply to get recruited under a
+                            Non-Governmental Organisation.
                         </p>
                         <Button variant='primary'>
                             <NavLink to='/recruitments'>Apply Now</NavLink>
