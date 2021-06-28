@@ -1,11 +1,13 @@
-import React from 'react'
+import { Fragment } from 'react'
+import KidsAdoption from './KidsAdoption'
+import PetsAdoption from './PetsAdoption'
 
-function AdoptionCard() {
-    return (
-        <div>
-            AdoptionCard
-        </div>
-    )
+const AdoptionCard = () => {
+  return (
+    <Fragment>
+      <KidsAdoption />
+      <PetsAdoption />
+    </Fragment>
+  )
 }
-
-export default AdoptionCard;
+export default AdoptionCard

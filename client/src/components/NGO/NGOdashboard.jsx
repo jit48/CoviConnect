@@ -1,30 +1,28 @@
-import { Fragment, useState } from "react";
-import RaiseFund from "./RaiseFund/RaiseFund";
-import PostReqruitment from "./PostReqruitment/PostReqruitment";
-import api from "../../axios";
-
+import { Fragment, useState, useEffect } from 'react'
+import RaiseFund from './RaiseFund/RaiseFund'
+import PostReqruitment from './PostReqruitment/PostReqruitment'
+import api from '../../axios'
+import { useAuth } from '../../contexts/AuthContext'
 const NGOdashboard = () => {
+  const {
+    user: { user, isAuthorised, token },
+    logout,
+  } = useAuth()
 
-    const [ fund, setFund ] = useState([{}]);
+  useEffect(() => {
+    console.log(user)
+  }, [])
 
-    const fetchData = () => {
-        api.get('/fundraise')
-        .then((res)=> {
-            setFund(res.data)
-        })
-    }
-
-    return(
-        <Fragment>
-            <RaiseFund />
-            <button onClick={fetchData}>Show Fund</button>
-            {fund.map((elem)=> {
-                return elem.title;
-            })}
-            <br /><br />
-            <PostReqruitment />
-        </Fragment>
-    )
+  return (
+    <Fragment>
+      <RaiseFund />
+      <br />
+      <br />
+      <PostReqruitment />
+      {user.isAdoption &&
+        user.adoptionForm.map((newUser) => <p>{newUser.maritalStatus}</p>)}
+    </Fragment>
+  )
 }
 
-export default NGOdashboard;
+export default NGOdashboard
