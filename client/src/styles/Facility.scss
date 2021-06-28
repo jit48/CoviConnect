@@ -1,0 +1,24 @@
+@use "../styles/utils";
+
+.facility {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.facility h1 {
+  text-align: center;
+}
+
+.searchBar input {
+  padding: 5px;
+  width: 100%;
+  height: 5vh;
+  border: 2px solid utils.color(purple, light);
+  border-radius: 5px;
+}
+
+.searchBar input::placeholder {
+  color: utils.color(grey, darker);
+}
