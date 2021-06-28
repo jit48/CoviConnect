@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import styles from './Post.module.scss';
-import api from '../../../axios';
 
 import IconButton from '../../IconButton/IconButton';
 import Modal from '../../Modal/Modal';
@@ -17,7 +16,7 @@ import Pharmacies from './Facilities/Pharmacies';
 import EditPost from '../EditPost/EditPost';
 
 const Post = (props) => {
-    const { volunteer, authorised, post, deletePost, ...rest } = props;
+    const { volunteer, post, deletePost, editPost, ...rest } = props;
 
     const [modal, setModal] = useState(false);
     const modalHandler = () => {
@@ -39,16 +38,14 @@ const Post = (props) => {
                     <h3>{volunteer.name}</h3>
                     <span>{volunteer.address}</span>
                 </div>
-                {authorised && (
-                    <div>
-                        <IconButton variant='primary' icon={<Edit />} onClick={modalHandler} />
-                        <IconButton variant='secondary' icon={<Delete />} onClick={deletePost} />
-                    </div>
-                )}
+                <div>
+                    <IconButton variant='primary' icon={<Edit />} onClick={modalHandler} />
+                    <IconButton variant='secondary' icon={<Delete />} onClick={deletePost} />
+                </div>
             </div>
 
             <Modal open={modal} handleModal={modalHandler}>
-                <EditPost post={post} />
+                <EditPost editPost={editPost} post={post} />
             </Modal>
             <hr />
             <div className={styles.facility}>
