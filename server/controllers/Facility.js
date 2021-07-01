@@ -284,34 +284,25 @@ export const deletePost = async (req, res) => {
 };
 
 export const getDonateData = (req, res) => {
-  try {
-    const id = req.params.id;
+    try {
+        const id = req.params.id;
 
-    FundRaise.find({ _id: id }, function (err, data) {
-      if (err) {
-        res
-          .status(404)
-          .json({
-            method: "FUND_RAISE",
-            status: res.statusCode,
-            message: "Cannot find data with given Id",
-          });
-      } else {
-        res.status(200).json(data);
-      }
-    });
-  } catch (error) {
-    res
-      .status(500)
-      .json({
-        mathod: "SERVER",
-        status: res.statusCode,
-        message: error.message,
-      });
-  }
-};
+        FundRaise.find({_id: id}, function(err, data){
+            if(err){
+                res.status(404).json({method: 'FUND_RAISE', status: res.statusCode, message: 'Cannot find data with given Id'})
+            }
+            else{
+                res.status(200).json(data);
 
-export const razorpay = (req, res) => {
+            }
+        })
+
+    } catch (error) {
+        res.status(500).json({mathod: 'SERVER', status: res.statusCode, message: error.message});
+    }
+}
+
+export const razorpay = async (req, res) => {
   var instance = new Razorpay({
     key_id: process.env.RAZORPAY_KEY,
     key_secret: process.env.RAZORPAY_SECRECT,
@@ -326,7 +317,21 @@ export const razorpay = (req, res) => {
       data[0].raised = data[0].raised + amount;
     }
   });
-
+    const fund = await FundRaise.findById(id);
+    fund.raised = fund.raised+(amount/100);
+    fund.save();
+    // FundRaise.find({_id: id}, function(err, data){
+    //     if(err){
+    //         console.log(err);
+    //     }
+    //     else{
+    //         data[0].raised = data[0].raised+(amount/100);
+    //         FundRaise.save();
+    //         console.log(data[0].raised);
+    //         console.log(data[0].raised+amount);
+    //         console.log(amount);
+    //     }
+    // })
   var options = {
     amount: amount.toString(),
     currency: "INR",

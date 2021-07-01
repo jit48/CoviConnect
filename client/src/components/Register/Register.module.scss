@@ -1,6 +1,6 @@
 .form {
-    width: 80%;
-    margin: 0 auto;
+    width: 100%;
+    // margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,7 +11,7 @@
     }
 
     h1 {
-        font-size: 1.4rem;
+        font-size: 2rem;
     }
     .gender {
         display: flex;
@@ -23,11 +23,6 @@
         display: flex;
         justify-content: flex-end;
         gap: 1rem;
-
-        span {
-            width: 30ch;
-            font-size: 0.8rem;
-            text-align: right;
-        }
+        align-items: center;
     }
 }

@@ -10,7 +10,7 @@ const Ngo = () => {
         <h1>
             NGO Page
             <NavLink to='/'>Home</NavLink>
-            <NGOdashboard />
+                <NGOdashboard />
             <Button variant='secondary' onClick={logout}>
                 Sign Out
             </Button>

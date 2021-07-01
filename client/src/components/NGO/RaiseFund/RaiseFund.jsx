@@ -42,7 +42,7 @@ const RaiseFund = () => {
             },
         })
         .then(()=>{
-            alert("Submitted");
+            openModalHandler();
         })
     }
     return(
