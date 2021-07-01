@@ -12,6 +12,8 @@ import Ngo from './pages/Ngo';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import DetailDonate from './components/Facility/Donate/DetailDonate';
+import Recruitments from './pages/Recruitments';
+
 
 const App = () => {
     const { user } = useAuth();
@@ -44,6 +46,7 @@ const App = () => {
                     {!user.isAuthorised && <Route path='/login' exact component={Login} />}
                     <PrivateRoute path='/dashboard' component={user.isVolunteer ? Volunteer : Ngo} />
                     <Route path='/facility/donate'><Donate funds={funds} /></Route>
+                    <PrivateRoute path='/recruitments' component={Recruitments} />
                     <Route path='/facility/:type' component={Facility} />
                     <Route path='/fund/donate/:id' component={DetailDonate} />
                     {user.isAuthorised ? (

@@ -11,12 +11,6 @@ const Ambulance = (props) => {
         user: { token },
     } = useAuth();
 
-    // {
-    //     serviceProvider: req.body.info.serviceProvider,
-    //     location: req.body.info.location,
-    //     contactNum: req.body.info.contactNum,
-    // }
-
     const [data, setData] = useState({
         serviceProvider: '',
         location: '',
@@ -25,14 +19,16 @@ const Ambulance = (props) => {
 
     const [postSuccess, setPostSuccess] = useState('none');
 
-    const postData = () => {
-        api.post('/facility/ambulance', { info: data }, { headers: { 'x-auth-token': token } })
+    const postData = async () => {
+        await api
+            .post('/facility/ambulance', { info: data }, { headers: { 'x-auth-token': token } })
             .then((res) => {
                 setPostSuccess('success');
             })
             .catch(() => {
                 setPostSuccess('unsuccessful');
             });
+        props.getPost();
     };
 
     return (

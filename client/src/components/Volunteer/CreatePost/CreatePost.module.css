@@ -1,14 +1,18 @@
-.InputContainer{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.InputContainer {
+    columns: 2;
 }
 
-.InputContainer label{
+.InputContainer label {
     font-size: large;
 }
 
-.buttonContainer{
+.buttonContainer {
     display: flex;
     justify-content: space-between;
+}
+
+@media (max-width: 800px) {
+    .InputContainer {
+        columns: 1;
+    }
 }

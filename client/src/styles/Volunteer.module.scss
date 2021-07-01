@@ -42,7 +42,6 @@
             p {
                 display: flex;
                 flex-direction: column;
-                text-align: justify;
                 font-size: 0.9rem;
             }
 
@@ -59,12 +58,14 @@
             }
         }
 
-        .createpost {
+        .createpost,
+        .recruitments {
             display: flex;
             flex-direction: column;
             gap: 1rem;
 
-            p {
+            p,
+            b {
                 font-size: 0.8rem;
                 color: utils.color(black, base);
             }
