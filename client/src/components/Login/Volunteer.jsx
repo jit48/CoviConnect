@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
-
+import { Link } from "react-router-dom";
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import { useHistory } from 'react-router';
@@ -36,6 +36,7 @@ const Volunteer = (props) => {
                     }));
                 }}
             />
+            <br/>
             <Input
                 label='Password'
                 type='password'
@@ -51,6 +52,10 @@ const Volunteer = (props) => {
                     }));
                 }}
             />
+            <br/>
+            <p>Don't have an account? <Link to={`/register`}>Register</Link></p>
+            <br/>
+            <br/>
             <Button onClick={volunteerLoginHandler} disabled={!props.login}>
                 Login
             </Button>
