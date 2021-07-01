@@ -1,13 +1,44 @@
 @use "../../../styles/utils";
 
 .funds{
+    width: 78%;
+    margin: 0px 300px;
+    padding: 30px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
+.fundContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
 .fundCard{
+    width: 450px;
+    margin: 10px 10px;
+    display: flex;
+    border-radius: 5px;
+    flex-direction: column;
     padding: 10px;
     box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.33);
     -webkit-box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.33);
     -moz-box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.33);;
+}
+
+.fundCard-img{
+    width: 100%;
+}
+.fundCard-img img{
+    width: 100%;
+}
+
+.fundCard-details p{
+    margin: 0 0 0 20px;
+}
+
+.fundCard-details h4{
+    margin: 0 0 0 20px;
+}
+
+.fundCard-details button{
+    margin: 0 0 0 20px;
 }

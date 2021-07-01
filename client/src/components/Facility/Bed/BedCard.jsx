@@ -1,5 +1,5 @@
 import React from "react";
-import "./BedCard.scss";
+import "../Card.scss";
 
 import UpVotes from "../Components/UpVotes";
 function BedCard(props) {
@@ -10,7 +10,7 @@ function BedCard(props) {
   };
   return (
     <div className="">
-      <div className="BedCard">
+      <div className="Card">
         <div className="votes">
           <UpVotes facility={facility} handleUpVotes={handleUpVoteHandler} />
         </div>
@@ -23,7 +23,7 @@ function BedCard(props) {
               <b>
                 <i className="fas fa-map-marker-alt"></i>{" "}
               </b>
-              {facility.info.address}
+              {facility.info.location}
             </p>
           </div>
           <div className="hospital">

@@ -30,8 +30,7 @@
   align-items: center;
   justify-content: center;
   background-color: utils.color(grey,lighter);
-  position: sticky;
-  top: 8vh;
+
   // box-shadow: 1px 1px 2px 1px #888888;
 }
 .searchBar input {
@@ -66,7 +65,11 @@
   align-items: center;
   justify-content: center;
 }
-
+.switch{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
 @media only screen and (max-width: 600px) {
   .facility{
     margin: 0;
