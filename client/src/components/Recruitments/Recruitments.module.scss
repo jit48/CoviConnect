@@ -1,0 +1,27 @@
+@use '../../styles/utils';
+
+.item {
+    padding: 1rem;
+    text-align: left;
+    cursor: pointer;
+    border-radius: utils.$border-radius;
+    color: utils.color(black, light);
+    transition: background-color utils.$duration ease-out;
+
+    h2 {
+        color: utils.color(black, dark);
+    }
+    p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &:hover {
+        background-color: utils.color(grey, light);
+    }
+
+    @media (max-width: 800px) {
+        font-size: 0.8rem;
+    }
+}
