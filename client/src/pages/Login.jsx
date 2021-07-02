@@ -7,63 +7,67 @@ import LoginImg from '../Images/login.svg';
 const Login = () => {
     const [Vlogin, setVlogin] = useState(true);
     const [Nlogin, setNlogin] = useState(true);
-    const [volunteer, setVolunteer ] = useState(true);
+    const [volunteer, setVolunteer] = useState(true);
 
-
-    const optionHandler  = (event) => {
+    const optionHandler = (event) => {
         const clicked = event.target.name;
-        if(clicked === "Volunteer"){
+        if (clicked === 'Volunteer') {
             setVolunteer(true);
-        }
-        else if(clicked === "NGO"){
+        } else if (clicked === 'NGO') {
             setVolunteer(false);
         }
-    }
+    };
 
     return (
         <Fragment>
             <section className={styles.page}>
-                {volunteer ? 
+                {volunteer ? (
                     <div className={styles.volunteer}>
                         <h1>Sign In</h1>
-                        <br/>
+                        <br />
                         <h2>Volunteer</h2>
-                        <br/>
+                        <br />
                         <div className={styles.optionBtn}>
-                            <button onClick={optionHandler} name="Volunteer">Volunteer</button>
-                            <button onClick={optionHandler} name="NGO">NGO</button>
+                            <button onClick={optionHandler} name='Volunteer'>
+                                Volunteer
+                            </button>
+                            <button onClick={optionHandler} name='NGO'>
+                                NGO
+                            </button>
                         </div>
-                        <br/>
-                        <br/>
+                        <br />
+                        <br />
                         <div className={styles.content}>
-                        <Volunteer login={Vlogin} setLogin={setNlogin} />
+                            <Volunteer login={Vlogin} setLogin={setNlogin} />
                         </div>
                     </div>
-                    : 
+                ) : (
                     <div className={styles.ngo}>
                         <h1>Sign In</h1>
-                        <br/>
+                        <br />
                         <h2>NGO</h2>
-                        <br/>
+                        <br />
                         <div className={styles.optionBtn}>
-                            <button onClick={optionHandler} name="Volunteer">Volunteer</button>
-                            <button onClick={optionHandler} name="NGO">NGO</button>
+                            <button onClick={optionHandler} name='Volunteer'>
+                                Volunteer
+                            </button>
+                            <button onClick={optionHandler} name='NGO'>
+                                NGO
+                            </button>
                         </div>
-                        <br/>
-                        <br/>
+                        <br />
+                        <br />
                         <div className={styles.content}>
                             <Ngo login={Nlogin} setLogin={setVlogin} />
                         </div>
-                    </div>}
-                    
-                    
-            <div>
-                <img className={styles.loginImage} src={LoginImg} style={{height: "500px"}}/>
-            </div>
+                    </div>
+                )}
+
+                <div>
+                    <img className={styles.loginImage} src={LoginImg} alt='login' style={{ height: '500px' }} />
+                </div>
             </section>
         </Fragment>
-        
-            
     );
 };
 
