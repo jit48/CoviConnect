@@ -4,11 +4,9 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import mongoose from 'mongoose';
-import user from './server/routes/User.js';
 import volunteerRoutes from './server/routes/Volunteer.js';
 import ngoRoutes from './server/routes/Ngo.js';
 import facilityRoutes from './server/routes/Facility.js';
-
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -57,5 +55,3 @@ app.listen(PORT, () => {
         console.log(`Server Running : http://localhost:${PORT}`);
     }
 });
-
-
