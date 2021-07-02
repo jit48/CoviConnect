@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import api from '../../axios';
 import styles from './Register.module.scss';
-
+import { Link } from 'react-router-dom';
 import Input from '../Input/Input';
 import RadioInput from '../RadioInput/RadioInput';
 import Button from '../Button/Button';
@@ -40,7 +40,6 @@ const Volunteer = () => {
 
     return (
         <form onSubmit={volunteerHandler} className={styles.form}>
-            <h1>Register Volunteer</h1>
             <Input label='Name' type='text' required={true} innerRef={nameRef} />
             <div className={styles.gender}>
                 <RadioInput
@@ -68,7 +67,7 @@ const Volunteer = () => {
             <Input label='Password' type='password' required={true} innerRef={passwordRef} />
             <Input label='Confirm Password' type='password' required={true} innerRef={confirmpasswordRef} />
             <div className={styles.registerbutton}>
-                <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta, eum!</span>
+                <p>Already have account? <Link to={`/login`}>Login</Link></p>
                 <Button type='submit'>Register</Button>
             </div>
         </form>

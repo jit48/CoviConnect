@@ -6,10 +6,23 @@ import Ngo from '../components/Register/Ngo';
 import Button from '../components/Button/Button';
 import { NGO, Helpers } from '../components/UI/Icons';
 import { useState } from 'react';
+import LoginImg from '../Images/login.svg';
 
 const Register = () => {
     const [v_modal, setVModal] = useState(false);
     const [n_modal, setNModal] = useState(false);
+    const [volunteer, setVolunteer ] = useState(true);
+
+
+    const optionHandler  = (event) => {
+        const clicked = event.target.name;
+        if(clicked === "Volunteer"){
+            setVolunteer(true);
+        }
+        else if(clicked === "NGO"){
+            setVolunteer(false);
+        }
+    }
 
     const v_modalHandler = () => {
         setVModal((p) => !p);
@@ -20,13 +33,39 @@ const Register = () => {
 
     return (
         <section className={styles.page}>
-            <h1>Register Yourself</h1>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores eligendi est alias, temporibus optio sit nisi repellat
-                laborum expedita culpa. Repudiandae odio vero rem, omnis aut perferendis qui unde totam excepturi culpa quasi repellat
-                pariatur animi saepe nisi fuga nostrum, porro placeat eaque quia, minima aperiam accusantium voluptatum. Iure, itaque.
-            </p>
-            <section className={styles.register}>
+            <div className={styles.register}>
+                <h2>Sign up</h2>
+                <br/>
+                {volunteer ? 
+                <div>
+                    <h1>Volunteer</h1>
+                    <br/>
+                    <div className={styles.optionBtn}>
+                        <button onClick={optionHandler} name="Volunteer">Volunteer</button>
+                        <button onClick={optionHandler} name="NGO">NGO</button>
+                    </div>
+                    <br/>
+                    <br/>
+                    <Volunteer/>
+                </div> 
+                : 
+                <div>
+                    <h1>NGO</h1>
+                    <br/>
+                    <div className={styles.optionBtn}>
+                        <button onClick={optionHandler} name="Volunteer">Volunteer</button>
+                        <button onClick={optionHandler} name="NGO">NGO</button>
+                    </div>
+                    <br/>
+                    <br/>
+                    <Ngo />
+                </div>
+                }
+            </div>
+            <div>
+                <img className={styles.loginImage} src={LoginImg} style={{height: "500px"}}/>
+            </div>
+            {/* <section className={styles.register}>
                 <div className={styles.volunteer}>
                     <h1>Volunteer</h1>
                     <Helpers />
@@ -57,7 +96,7 @@ const Register = () => {
                         <Ngo />
                     </Modal>
                 </div>
-            </section>
+            </section> */}
         </section>
     );
 };

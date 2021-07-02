@@ -251,20 +251,26 @@ export const getDonateData = (req, res) => {
     }
 }
 
-export const razorpay = (req, res) => {
+export const razorpay = async (req, res) => {
     var instance = new Razorpay({ key_id: process.env.RAZORPAY_KEY, key_secret: process.env.RAZORPAY_SECRECT})
     const id = req.params.id;
     const amount = req.body.amount;
 
-    FundRaise.find({_id: id}, function(err, data){
-        if(err){
-            console.log(err);
-        }
-        else{
-           data[0].raised = data[0].raised + amount;
-
-        }
-    })
+    const fund = await FundRaise.findById(id);
+    fund.raised = fund.raised+(amount/100);
+    fund.save();
+    // FundRaise.find({_id: id}, function(err, data){
+    //     if(err){
+    //         console.log(err);
+    //     }
+    //     else{
+    //         data[0].raised = data[0].raised+(amount/100);
+    //         FundRaise.save();
+    //         console.log(data[0].raised);
+    //         console.log(data[0].raised+amount);
+    //         console.log(amount);
+    //     }
+    // })
 
     var options = {
     amount: amount.toString(),  

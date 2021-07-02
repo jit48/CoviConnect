@@ -4,6 +4,7 @@ import api from '../../axios';
 
 import Input from '../Input/Input';
 import Button from '../Button/Button';
+import { Link } from 'react-router-dom';
 
 const Ngo = () => {
     const nameRef = useRef();
@@ -37,7 +38,6 @@ const Ngo = () => {
 
     return (
         <form onSubmit={ngoHandler} className={styles.form}>
-            <h1>Register NGO</h1>
             <Input label='Organisation Name' type='text' required={true} innerRef={nameRef} />
             <Input label='About' type='text' required={true} innerRef={aboutRef} />
             <Input label='Address' type='text' required={true} innerRef={addressRef} />
@@ -46,7 +46,7 @@ const Ngo = () => {
             <Input label='Password' type='password' required={true} innerRef={passwordRef} />
             <Input label='Confirm Password' type='password' required={true} innerRef={confirmpasswordRef} />
             <div className={styles.registerbutton}>
-                <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta, eum!</span>
+                <p>Already have account? <Link to={`/login`}>Login</Link></p>
                 <Button variant='primary' type='submit'>
                     Register
                 </Button>
