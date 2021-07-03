@@ -7,8 +7,9 @@ import api from '../../../axios'
 const KidsAdoption = () => {
   const [openModal, setOpenModal] = useState(false)
   const [data, setData] = useState({
+    type: 'kids',
+    name: '',
     noOfAdoption: 0,
-    gender: '',
     maritalStatus: '',
     age: 0,
     phNum: 0,
@@ -36,6 +37,15 @@ const KidsAdoption = () => {
       <Modal open={openModal} handleModal={openModalHandler}>
         <h1>Kids Adoption Form.</h1>
         <br />
+        <label>Name</label>
+        <Input
+          type="text"
+          onChange={(event) => {
+            setData({ ...data, name: event.target.value })
+          }}
+        />
+        <br />
+        <br />
         <label>Number of Adoptions:</label>
         <br />
         <Input
@@ -46,20 +56,6 @@ const KidsAdoption = () => {
         />
         <br />
         <br />
-        <label>Gender preference</label>
-        <br />
-        <select
-          onChange={(event) => {
-            setData({ ...data, gender: event.target.value })
-          }}
-        >
-          <option value="Gender"></option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Others">Others</option>
-        </select>
-        <br />
-        <br />
         <label>Age Preference:</label>
         <br />
         <select
@@ -68,11 +64,11 @@ const KidsAdoption = () => {
           }}
         >
           <option value=""></option>
-          <option value="belowTwo">0-2yrs</option>
-          <option value="twoAndFive">2-5yrs</option>
-          <option value="fiveAndEight">5-8yrs</option>
-          <option value="eightAndTwelve">8-12yrs</option>
-          <option value="aboveTwelve">12+</option>
+          <option value="0-2yrs">0-2yrs</option>
+          <option value="2-5yrs">2-5yrs</option>
+          <option value="5-8yrs">5-8yrs</option>
+          <option value="8-12yrs">8-12yrs</option>
+          <option value="12yrs+">12yrs+</option>
         </select>
         <br />
         <br />

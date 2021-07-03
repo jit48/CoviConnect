@@ -11,16 +11,12 @@ const NGOdashboard = () => {
     logout,
   } = useAuth()
 
-  useEffect(() => {
-    console.log(user)
-  }, [])
+  const [openModal, setopenModal] = useState(false)
 
-  const[openModal,setopenModal]=useState(false);
-  
-  const openModalHandler=()=>{
-      setopenModal((prevState)=>{
-        return !prevState
-      })
+  const openModalHandler = () => {
+    setopenModal((prevState) => {
+      return !prevState
+    })
   }
 
   return (
@@ -29,13 +25,12 @@ const NGOdashboard = () => {
       <br />
       <br />
       <PostReqruitment />
-      <br /><br/>
+      <br />
+      <br />
       <Button onClick={openModalHandler}>Adoption Requests</Button>
       <Modal open={openModal} handleModal={openModalHandler}>
         {user.isAdoption &&
-          user.adoptionForm.map((newUser) => <p>{newUser.maritalStatus}</p>)
-          
-        }
+          user.adoptionForm.map((newUser) => <p>{newUser.type}</p>)}
       </Modal>
     </Fragment>
   )

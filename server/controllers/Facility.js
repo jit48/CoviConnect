@@ -259,10 +259,11 @@ export const deletePost = async (req, res) => {
 
 export const adoptionForm = async (req, res) => {
   let obj = {}
-  if (req.body.animalType === undefined) {
+  if (req.body.type === 'kids') {
     obj = {
+      type: req.body.type,
+      name: req.body.name,
       noOfAdopions: req.body.noOfAdoption,
-      gender: req.body.gender,
       age: req.body.age,
       maritalStatus: req.body.maritalStatus,
       phNum: req.body.phNum,
@@ -270,6 +271,8 @@ export const adoptionForm = async (req, res) => {
     }
   } else {
     obj = {
+      type: req.body.type,
+      name: req.body.name,
       noOfAdopions: req.body.noOfAdoption,
       animalType: req.body.animalType,
       age: req.body.age,

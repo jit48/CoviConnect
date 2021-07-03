@@ -7,6 +7,8 @@ import api from '../../../axios'
 const PetsAdoption = () => {
   const [openModal, setOpenModal] = useState(false)
   const [data, setData] = useState({
+    type: 'pets',
+    name: '',
     noOfAdoption: 0,
     animalType: '',
     age: 0,
@@ -33,6 +35,15 @@ const PetsAdoption = () => {
       <Button onClick={openModalHandler}>Pets</Button>
       <Modal open={openModal} handleModal={openModalHandler}>
         <h1>Pets Adoption Form.</h1>
+        <br />
+        <label>Name</label>
+        <Input
+          type="text"
+          onChange={(event) => {
+            setData({ ...data, name: event.target.value })
+          }}
+        />
+        <br />
         <br />
         <label>Number of Adoptions:</label>
         <br />
@@ -66,9 +77,9 @@ const PetsAdoption = () => {
           }}
         >
           <option value=""></option>
-          <option value="zeroAndHalf">0-6months</option>
-          <option value="halfAndTwo">0.5-2yrs</option>
-          <option value="aboveTwo">2+yrs</option>
+          <option value="0-6months">0-6months</option>
+          <option value="0.5-2yrs">0.5-2yrs</option>
+          <option value="2+yrs">2+yrs</option>
         </select>
         <br />
         <br />
