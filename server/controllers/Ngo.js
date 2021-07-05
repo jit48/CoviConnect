@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import FundRaise from '../models/FundRaise.js'
 import Ngo from '../models/Ngo.js'
 
 const getNgoID = (token) => {
@@ -194,4 +195,27 @@ export const adoptions = async (req, res) => {
 export const adoptionFormRequest = async (req, res) => {
   const ngo = await Ngo.findById(getNgoID(req.header('x-auth-token')))
   res.status(200).json(ngo)
+}
+
+export const getAllFunds = async (req, res) => {
+  const id = req.params.id
+  FundRaise.find({ ngoid: id }, (err, foundFunds) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.status(200).json(foundFunds)
+    }
+  })
+}
+
+export const deleteFund = async (req, res) => {
+  const id = req.params.id
+  FundRaise.findByIdAndDelete(id, (err, remainingFunds) => {
+    if (err) {
+      console.log(err)
+    } else {
+      // console.log(remainingFunds)
+      res.status(200).json(remainingFunds)
+    }
+  })
 }

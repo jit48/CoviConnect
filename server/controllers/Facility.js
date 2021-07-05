@@ -292,4 +292,5 @@ export const adoptionForm = async (req, res) => {
       })
     }
   })
+  res.status(200).json({ success: true })
 }
