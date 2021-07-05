@@ -219,3 +219,40 @@ export const deleteFund = async (req, res) => {
     }
   })
 }
+
+export const delAdoption = async (req, res) => {
+  try{
+    Ngo.findByIdAndUpdate(
+      req.params.ngoId,
+     { $pull: { adoptionForm:  {id:+req.params.id} } },
+     
+     (err,adoption)=>{
+       if(err){
+         console.log(err)
+       }
+       else{
+         res.status(200).json(adoption.adoptionForm)
+         console.log(adoption.adoptionForm[0])
+       }
+     } 
+   )
+  }
+  catch(err){
+    console.log(err)
+  }
+  
+  // console.log(req.params.id)
+  // console.log(req.params.ngoId)
+}
+
+// Doc.findByIdAndUpdate( docId, 
+//   { $pull: { pendingAppointment: { id: id } } }, 
+//   function (err, model) 
+//   { if (err) 
+//     { console.log(err) 
+//       return res.send(err) } 
+//       return res.redirect('/docLanding') }, 
+//       )
+
+
+

@@ -9,6 +9,7 @@ import {
   adoptionFormRequest,
   getAllFunds,
   deleteFund,
+  delAdoption,
 } from '../controllers/Ngo.js'
 import { postNgoRecruit } from '../controllers/NgoRecruit.js'
 
@@ -22,4 +23,5 @@ router.post('/ngo/ngoRecruit', postNgoRecruit)
 router.get('/adoptionFormRequest', auth, adoptionFormRequest)
 router.get('/getAllFunds/:id', getAllFunds)
 router.delete('/deleteFund/:id', deleteFund)
+router.delete('/deleteAdoptionRequest/:id/:ngoId',delAdoption)
 export default router

@@ -1,21 +1,43 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAuth } from '../../../contexts/AuthContext'
 import './Adoption.scss'
 import kids_adoption from '../../../Images/kids_adoption.png'
 import pets_adoption from '../../../Images/pets_adoption.png'
 import Button from '../../Button/Button'
+import api from '../../../axios'
 
 const AdoptionRequests = () => {
-  const [openModal, setopenModal] = useState(false)
+
   const {
     user: { user, isAuthorised, token },
     logout,
   } = useAuth()
 
+  const [openModal, setopenModal] = useState(false)
+
+  const [adoptionData, setAdoptionData] = useState(user.adoptionForm)
+
+  useEffect(()=>{
+    console.log(user.adoptionForm)
+  },[adoptionData])
+
+  const deleteAdoptionData = async (newUser) => {
+    // console.log('called')
+    // console.log(newUser)
+    // console.log(user._id)
+    const delAdoption = await api
+      .delete(`/ngo/deleteAdoptionRequest/${newUser.id}/${user._id}`)
+      .then((res) => res.data)
+    const arr = delAdoption.filter((adoptions) => adoptions.id !== newUser.id)
+    setAdoptionData(arr)
+    //console.log(delAdoption)
+  }
+
   return (
     <div className={`Adoption ${openModal ? 'open' : ' '}`}>
       {user.isAdoption &&
-        user.adoptionForm.map((newUser) => {
+        adoptionData.map((newUser) => {
+          
           if (newUser.type == 'kids') {
             return (
               <div className="AdoptionCard">
@@ -62,7 +84,7 @@ const AdoptionRequests = () => {
                   </p>
                 </div>
                 <div className="deleteAdoption">
-                  <Button>Close Request</Button>
+                  <Button onClick={()=>deleteAdoptionData(newUser)}>Close Request</Button>
                 </div>
               </div>
             )
@@ -107,7 +129,7 @@ const AdoptionRequests = () => {
                   <a>Cats/Dogs/Others:</a> {newUser.animalType}
                 </p>
                 <div className="deleteAdoption">
-                  <Button>Close Request</Button>
+                  <Button onClick={()=>deleteAdoptionData(newUser)}>Close Request</Button>
                 </div>
               </div>
             )

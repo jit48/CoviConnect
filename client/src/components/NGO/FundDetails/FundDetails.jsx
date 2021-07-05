@@ -20,11 +20,11 @@ const FundDetails = () => {
   }, [])
 
   const handleDelete = async (fund) => {
-    console.log(fund._id)
+    //console.log(fund._id)
     const respVar = await api
       .delete(`/ngo/deleteFund/${fund._id}`)
       .then((res) => res.data)
-    console.log(respVar)
+    //console.log(respVar)
     const arr = fundData.filter((funds) => funds._id !== respVar._id)
     setFundData(arr)
     // setisDelete(!isDelete)

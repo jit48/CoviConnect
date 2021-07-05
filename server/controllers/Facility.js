@@ -268,6 +268,7 @@ export const adoptionForm = async (req, res) => {
       maritalStatus: req.body.maritalStatus,
       phNum: req.body.phNum,
       email: req.body.email,
+      id:Date.now()
     }
   } else {
     obj = {
@@ -278,6 +279,7 @@ export const adoptionForm = async (req, res) => {
       age: req.body.age,
       phNum: req.body.phNum,
       email: req.body.email,
+      id:Date.now()
     }
   }
   console.log(obj)
