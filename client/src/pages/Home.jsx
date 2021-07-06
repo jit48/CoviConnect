@@ -5,6 +5,7 @@ import image from '../Images/doctor.png';
 
 
 const Home = () => {
+    console.log("hi");
     return (
         <div className='Home'>
             <div className='Home__intro'>

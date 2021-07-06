@@ -14,7 +14,6 @@ import DiagnosticCard from "../components/Facility/DiagnosticCard";
 import MealsCard from "../components/Facility/MealsCard";
 import PharmacyCard from "../components/Facility/PharmacyCard";
 import AmbulanceCard from "../components/Facility/Ambulance/AmbulanceCard";
-
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Donate from "../components/Facility/Donate/Donate";
 
@@ -25,6 +24,7 @@ function Facility() {
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState("");
   const [userLocation, setUserLocation] = useState({ address: { city: "" } });
+  const [locationResults, setLocationResults] = useState([]);
   function compare(a, b) {
     if (a.votes > b.votes) {
       return -1;
@@ -35,6 +35,7 @@ function Facility() {
     return 0;
   }
   const getFacility = async () => {
+    setLoading(false);
     const facility = await api.get(`/facility/${type}`).then((res) => res.data);
     setLoading(true);
     facility.sort(compare);
@@ -44,18 +45,29 @@ function Facility() {
     return window.navigator.geolocation.getCurrentPosition(async (position) => {
       console.log(position);
       console.log("hi");
+      setLoading(false)
       const re = await axios
         .get(
           `https://us1.locationiq.com/v1/reverse.php?key=pk.6c3dbb323e37a1f86081c3d059dcbdc7&lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json`
         )
         .then((res) => res.data);
       setUserLocation(re);
+      setLoading(true)
+      console.log(re);
     });
   };
-  useEffect(() => {
+  useEffect(()=>{
     getLocation();
+  },[checked])
+  useEffect(() => {
     getFacility();
   }, []);
+  var arr = [];
+  facility.forEach(item =>{
+    if(item.info.city === userLocation.address.city.toLowerCase())
+    arr.push(item);
+  })
+  console.log(arr);
   const handleChange = (e) => {
     setInput(e.target.value);
   };
@@ -67,6 +79,8 @@ function Facility() {
   });
   const handleClick = () => {
     isChecked(!checked);
+
+    setLoading(true);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -80,23 +94,27 @@ function Facility() {
         <div className="searchBar">
           <input
             type="text"
-            placeholder="Seacrh For Beds"
+            placeholder={`Search for ${type} Facilities Arround You`}
             onChange={handleChange}
           />
           <button type="submit" onSubmit={handleSubmit}>
             Search
-            {console.log(userLocation.address.city)}
           </button>
         </div>
         <div className="switch">
-          <p>{`${checked ? "Disable" : "Enable"} Location Filter`}</p>
-          <Switch
-            checked={checked}
-            onChange={handleClick}
-            name="checkedA"
-            color="primary"
-            inputProps={{ "aria-label": "secondary checkbox" }}
-          />
+            <p>
+              <b><span className="numberFont">{`${checked ? arr.length : matches.length} `}</span> Results Found</b>
+            </p>
+          <div className="displayFlex">
+            <p>{`${checked ? "Disable" : "Enable"} Location Filter`}</p>
+            <Switch
+              checked={checked}
+              onChange={handleClick}
+              name="checkedA"
+              color="primary"
+              inputProps={{ "aria-label": "secondary checkbox" }}
+            />
+          </div>
         </div>
         {checked ? (
           loading ? (
