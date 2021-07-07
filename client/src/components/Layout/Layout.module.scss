@@ -13,66 +13,66 @@
     }
 }
 
-// .content {
-//     padding: 1rem;
-//     min-height: 100vh;
-//     border-radius: utils.$border-radius;
-//     background-color: utils.color(grey, lighter);
-//     & > div {
-//         @include utils.center;
-//     }
-// }
-
-// .footer {
-//     padding: 1rem;
-//     & > div {
-//         @include utils.center;
-//     }
-// }
-
-// .end {
-//     padding: 0.5rem;
-//     border-top-left-radius: utils.$border-radius;
-//     border-top-right-radius: utils.$border-radius;
-//     font-size: 0.8rem;
-//     background: utils.color(grey, dark);
-//     text-align: center;
-//     & > div {
-//         @include utils.center;
-//     }
-//   }
-
 .content {
     // padding: 1rem;
-    // position: relative;
     min-height: 100vh;
     border-radius: utils.$border-radius;
     background-color: utils.color(grey, lighter);
     // & > div {
-    //   @include utils.center;
+    //     @include utils.center;
     // }
-    // z-index: 2;
 }
 
 .footer {
-    position: relative;
     padding: 1rem;
     & > div {
         @include utils.center;
     }
-    z-index: 2;
 }
 
 .end {
-    position: relative;
     padding: 0.5rem;
     border-top-left-radius: utils.$border-radius;
     border-top-right-radius: utils.$border-radius;
     font-size: 0.8rem;
-    // background: utils.color(grey, dark);
-    text-align: justify;
+    background: utils.color(grey, dark);
+    text-align: center;
     & > div {
         @include utils.center;
     }
-    z-index: 2;
 }
+
+// .content {
+//     // padding: 1rem;
+//     // position: relative;
+//     min-height: 100vh;
+//     border-radius: utils.$border-radius;
+//     background-color: utils.color(grey, lighter);
+//     // & > div {
+//     //   @include utils.center;
+//     // }
+//     // z-index: 2;
+// }
+
+// .footer {
+//     position: relative;
+//     padding: 1rem;
+//     & > div {
+//         @include utils.center;
+//     }
+//     z-index: 2;
+// }
+
+// .end {
+//     position: relative;
+//     padding: 0.5rem;
+//     border-top-left-radius: utils.$border-radius;
+//     border-top-right-radius: utils.$border-radius;
+//     font-size: 0.8rem;
+//     // background: utils.color(grey, dark);
+//     text-align: justify;
+//     & > div {
+//         @include utils.center;
+//     }
+//     z-index: 2;
+// }

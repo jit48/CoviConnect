@@ -47,9 +47,6 @@ const Volunteer = () => {
 
     return (
         <section className={styles.volunteer}>
-            <div className={styles.search}>
-                <Input placeholder='Search help requests...' />
-            </div>
             <div className={styles.main}>
                 <div className={styles.left}>
                     <div className={styles.profile}>

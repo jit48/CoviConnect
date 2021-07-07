@@ -192,7 +192,6 @@ export const getAllFunds = async (req, res) => {
 
 export const postRecruitments = async (req, res) => {
     try {
-        console.log(req.body);
         const recruitment = new Recruitments({
             organisation: req.body.organisation,
             description: req.body.description,
@@ -219,7 +218,6 @@ export const getRecruitments = async (req, res) => {
 
 export const postApplication = async (req, res) => {
     try {
-        console.log(req.body);
         const { recruitmentId, ...rest } = req.body;
         const application = rest;
         await Recruitments.findByIdAndUpdate(recruitmentId, { $push: { applications: application } }, { new: true });
