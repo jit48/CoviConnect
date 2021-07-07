@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import Ngo from "../models/Ngo.js";
-
+import FundRaise from "../models/FundRaise.js";
 const getNgoID = (token) => {
   const ngo = jwt.decode(token);
   if (!ngo) throw Error("Error decoding jwt token.");
@@ -222,7 +222,6 @@ export const deleteFund = async (req, res) => {
     if (err) {
       console.log(err)
     } else {
-      // console.log(remainingFunds)
       res.status(200).json(remainingFunds)
     }
   })

@@ -14,6 +14,19 @@
   justify-content: center;
   align-items: center;
   height: 60vh;
+  .buttons {
+    text-align: center;
+    height: 40px;
+    a{
+      height: 100%;
+      padding: 10px 20px;
+      margin: 0 20px;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      background-color: utils.color(purple, light);
+    }
+  }
 }
 .Home__text {
   margin: 20px 0;
@@ -46,7 +59,14 @@
 // .Home__text__Helpful {
 //   color: utils.color(green,base);
 // }
-
+.Home__facility__hearder{
+  text-align: center;
+  h3{
+    margin: 50px 0;
+    font-size: 2rem;
+    color: utils.color(grey,darker);
+  }
+}
 .Home__content {
   display: flex;
   flex-wrap: wrap;
@@ -135,7 +155,7 @@
   font-weight: bolder;
   color: rgb(6, 8, 133);
 }
-.Donate{
+.Donate {
   font-size: 1rem;
   font-weight: bolder;
   color: rgb(255, 102, 0);
