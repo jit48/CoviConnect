@@ -3,7 +3,6 @@ import { useAuth } from '../contexts/AuthContext';
 import NGOdashboard from '../components/NGO/NGOdashboard'
 import Button from '../components/Button/Button';
 
-
 const Ngo = () => {
     const { logout } = useAuth();
 
@@ -11,11 +10,10 @@ const Ngo = () => {
         <h1>
             NGO Page
             <NavLink to='/'>Home</NavLink>
-            <NGOdashboard />
+                <NGOdashboard />
             <Button variant='secondary' onClick={logout}>
                 Sign Out
             </Button>
-            <NGOdashboard />
         </h1>
     );
 };

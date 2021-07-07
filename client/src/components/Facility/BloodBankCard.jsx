@@ -1,7 +1,9 @@
 import React from 'react'
 import UpVotes from './Components/UpVotes';
-function DiagnosticCard(props) {
-    const {facility} = props;
+
+
+function BloodBankCard(props) {
+    const {facility} = props
     return (
         <div className="">
           <div className="Card">
@@ -48,4 +50,4 @@ function DiagnosticCard(props) {
       );
     }
 
-export default DiagnosticCard
+export default BloodBankCard

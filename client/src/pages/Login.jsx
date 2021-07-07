@@ -58,7 +58,7 @@ const Login = () => {
                     
                     
             <div>
-                <img className={styles.loginImage} src={LoginImg} style={{height: "500px"}}/>
+                <img className={styles.loginImage} src={LoginImg} style={{height: "500px"}} alt=""/>
             </div>
             </section>
         </Fragment>

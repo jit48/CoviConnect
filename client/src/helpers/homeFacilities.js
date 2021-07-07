@@ -31,7 +31,7 @@ const facilities = [
     {
         img:Pharmacy,
         type:"Pharmacies",
-        link:"pharmacy",
+        link:"pharmacies",
         discription:"Get in Touch with Pharmacies Having Stock of Essential Drugs.",
 
     },
@@ -45,14 +45,14 @@ const facilities = [
     {
         img:BloodBank,
         type:"Blood Banks",
-        link:"bloodBank",
+        link:"bloodbank",
         discription:"Reach Out to Blood Banks.",
 
     },
     {
         img:Diagnostic,
         type:"Diagnostic Centers",
-        link:"diagnostic",
+        link:"diagnosticcenter",
         discription:"Know Where to get Tested.",
 
     },

@@ -14,6 +14,7 @@ const Meals = (props) => {
     const [data, setData] = useState({
         serviceProvider: '',
         location: '',
+        city:"",
         contactNum: 0,
     });
     const [postSuccess, setPostSuccess] = useState('none');
@@ -46,9 +47,18 @@ const Meals = (props) => {
                     <br />
                     <Input
                         type='text'
-                        label='Location'
+                        label='Address'
                         onChange={(event) => {
                             setData({ ...data, location: event.target.value });
+                        }}
+                    />
+                    <br />
+                    <br />
+                    <Input
+                        type='text'
+                        label='City'
+                        onChange={(event) => {
+                            setData({ ...data, city: event.target.value });
                         }}
                     />
                     <br />

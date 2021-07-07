@@ -1,24 +1,104 @@
 @use "../styles/utils";
 
+.facilitySearch-page {
+  display: flex;
+}
+.facility b{
+  color: utils.color(purple,lighter);
+}
 .facility {
-  margin-top: 50px;
+  position: relative;
+  margin-left: 350px;
+  padding: 0 30px;
+  width: 68%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  z-index: 0;
 }
 
 .facility h1 {
   text-align: center;
 }
 
-.searchBar input {
-  padding: 5px;
-  width: 100%;
-  height: 5vh;
-  border: 2px solid utils.color(purple, light);
-  border-radius: 5px;
+.facility-sideNav {
+  // position: sticky;
+  // top: 0px;
 }
 
+.searchBar {
+  padding: 15px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: utils.color(grey,lighter);
+
+  // box-shadow: 1px 1px 2px 1px #888888;
+}
+.searchBar input {
+  padding: 15px;
+  width: 90%;
+  height: 5vh;
+  border: 2px solid utils.color(purple, light);
+  border-radius: 50px;
+}
+.searchBar input[type = "text"]:focus {
+  outline: none;
+}
 .searchBar input::placeholder {
   color: utils.color(grey, darker);
+}
+
+.searchBar button {
+  margin-left: 10px;
+  height: 5vh;
+  width: 15%;
+  border: none;
+  border-radius: 50px;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: utils.color(purple, light);
+}
+
+
+
+.spinner {
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.switch{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.displayFlex{
+  display: flex;
+  align-items: center;
+}
+.numberFont{
+  font-family: 'Poppins', sans-serif;
+}
+@media only screen and (max-width: 600px) {
+  .facility{
+    margin: 0;
+    padding: 0 8px;
+    width: 100%;
+  }
+  .searchBar input{
+    border-radius: 5px;
+  }
+  .searchBar button {
+    margin-left: 10px;
+    height: 5vh;
+    width: 25%;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: utils.color(purple, light);
+  }
 }

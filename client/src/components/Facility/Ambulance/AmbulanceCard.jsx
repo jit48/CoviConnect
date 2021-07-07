@@ -1,59 +1,52 @@
-import React from 'react'
-import UpVotes from '../Components/UpVotes'
+import React from "react";
+import UpVotes from "../Components/UpVotes";
+import "../Card.scss";
 function AmbulanceCard(props) {
-    const {facility} = props
-    return (
-        <div className="">
-        <div className="BedCard">
-          <div className="votes">
-            <UpVotes facility={facility}  />
-          </div>
-          <div className="info">
+  const { facility } = props;
+  return (
+    <div className="">
+      <div className="Card">
+        <div className="votes">
+          <UpVotes facility={facility} />
+        </div>
+        <div className="info">
+          <div>
             <div>
-              <p>
-                <b>Hospital Name: </b>
-                {facility.info.hospitalName}
-              </p>
+              <h2>{facility.info.serviceProvider}</h2>
             </div>
-            <div className="location">
-              <p>
-                <b>Address: </b>
-                {facility.info.address}
-              </p>
-              <p>
-                <b>Location: </b>
-                {facility.info.location}
-              </p>
-            </div>
-            <div className="hospital">
-              <p>
-                <b>Contact Number: </b>
-                {facility.info.phnumber}
-              </p>
-            </div>
-            <div className="hospital">
-              <p>
-                <b>Number Of Beds Available: </b>
-                {facility.info.beds}
-              </p>
-            </div>
-            <div className="creator">
-              <div>
-                <p>
-                  <b>Created By: </b> {facility.volunteerName}
-                </p>
+          </div>
+          <div className="location">
+            <p>
+              <b>
+                <i className="fas fa-map-marker-alt"></i>{" "}
+              </b>
+              {facility.info.location}
+            </p>
+          </div>
+          <div className="hospital">
+            <p>
+              <b>
+                <i class="fas fa-phone-alt"></i>{" "}
+              </b>
+              {facility.info.contactNum}
+            </p>
+          </div>
+          <div className="creator">
+            <div className="Name">
+              <div className="creatorName">
+                <i class="fas fa-user-cog"></i>
+                <p>{facility.volunteerName}</p>
               </div>
-              <div>
-                <p>
-                  <b>Created On: </b>
-                  {facility.info.date}
-                </p>
+              <div className="creatorDate">
+                <i class="fas fa-calendar-alt"></i>
+                <p>{facility.info.date}</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    )
+    </div>
+  );
 }
 
-export default AmbulanceCard
+export default AmbulanceCard;

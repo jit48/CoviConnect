@@ -1,6 +1,11 @@
 @use '../styles/utils';
 
-.Home a{
+.Home {
+  & > div {
+    @include utils.center;
+  }
+}
+.Home a {
   text-decoration: none;
 }
 
@@ -17,7 +22,7 @@
   text-align: center;
   word-spacing: 10px;
   letter-spacing: 1.5px;
-  color: utils.color(purple,light);
+  color: utils.color(purple, light);
 }
 
 .Home__image {
@@ -100,7 +105,7 @@
 .Home__facility__link a:hover {
   text-decoration: none;
   transition: 0.3s ease-out;
-  color: yellow
+  color: yellow;
 }
 .Beds {
   font-size: 1rem;
