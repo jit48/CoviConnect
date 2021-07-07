@@ -1,7 +1,7 @@
 import Apply from './Apply';
 
 const Description = (props) => {
-    const { _id, organisation, description, responsibilty, qualification, skill, duration } = props.description;
+    const { _id, organisation, description, responsibility, qualification, skill, duration } = props.description;
 
     return (
         <>
@@ -16,7 +16,7 @@ const Description = (props) => {
             <span>
                 <b>RESPONSIBILITY</b>
             </span>
-            <p>{responsibilty}</p>
+            <p>{responsibility}</p>
             <br />
             <span>
                 <b>QUALIFICATION</b>
@@ -31,7 +31,7 @@ const Description = (props) => {
             <span>
                 <b>DURATION</b>
             </span>
-            <p>{duration}</p>
+            <p>{duration === 'fulltime' ? 'Full Time' : 'Part Time'}</p>
         </>
     );
 };

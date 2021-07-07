@@ -192,10 +192,11 @@ export const getAllFunds = async (req, res) => {
 
 export const postRecruitments = async (req, res) => {
     try {
+        console.log(req.body);
         const recruitment = new Recruitments({
             organisation: req.body.organisation,
             description: req.body.description,
-            responsibilty: req.body.responsibilty,
+            responsibility: req.body.responsibility,
             qualification: req.body.qualification,
             skill: req.body.skill,
             duration: req.body.duration,

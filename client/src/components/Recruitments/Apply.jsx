@@ -33,7 +33,7 @@ const Apply = (props) => {
     };
     const applicationHandler = async () => {
         const res = await api
-            .post('/ngo/application', { recruitmentId: props.applicationId, ...data }, { headers: { 'x-auth-token': token } })
+            .post('/ngo/application', { ...data, recruitmentId: props.applicationId }, { headers: { 'x-auth-token': token } })
             .then((res) => res.data);
         console.log(res);
     };

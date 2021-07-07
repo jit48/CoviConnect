@@ -14,9 +14,9 @@ const PostReqruitment = () => {
     } = useAuth();
     const [openModal, setOpenModal] = useState(false);
     const [data, setData] = useState({
-        organization: name,
+        organisation: name,
         description: '',
-        responsibilty: '',
+        responsibility: '',
         qualification: '',
         skill: '',
         duration: '',
@@ -29,7 +29,7 @@ const PostReqruitment = () => {
     };
 
     const submitForm = () => {
-        api.post('/ngo/recruitments', data, { headers: { 'x-auth-token': token } }).then(() => {
+        api.post('/ngo/recruitments', { ...data, organisation: name }, { headers: { 'x-auth-token': token } }).then(() => {
             setOpenModal((prevState) => {
                 return !prevState;
             });

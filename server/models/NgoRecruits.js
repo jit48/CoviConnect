@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const RecruitmentSchema = mongoose.Schema({
     description: String,
-    responsibilty: String,
+    responsibility: String,
     qualification: String,
     skill: String,
     duration: String,
