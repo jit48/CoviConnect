@@ -2,7 +2,7 @@ import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import api from "../../../axios";
 import "./DetailDonate.scss";
-import Center from "../../Layout/Center";
+import CircularProgressWithLabel from "../../UI/CircularProgress/circularProgress";
 import Button from "../../Button/Button";
 import Modal from "../../Modal/Modal";
 import Input from "../../Input/Input";
@@ -74,43 +74,76 @@ const DetailDonate = () => {
   }
 
   return (
-    <Center>
+    <>
       {data.length > 0 && (
         <div>
-          <center>
-            <h2>{data[0].title}</h2>
-          </center>
-          <br />
-          <br />
           <div className="donationInfo">
-            <div className="donationInfo_Pic">
-              <img src={data[0].file} alt="" />
-              <h3>Contact Info</h3>
-              <h4>Email:</h4>
-              <p>{data[0].email}</p>
-              <h4>Phone Number:</h4>
-              <p>{data[0].phone}</p>
-              <h3>This fund raising campaign is created by:</h3>
-              <p>{data[0].ngoname}</p>
-              <h4>Email:</h4>
-              <p>{data[0].ngoemail}</p>
-              <h4>Phone Number:</h4>
-              <p>{data[0].ngocontact}</p>
-            </div>
-            <div className="donationInfo_Details">
-              <h3>{data[0].name}</h3>
-              <br />
-              <h3>Description</h3>
-              <p>{data[0].reason}</p>
-              <br />
-              <h3>Funds Needed</h3>
-              <p>{data[0].amount}</p>
-              <br />
-              <h3>Total Funds Raised</h3>
-              <p>{data[0].raised}</p>
-              <Button variant="primary" onClick={modalHandler}>
-                Donate
-              </Button>
+            <div className="donationInfo_body">
+              <div className="donationInfo_Pic">
+                <div>
+                  <h2>{data[0].title}</h2>
+                </div>
+                <img src={data[0].file} alt="" />
+                <div className="donationInfo__Pic__description">
+                  <h3>Description</h3>
+                  <p>{data[0].reason}</p>
+                </div>
+              </div>
+              <div className="donationInfo_Details">
+                <div className="pointOfContact">
+                  <h3>Name: {data[0].name}</h3>
+                  <div className="pointOfContact__contact">
+                    <div>
+                      <i className="fas fa-envelope"></i>
+                      <b>{data[0].email}</b>
+                    </div>
+                    <div>
+                      <i class="fas fa-phone-alt"></i>
+                      <b>{data[0].phone}</b>
+                    </div>
+                  </div>
+                </div>
+                <div className="donationInfo__Details__Funds">
+                  <div
+                    className={`progress
+                    ${
+                      Math.round((data[0].raised / data[0].amount) * 100) > 10
+                        ? Math.round((data[0].raised / data[0].amount) * 100) >
+                          50
+                          ? "green"
+                          : "orange"
+                        : "red"
+                    }`}
+                  >
+                    <CircularProgressWithLabel
+                      value={(data[0].raised / data[0].amount) * 100}
+                    />
+                  </div>
+                  <div className="donationInfo__Details__Progress">
+                    <p>
+                      <b>{data[0].raised}</b> of <b>{data[0].amount}</b> raised
+                    </p>
+                  </div>
+                </div>
+                <button  className="button" variant="primary" onClick={modalHandler}>
+                  Donate
+                </button>
+                <div className="contactInfo">
+                  <div>
+                    <h3>Created by: {data[0].ngoname}</h3>
+                  </div>
+                  <div className="contactInfo__Contact">
+                    <div>
+                      <i className="fas fa-envelope"></i>
+                      <b>{data[0].ngoemail}</b>
+                    </div>
+                    <div>
+                      <i class="fas fa-phone-alt"></i>
+                      <b>{data[0].ngocontact}</b>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <Modal open={showModal} handleModal={modalHandler}>
@@ -154,7 +187,7 @@ const DetailDonate = () => {
           </Modal>
         </div>
       )}
-    </Center>
+    </>
   );
 };
 

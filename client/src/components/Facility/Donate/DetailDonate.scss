@@ -1,10 +1,140 @@
 @use "../../../styles/utils";
 
-.donationInfo{
-    display: flex;
-    justify-content: space-between;
-}
+.donationInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 30px;
+  justify-content: space-between;
+  & > center {
+    margin: 0 0 20px 0;
+  }
+  h3 {
+    margin: 20px 0 0 0;
+  }
 
-.donationInfo_Details{
-    padding-left: 5%;
+  .donationInfo_body {
+    display: flex;
+    .donationInfo_Pic {
+      display: flex;
+      flex-direction: column;
+      padding: 0 10px;
+      width: 60%;
+      & > img {
+        border-radius: 15px;
+        width: 100%;
+      }
+      h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        color: utils.color(purple, light);
+        margin: 20px 0 20px 0;
+      }
+      .donationInfo__Pic__description {
+        text-align: justify;
+      }
+    }
+    .donationInfo_Details {
+      position: fixed;
+      top: 120px;
+      right: 35px;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      width: 500px;
+      margin-left: 5px;
+      background-color: #fff;
+      box-shadow: 1px 1px 7px 4px rgba(0, 0, 0, 0.22);
+      h3 {
+        margin-top: 0;
+      }
+      button{
+        height: 40px;
+        outline: none;
+        border: none;
+        background-color: #94e45f;
+        border-radius: 5px;
+        margin-top: 0;
+        color: white;
+        font-size: larger;
+      }
+      .pointOfContact {
+        h3 {
+          font-size: 1.5rem;
+        }
+        .pointOfContact__contact {
+          margin-top: 5px;
+          display: flex;
+          i {
+            color: utils.color(purple, light);
+            margin-right: 5px;
+          }
+          b {
+            color: utils.color(purple, light);
+            margin-right: 20px;
+            font-family: "Poppins", sans-serif;
+          }
+        }
+      }
+      .donationInfo__Details__Funds {
+        width: 100%;
+        height: 100px;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        .green {
+          color: #9ede73;
+        }
+        .orange {
+          color: #ef8d32;
+        }
+        .red {
+          color: #d83a56;
+        }
+        .progress {
+          margin: 0 20px;
+        }
+        .donationInfo__Details__Progress {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          & > p {
+            margin: 10px 0;
+            font-size: larger;
+            & > b {
+              color: utils.color(purple, light);
+              font-family: "Poppins", sans-serif;
+            }
+          }
+        }
+      }
+      .contactInfo {
+        margin-top: 15px;
+        padding: 10px;
+        background-color: #b5eaea;
+        border-radius: 5px;
+        h3 {
+          margin-top: 0;
+          b {
+            color: #000;
+          }
+        }
+        .contactInfo__Contact {
+          display: flex;
+          i {
+            color: #000;
+            margin-right: 5px;
+          }
+          b {
+            color: #000;
+            margin-right: 10px;
+            font-family: "Poppins", sans-serif;
+          }
+        }
+      }
+    }
+  }
 }
