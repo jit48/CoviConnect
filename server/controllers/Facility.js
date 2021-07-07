@@ -343,3 +343,42 @@ export const razorpay = async (req, res) => {
     });
   });
 };
+export const adoptionForm = async (req, res) => {
+  let obj = {}
+  if (req.body.type === 'kids') {
+    obj = {
+      type: req.body.type,
+      name: req.body.name,
+      noOfAdopions: req.body.noOfAdoption,
+      age: req.body.age,
+      maritalStatus: req.body.maritalStatus,
+      phNum: req.body.phNum,
+      email: req.body.email,
+      id:Date.now()
+    }
+  } else {
+    obj = {
+      type: req.body.type,
+      name: req.body.name,
+      noOfAdopions: req.body.noOfAdoption,
+      animalType: req.body.animalType,
+      age: req.body.age,
+      phNum: req.body.phNum,
+      email: req.body.email,
+      id:Date.now()
+    }
+  }
+  console.log(obj)
+
+  Ngo.find({ isAdoption: true }, (err, foundNgos) => {
+    if (err) {
+      console.log(err)
+    } else {
+      foundNgos.forEach((item) => {
+        item.adoptionForm.push(obj)
+        item.save()
+      })
+    }
+  })
+  res.status(200).json({ success: true })
+}

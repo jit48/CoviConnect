@@ -1,21 +1,22 @@
-import { NavLink } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
+import { NavLink } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
 import NGOdashboard from '../components/NGO/NGOdashboard'
-import Button from '../components/Button/Button';
+import Button from '../components/Button/Button'
+import '../styles/Ngo.scss';
 
 const Ngo = () => {
-    const { logout } = useAuth();
+  const { logout } = useAuth()
 
-    return (
-        <h1>
-            NGO Page
-            <NavLink to='/'>Home</NavLink>
-                <NGOdashboard />
-            <Button variant='secondary' onClick={logout}>
-                Sign Out
-            </Button>
-        </h1>
-    );
-};
+  return (
+    <div className="NgoPage">
+      NGO Page
+      <NavLink to="/">Home</NavLink>
+      <NGOdashboard />
+      <Button variant="secondary" onClick={logout}>
+        Sign Out
+      </Button>
+    </div>
+  )
+}
 
-export default Ngo;
+export default Ngo

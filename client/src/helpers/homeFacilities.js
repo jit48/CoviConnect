@@ -7,6 +7,7 @@ import Meals from "../Images/Meals.png"
 import Diagnostic from "../Images/Diagnostic.png"
 import Pharmacy from "../Images/Pharmacy.png"
 import Donate from "../Images/Donate.png"
+import Adoption from "../Images/Adoption.png"
 
 const facilities = [
     {
@@ -61,6 +62,13 @@ const facilities = [
         type:"Donate",
         link:"donate",
         discription:"Your extra is someone’s need.",
+    },
+    {
+        img:Adoption,
+        type:"Adoption Centers",
+        link:"adoption",
+        discription:"You are not alone.",
+
     },
 ]
 

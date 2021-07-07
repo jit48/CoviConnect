@@ -91,7 +91,7 @@ const DetailDonate = () => {
               </div>
               <div className="donationInfo_Details">
                 <div className="pointOfContact">
-                  <h3>Name: {data[0].name}</h3>
+                  <h4>Created For: {data[0].name}</h4>
                   <div className="pointOfContact__contact">
                     <div>
                       <i className="fas fa-envelope"></i>

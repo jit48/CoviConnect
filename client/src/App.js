@@ -14,6 +14,7 @@ import Register from './pages/Register';
 import DetailDonate from './components/Facility/Donate/DetailDonate';
 import Recruitments from './pages/Recruitments';
 
+import AdoptionCard from './components/Facility/Adoption/AdoptionCard';
 
 const App = () => {
     const { user } = useAuth();
@@ -44,6 +45,7 @@ const App = () => {
                     <Route path='/' exact component={Home} />
                     {!user.isAuthorised && <Route path='/register' exact component={Register} />}
                     {!user.isAuthorised && <Route path='/login' exact component={Login} />}
+                    <Route path='/facility/adoption' component={AdoptionCard} />
                     <PrivateRoute path='/dashboard' component={user.isVolunteer ? Volunteer : Ngo} />
                     <Route path='/facility/donate'><Donate funds={funds} /></Route>
                     <PrivateRoute path='/recruitments' component={Recruitments} />

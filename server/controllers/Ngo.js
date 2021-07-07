@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import Ngo from "../models/Ngo.js";
-
+import FundRaise from "../models/FundRaise.js";
 const getNgoID = (token) => {
   const ngo = jwt.decode(token);
   if (!ngo) throw Error("Error decoding jwt token.");
@@ -188,16 +188,78 @@ export const validate = async (req, res) => {
 export const adoptions = async (req, res) => {
   try {
     const adoptions = await Facility.find({
-      ngoID: getNgoID(req.header("x-auth-token")),
-    });
-    res.status(200).json(adoptions);
+      ngoID: getNgoID(req.header('x-auth-token')),
+    })
+    res.status(200).json(adoptions)
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        method: "SERVER",
-        status: res.statusCode,
-        message: error.message,
-      });
+    res.status(500).json({
+      method: 'SERVER',
+      status: res.statusCode,
+      message: error.message,
+    })
   }
-};
+}
+
+export const adoptionFormRequest = async (req, res) => {
+  const ngo = await Ngo.findById(getNgoID(req.header('x-auth-token')))
+  res.status(200).json(ngo)
+}
+
+export const getAllFunds = async (req, res) => {
+  const id = req.params.id
+  FundRaise.find({ ngoid: id }, (err, foundFunds) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.status(200).json(foundFunds)
+    }
+  })
+}
+
+export const deleteFund = async (req, res) => {
+  const id = req.params.id
+  FundRaise.findByIdAndDelete(id, (err, remainingFunds) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.status(200).json(remainingFunds)
+    }
+  })
+}
+
+export const delAdoption = async (req, res) => {
+  try{
+    Ngo.findByIdAndUpdate(
+      req.params.ngoId,
+     { $pull: { adoptionForm:  {id:+req.params.id} } },
+     
+     (err,adoption)=>{
+       if(err){
+         console.log(err)
+       }
+       else{
+         res.status(200).json(adoption.adoptionForm)
+         console.log(adoption.adoptionForm[0])
+       }
+     } 
+   )
+  }
+  catch(err){
+    console.log(err)
+  }
+  
+  // console.log(req.params.id)
+  // console.log(req.params.ngoId)
+}
+
+// Doc.findByIdAndUpdate( docId, 
+//   { $pull: { pendingAppointment: { id: id } } }, 
+//   function (err, model) 
+//   { if (err) 
+//     { console.log(err) 
+//       return res.send(err) } 
+//       return res.redirect('/docLanding') }, 
+//       )
+
+
+

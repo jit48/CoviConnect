@@ -25,12 +25,12 @@ function Navbar() {
       <div className="navbar__links">
         <NavLink to="/">Home</NavLink>
         <NavLink to="/">Blog</NavLink>
-        <NavLink to="/">About</NavLink>
-        <NavLink to="/">Contact</NavLink>
+        <NavLink to="/">Volunteers</NavLink>
+        <NavLink to="/">Ngos</NavLink>
       </div>
 
       <div className="navbar__auth">
-        <NavLink to="/">Sign In </NavLink>
+        <NavLink to="/login">Sign In </NavLink>
         <i className="fas fa-2x fa-sign-in-alt"></i>
       </div>
     </div>
