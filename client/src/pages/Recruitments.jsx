@@ -1,156 +1,16 @@
 import { useEffect, useState } from 'react';
 import styles from '../styles/Recruitments.module.scss';
 import api from '../axios';
+import { useAuth } from '../contexts/AuthContext';
 
 import Item from '../components/Recruitments/Items';
 import Description from '../components/Recruitments/Description';
 
 const Recruitments = () => {
-    const [recruitments, setRecruitments] = useState([
-        {
-            _id: 1,
-            description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            responsibilty: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            qualification: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            skill: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            duration: 'fulltime',
-        },
-        {
-            _id: 2,
-            description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            responsibilty: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            qualification: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            skill: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            duration: 'fulltime',
-        },
-        {
-            _id: 3,
-            description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            responsibilty: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            qualification: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            skill: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            duration: 'fulltime',
-        },
-        {
-            _id: 4,
-            description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            responsibilty: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            qualification: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            skill: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            duration: 'fulltime',
-        },
-        {
-            _id: 5,
-            description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            responsibilty: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            qualification: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            skill: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            duration: 'fulltime',
-        },
-        {
-            _id: 6,
-            description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            responsibilty: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            qualification: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            skill: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            duration: 'fulltime',
-        },
-        {
-            _id: 7,
-            description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            responsibilty: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            qualification: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            skill: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            duration: 'fulltime',
-        },
-        {
-            _id: 8,
-            description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            responsibilty: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            qualification: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            skill: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            duration: 'fulltime',
-        },
-        {
-            _id: 9,
-            description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            responsibilty: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            qualification: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            skill: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            duration: 'fulltime',
-        },
-        {
-            _id: 10,
-            description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            responsibilty: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            qualification: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            skill: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            duration: 'fulltime',
-        },
-        {
-            _id: 11,
-            description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            responsibilty: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            qualification: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            skill: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia tempore distinctio totam tempora error commodi harum
-        blanditiis debitis. Mollitia, temporibus.`,
-            duration: 'fulltime',
-        },
-    ]);
+    const {
+        user: { token },
+    } = useAuth();
+    const [recruitments, setRecruitments] = useState([]);
     const [description, setDescription] = useState({});
 
     const getDescription = (id) => {
@@ -159,11 +19,11 @@ const Recruitments = () => {
     };
 
     useEffect(() => {
-        // (async () => {
-        //     const res = await api.get('/recruitments').then((res) => res.data);
-        //     setRecruitments(res);
-        // })();
-        setDescription(recruitments[0]);
+        (async () => {
+            const res = await api.get('/ngo/recruitments', { headers: { 'x-auth-token': token } }).then((res) => res.data);
+            setRecruitments(res);
+            setDescription(res[0]);
+        })();
     }, []);
 
     return (

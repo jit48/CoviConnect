@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import Ngo from '../models/Ngo.js';
+import Recruitments from '../models/NgoRecruits.js';
 
 const getNgoID = (token) => {
     const ngo = jwt.decode(token);
@@ -117,4 +118,30 @@ export const adoptions = async (req, res) => {
     } catch (error) {
         res.status(500).json({ method: 'SERVER', status: res.statusCode, message: error.message });
     }
+};
+
+export const getRecruitments = async (req, res) => {
+    try {
+        const recruitments = await Recruitments.find({});
+        res.status(200).json(recruitments);
+    } catch (error) {
+        res.status(500).json({ method: 'SERVER', status: res.statusCode, message: error.message });
+    }
+};
+
+export const postApplication = async (req, res) => {
+    try {
+        console.log(req.body);
+        const { recruitmentId, ...rest } = req.body;
+        const application = rest;
+        await Recruitments.findByIdAndUpdate(recruitmentId, { $push: { applications: application } }, { new: true });
+        res.status(200).json({ method: 'APPLICATION', status: res.statusCode, message: 'Succesfully applied.' });
+    } catch (error) {
+        res.status(500).json({ method: 'SERVER', status: res.statusCode, message: error.message });
+    }
+};
+
+export const getApplication = async (req, res) => {
+    try {
+    } catch (error) {}
 };
