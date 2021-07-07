@@ -1,16 +1,11 @@
 import express from 'express';
-import { postBed, postAmbulance, postBloodBank, postDiagnostic, postMeals, postOxygen, postPharmacy, getDonateData, razorpay } from '../controllers/Facility.js';
+import { postBed, postAmbulance, postBloodBank, postDiagnostic, postMeals, postOxygen, postPharmacy, getDonateData, razorpay, adoptionForm} from '../controllers/Facility.js';
 import { downVotes, getFacility, updateVotes} from '../controllers/GetAllFacilities.js';
 import { userUpvotes } from "../controllers/User.js";
 import auth from '../middleware/auth.js';
-import {
-    getAllPosts,
-    editPost,
-    deletePost,
-} from '../controllers/Facility.js';
+import { getAllPosts, editPost, deletePost } from '../controllers/Facility.js'
 
-
-const router = express.Router();
+const router = express.Router()
 
 
 router.get('/:type',getFacility)
@@ -26,11 +21,12 @@ router.post('/pharmacies', auth, postPharmacy);
 router.post("/user/upVotedPosts", userUpvotes);
 router.get("/fund/donate/:id", getDonateData);
 router.post("/donation/razorpay/:id", razorpay);
+router.post('/adoption', adoptionForm)
 
 
 // get, edit, delete posts
-router.get('/', getAllPosts);
-router.put('/:postId', auth, editPost);
-router.delete('/:postId', auth, deletePost);
+router.get('/', getAllPosts)
+router.put('/:postId', auth, editPost)
+router.delete('/:postId', auth, deletePost)
 
-export default router;
+export default router

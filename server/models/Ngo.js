@@ -27,6 +27,13 @@ const NgoSchema = new Schema({
         type: String,
         required: true,
     },
+    adoptionForm: {
+        type: Array,
+    },
+    isAdoption: {
+        type: Boolean,
+        required: true,
+    },
 });
 
 export default mongoose.model('ngo', NgoSchema);

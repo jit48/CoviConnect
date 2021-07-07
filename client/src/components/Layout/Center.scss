@@ -1,0 +1,9 @@
+.center{
+    padding: 100px;
+}
+
+@media only screen and (max-width: 600px) {
+    .center{
+        padding: 20px;
+    }
+}

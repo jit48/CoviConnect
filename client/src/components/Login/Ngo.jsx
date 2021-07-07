@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { Link } from "react-router-dom";
 import Input from '../Input/Input';
+import Center from "../Layout/Center";
 import Button from '../Button/Button';
 import { useHistory } from 'react-router';
 

@@ -13,6 +13,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import DetailDonate from './components/Facility/Donate/DetailDonate';
 import Recruitments from './pages/Recruitments';
+import AdoptionCard from './components/Facility/Adoption/AdoptionCard';
 
 const App = () => {
     const { user } = useAuth();
@@ -40,6 +41,7 @@ const App = () => {
                 {!user.isAuthorised && <Route path='/register' exact component={Register} />}
                 {!user.isAuthorised && <Route path='/login' exact component={Login} />}
                 <PrivateRoute path='/dashboard' component={user.isVolunteer ? Volunteer : Ngo} />
+                <Route path='/facility/adoption' component={AdoptionCard} />
                 <Route path='/facility/donate'>
                     <Donate funds={funds} />
                 </Route>

@@ -7,14 +7,14 @@ const Ngo = () => {
     const { logout } = useAuth();
 
     return (
-        <h1>
+        <div className='NgoPage'>
             NGO Page
             <NavLink to='/'>Home</NavLink>
+            <NGOdashboard />
             <Button variant='secondary' onClick={logout}>
                 Sign Out
             </Button>
-            <NGOdashboard />
-        </h1>
+        </div>
     );
 };
 

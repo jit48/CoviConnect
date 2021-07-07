@@ -1,27 +1,37 @@
 import { Fragment, useState } from 'react';
 import RaiseFund from './RaiseFund/RaiseFund';
-import api from '../../axios';
-
+import PostReqruitment from './PostReqruitment/PostReqruitment';
+import Button from '../Button/Button';
+import AdoptionRequests from './AdoptionRequests/AdoptionRequests';
+import FundDetails from './FundDetails/FundDetails';
 const NGOdashboard = () => {
-    const [fund, setFund] = useState([]);
+    const [openFund, setOpenFund] = useState(false);
 
-    const fetchData = () => {
-        api.get('/ngo/fundraise').then((res) => {
-            setFund(res.data);
+    const openFundHandler = () => {
+        setOpenFund(!openFund);
+    };
+    const [openModal, setopenModal] = useState(false);
+
+    const openModalHandler = () => {
+        setopenModal((prevState) => {
+            return !prevState;
         });
-        // console.log(fund);
     };
 
     return (
         <Fragment>
             <RaiseFund />
-            <button onClick={fetchData}>Show Fund</button>
-            {fund.map((elem) => (
-                <div>
-                    <p>{elem.title}</p>
-                    <img src={elem.file} alt='fund raising' />
-                </div>
-            ))}
+            <br />
+            <br />
+            <PostReqruitment />
+            <br />
+            <br />
+            <Button onClick={openModalHandler}>Adoption Requests</Button>
+            {openModal && <AdoptionRequests />}
+            <br />
+            <br />
+            <Button onClick={openFundHandler}>Fund Details</Button>
+            {openFund && <FundDetails />}
         </Fragment>
     );
 };

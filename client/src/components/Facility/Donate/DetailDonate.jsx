@@ -37,7 +37,6 @@ const DetailDonate = () => {
 
     async function displayRazorpay() {
         const data = await api.post(`/facility/donation/razorpay/${id}`, userData);
-        // modalHandler();
         var options = {
             key: process.env.REACT_APP_RAZORPAY,
             amount: userData.amount,
@@ -64,9 +63,6 @@ const DetailDonate = () => {
         };
         var rzp1 = new window.Razorpay(options);
         rzp1.open();
-        // rzp1.on('payment.failed', function (response){
-        //         alert(response.error.code);
-        // });
     }
 
     return (
