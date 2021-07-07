@@ -14,7 +14,6 @@ const Diagnostic = (props) => {
     const [data, setData] = useState({
         centreName: '',
         location: '',
-        city:"",
         contactNum: 0,
     });
     const [postSuccess, setPostSuccess] = useState('none');
@@ -50,15 +49,6 @@ const Diagnostic = (props) => {
                         label='Address'
                         onChange={(event) => {
                             setData({ ...data, location: event.target.value });
-                        }}
-                    />
-                    <br />
-                    <br />
-                    <Input
-                        type='text'
-                        label='City'
-                        onChange={(event) => {
-                            setData({ ...data, city: event.target.value });
                         }}
                     />
                     <br />
