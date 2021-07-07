@@ -1,7 +1,6 @@
-import { useRef } from 'react';
-import styles from './Register.module.scss';
-import api from '../../axios';
-
+import { useRef, useState } from 'react'
+import styles from './Register.module.scss'
+import api from '../../axios'
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import { Link } from 'react-router-dom';

@@ -23,12 +23,12 @@ export const postFundRaise = (req, res) => {
             ngoid: req.body.ngoid
         });
 
-        postFundRaise.save();
+    postFundRaise.save()
 
-        res.status(201).json(postFundRaise);
-    } catch (error) {
-        res.status(409).json({ message: error.message });
-    }
+    res.status(201).json(postFundRaise)
+  } catch (error) {
+    res.status(409).json({ message: error.message })
+  }
 }
 
 

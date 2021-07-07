@@ -14,8 +14,12 @@ import DiagnosticCard from "../components/Facility/DiagnosticCard";
 import MealsCard from "../components/Facility/MealsCard";
 import PharmacyCard from "../components/Facility/PharmacyCard";
 import AmbulanceCard from "../components/Facility/Ambulance/AmbulanceCard";
+<<<<<<< HEAD
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Donate from "../components/Facility/Donate/Donate";
+=======
+import AdoptionCard from "../components/Facility/Adoption/AdoptionCard";
+>>>>>>> 0a218eaab7a356988618e6cdf01e6f2317e7680c
 
 function Facility() {
   const { type } = useParams();
@@ -175,9 +179,15 @@ function Facility() {
             if (item.type === "pharmacies")
               return <PharmacyCard key={item._id} facility={item} />;
             if (item.type === "ambulance")
+<<<<<<< HEAD
               return <AmbulanceCard key={item._id} facility={item} />;
             if (item.type === "donate")
               return <Donate key={item._id} facility={item} />;
+=======
+              return <AmbulanceCard key={item._id} facility={item.info} />;
+            {/* if (item.type === "adoption")
+              return <AdoptionCard key={item._id} facility={item.info} />; */}
+>>>>>>> 0a218eaab7a356988618e6cdf01e6f2317e7680c
           })
         ) : (
           <div className="spinner">
