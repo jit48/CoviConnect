@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react'
-import styles from './Register.module.scss'
-import api from '../../axios'
+import { useRef } from 'react';
+import styles from './Register.module.scss';
+import api from '../../axios';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
@@ -45,7 +45,9 @@ const Ngo = () => {
             <Input label='Password' type='password' required={true} innerRef={passwordRef} />
             <Input label='Confirm Password' type='password' required={true} innerRef={confirmpasswordRef} />
             <div className={styles.registerbutton}>
-                <p>Already have account? <Link to={`/login`}>Login</Link></p>
+                <p>
+                    Already have account? <Link to={`/login`}>Login</Link>
+                </p>
                 <Button variant='primary' type='submit'>
                     Register
                 </Button>
