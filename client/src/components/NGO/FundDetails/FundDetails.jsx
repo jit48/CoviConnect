@@ -1,58 +1,52 @@
-import { useEffect, useState } from 'react'
-import { useAuth } from '../../../contexts/AuthContext'
-import api from '../../../axios'
-import CircularProgressWithLabel from '../../CircularProgressBar/CircularProgressBar'
-const FundDetails = () => {
-  const [fundData, setFundData] = useState([])
-  const {
-    user: { user, isAuthorised, token },
-    logout,
-  } = useAuth()
-  const getFunds = async () => {
-    const data = await api
-      .get(`/ngo/getAllFunds/${user._id}`)
-      .then((res) => res.data)
-    setFundData(data)
-    // console.log(data)
-  }
-  useEffect(() => {
-    getFunds()
-  }, [])
+import CircularProgressWithLabel from "../../CircularProgressBar/CircularProgressBar";
+import { CircularProgress } from "@material-ui/core";
+import "./fund.scss";
+
+const FundDetails = (props) => {
+  const { fundData, handleDeleteFund, isLoading} = props;
 
   const handleDelete = async (fund) => {
-    //console.log(fund._id)
-    const respVar = await api
-      .delete(`/ngo/deleteFund/${fund._id}`)
-      .then((res) => res.data)
-    //console.log(respVar)
-    const arr = fundData.filter((funds) => funds._id !== respVar._id)
-    setFundData(arr)
-    // setisDelete(!isDelete)
-  }
+    handleDeleteFund(fund);
+  };
+
 
   return (
-    <div>
+    isLoading ? (<div className="fundsNgo">
       {fundData.map((fund) => (
-        <div>
-          Title: {fund.title}
-          <br />
-          Name: {fund.name} <br />
-          <CircularProgressWithLabel
-            value={(fund.raised / fund.amount) * 100}
-          />
-          {/* <CircularProgressWithLabel
-            variant="determinate"
-            value={(fund.raised / fund.amount) * 100}
-          /> */}
-          Amount raised: {fund.raised} of {fund.amount}
-          <br />
-          <button type="submit" onClick={() => handleDelete(fund)}>
-            DELETE
-          </button>
+        <div className="fundCardNgo">
+          <div className="fundCard__Info">
+            <div className="fundCard__progress">
+            <b>
+              <CircularProgressWithLabel
+                value={((fund.raised / fund.amount) * 100) > 100 ? 100 : (fund.raised / fund.amount)*100}
+                color="inherit"
+                size="4rem"
+                thickness={5}
+              />
+              </b>
+            </div>
+            <div className="fundCard__Details">
+              <p>{fund.title}</p>
+              <p>Created For:  {fund.name}</p>
+              <p>
+                Amount Raised: <b>{fund.raised}</b> of <b>{fund.amount}</b>
+              </p>
+            </div>
+          </div>
+
+          <div className="fundCard__Actions">
+            <button type="submit" onClick={() => handleDelete(fund)}>
+              DELETE
+            </button>
+          </div>
         </div>
       ))}
-    </div>
-  )
-}
+    </div>) : (
+            <div className="spinner">
+              <CircularProgress color="primary" size="4rem"/>
+            </div>
+          )
+  );
+};
 
-export default FundDetails
+export default FundDetails;

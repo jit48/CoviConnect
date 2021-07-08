@@ -2,7 +2,6 @@ import "../styles/home.scss";
 import { Link } from "react-router-dom";
 import facilities from "../helpers/homeFacilities";
 import image from "../Images/doctor.png";
-
 const Home = () => {
   return (
     <div className="Home">

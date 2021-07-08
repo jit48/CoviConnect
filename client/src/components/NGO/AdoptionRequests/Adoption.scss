@@ -7,13 +7,8 @@
   justify-content: center;
   align-items: center;
   color: black;
-  transition: all 5s ease-out;
 }
 
-.open {
-  transition: all 5s ease-out;
-  margin: 5px;
-}
 
 .AdoptionCard {
   margin: 30px 20px;
@@ -67,9 +62,20 @@ a {
   justify-content: center;
   display: flex;
   flex-direction: column;
-  margin-left: 150px;
+  margin-left: 10px;
 }
 
 .deleteAdoption {
   margin-top: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .AdoptionCard {
+    margin: 30px 0;
+    box-shadow: 1px 1px 4px 1px #888888;
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    height: 370px;
+  }
 }

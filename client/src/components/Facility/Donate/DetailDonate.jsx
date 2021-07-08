@@ -116,7 +116,11 @@ const DetailDonate = () => {
                     }`}
                   >
                     <CircularProgressWithLabel
-                      value={(data[0].raised / data[0].amount) * 100}
+                      value={
+                        (data[0].raised / data[0].amount) * 100 > 100
+                          ? 100
+                          : (data[0].raised / data[0].amount) * 100
+                      }
                     />
                   </div>
                   <div className="donationInfo__Details__Progress">
@@ -125,7 +129,11 @@ const DetailDonate = () => {
                     </p>
                   </div>
                 </div>
-                <button  className="button" variant="primary" onClick={modalHandler}>
+                <button
+                  className="button"
+                  variant="primary"
+                  onClick={modalHandler}
+                >
                   Donate
                 </button>
                 <div className="contactInfo">

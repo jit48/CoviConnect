@@ -9,12 +9,7 @@ const Ngo = () => {
 
   return (
     <div className="NgoPage">
-      NGO Page
-      <NavLink to="/">Home</NavLink>
       <NGOdashboard />
-      <Button variant="secondary" onClick={logout}>
-        Sign Out
-      </Button>
     </div>
   )
 }

@@ -17,7 +17,7 @@
   .buttons {
     text-align: center;
     height: 40px;
-    a{
+    a {
       height: 100%;
       padding: 10px 20px;
       margin: 0 20px;
@@ -59,12 +59,12 @@
 // .Home__text__Helpful {
 //   color: utils.color(green,base);
 // }
-.Home__facility__hearder{
+.Home__facility__hearder {
   text-align: center;
-  h3{
+  h3 {
     margin: 50px 0;
     font-size: 2rem;
-    color: utils.color(grey,darker);
+    color: utils.color(grey, darker);
   }
 }
 .Home__content {
@@ -174,6 +174,12 @@
   .Home__intro {
     display: flex;
     width: 100%;
+    .buttons {
+      a {
+        margin: 0 10px;
+        padding: 10px 10px;
+      }
+    }
   }
   .Home__text {
     font-size: 2rem;
