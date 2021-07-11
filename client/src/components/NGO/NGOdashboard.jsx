@@ -1,24 +1,38 @@
 import { useState, useEffect } from "react";
 import RaiseFund from "./RaiseFund/RaiseFund";
 import Button from "../Button/Button";
+import RecruitApplication from "./RecruitApplication/RecruitApplication";
 import PostReqruitment from "./PostReqruitment/PostReqruitment";
 import api from "../../axios";
 import AdoptionRequests from "./AdoptionRequests/AdoptionRequests";
 import FundDetails from "./FundDetails/FundDetails";
 import { useAuth } from "../../contexts/AuthContext";
+import Members from "./Members";
 import { Link } from "react-router-dom";
 import "./NGOdashboard.scss";
 
 const NGOdashboard = () => {
-  const [openFund, setOpenFund] = useState(true);
+  const [openFund, setOpenFund] = useState(false);
+  const [openRecruitments, setOpenRecruitments] = useState(false);
   const [fundData, setFundData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [application, setApplication] = useState([{members:""}]);
+  const [fetching, isfetching] = useState(false);
+  const [openMembers, setOpenMembers] = useState(false);
+  const [members, setMembers] = useState([]);
+
   const {
     user: { user, isAuthorised, token },
     logout,
   } = useAuth();
   const openFundHandler = () => {
     setOpenFund(!openFund);
+  };
+  const openRecruitmentHandler = () => {
+    setOpenRecruitments(!openRecruitments);
+  };
+  const openMemberHandler = () => {
+    setOpenMembers(!openMembers);
   };
   const [openModal, setopenModal] = useState(false);
 
@@ -35,8 +49,29 @@ const NGOdashboard = () => {
     setLoading(true);
     // console.log(data)
   };
+  const recruitmentData = async () => {
+    isfetching(true);
+    const rData = await api
+      .get(`/ngo/getAllRecruitments/${user._id}`)
+      .then((res) => res.data);
+    setApplication(rData);
+    isfetching(true);
+  };
+
+  const getMembers = async () => {
+    const res = await api
+      .get(`ngo/getAllMembers/${user._id}`)
+      .then((res) => res.data[0].members);
+    setMembers(res);
+  };
+console.log(members);
+  // useEffect(() => {
+
+  // }, []);
   useEffect(() => {
     getFunds();
+    recruitmentData();
+    getMembers();
   }, []);
   const handleDeleteFund = async (fund) => {
     // console.log(fund._id)
@@ -55,15 +90,10 @@ const NGOdashboard = () => {
           <RaiseFund />
           <PostReqruitment />
         </div>
-        <div className="SignOut">
-          <Button variant="secondary" onClick={logout}>
-            Sign Out
-          </Button>
-        </div>
 
         <div className="responsiveActions">
-            <RaiseFund />
-            <PostReqruitment />
+          <RaiseFund />
+          <PostReqruitment />
         </div>
       </div>
       <div className="dashboard__AdoptionRequests">
@@ -105,6 +135,52 @@ const NGOdashboard = () => {
               handleDeleteFund={handleDeleteFund}
               isLoading={loading}
             />
+          )}
+        </div>
+      </div>
+      <div className="dashboard__AdoptionRequests">
+        <div className="dashboard__AdoptionRequests__Summary">
+          <h3>Recruitment Applications</h3>
+          {openRecruitments ? (
+            <i
+              class="fas fa-chevron-circle-up fa-2x"
+              onClick={openRecruitmentHandler}
+            ></i>
+          ) : (
+            <i
+              class="fas fa-chevron-circle-down fa-2x"
+              onClick={openRecruitmentHandler}
+            ></i>
+          )}
+        </div>
+        <div className="dashboard__AdoptionRequests__Details">
+          {openRecruitments && (
+            <div>
+              <RecruitApplication RecruitmentDatas={application} />
+            </div>
+          )}
+        </div>
+      </div>
+      <div className="dashboard__AdoptionRequests">
+        <div className="dashboard__AdoptionRequests__Summary">
+          <h3>Members</h3>
+          {openMembers ? (
+            <i
+              class="fas fa-chevron-circle-up fa-2x"
+              onClick={openMemberHandler}
+            ></i>
+          ) : (
+            <i
+              class="fas fa-chevron-circle-down fa-2x"
+              onClick={openMemberHandler}
+            ></i>
+          )}
+        </div>
+        <div className="dashboard__AdoptionRequests__Details">
+          {openMembers && (
+            <div>
+              <Members members={members} />
+            </div>
           )}
         </div>
       </div>

@@ -45,14 +45,23 @@
     margin : 0 20px;
 
 }
-
 .navbar__auth a{
     margin : 0 20px;
+    border: none;
+    background: transparent;
     text-decoration: none;
     color: black;
 }
 
-.navbar__auth a:hover{
+.navbar__auth button{
+    margin : 0 20px;
+    border: none;
+    background: transparent;
+    text-decoration: none;
+    color: black;
+}
+
+.navbar__auth button:hover{
     transition: 0.3s ease-out;
     color: utils.color(purple,light);
 }

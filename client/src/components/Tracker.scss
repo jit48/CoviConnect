@@ -1,0 +1,247 @@
+.tracker {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  button{
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 150px;
+    margin: 0 10px 20px 10px;
+    color: white;
+    background-color: #00164d;
+  }
+  h1 {
+    font-family: "Poppins", sans-serif;
+    color: #52006a;
+    font-size: 2.5rem;
+  }
+  .tableFooter{
+    p{
+      margin: 10px 10px;
+    }
+    a{
+      margin-left: 5px;
+      &:hover{
+        transition: 0.5s ease-in-out;
+        color: #7298fa;
+      }
+    }
+  }
+  .trackerData {
+    display: flex;
+    cursor: pointer;
+    p {
+      font-family: "Poppins", sans-serif;
+      color: white;
+      font-size: 1.2rem;
+    }
+    .tracker_confirmed {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      border-radius: 5px;
+      p {
+        color: red;
+      }
+      &:hover {
+        transition: 0.4s ease-in-out;
+        background-color: rgb(255, 227, 227);
+      }
+    }
+    .tracker_active {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      border-radius: 5px;
+      p {
+        color: orange;
+      }
+      &:hover {
+        transition: 0.4s ease-in-out;
+        background-color: rgb(252, 230, 186);
+      }
+      background-color: rgb(255, 241, 214);
+    }
+    .tracker_decased {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      border-radius: 5px;
+      p {
+        color: gray;
+      }
+      &:hover {
+        transition: 0.4s ease-in-out;
+        background-color: rgb(236, 236, 236);
+      }
+    }
+    .tracker_recovered {
+      display: flex;
+      p {
+        color: green;
+      }
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      border-radius: 5px;
+      &:hover {
+        transition: 0.4s ease-in-out;
+        background-color: rgb(212, 240, 212);
+      }
+    }
+    .tracker_FullVaccine {
+      display: flex;
+      p {
+        color: blue;
+      }
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      border-radius: 5px;
+      background-color: rgb(209, 209, 255);
+      &:hover {
+        transition: 0.4s ease-in-out;
+        background-color: rgb(200, 200, 255);
+      }
+    }
+    .tracker_HalfVaccine {
+      display: flex;
+      p {
+        color: #3c5186;
+      }
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      border-radius: 5px;
+      &:hover {
+        transition: 0.4s ease-in-out;
+        background-color: #e2e9fd;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .tracker {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 100vw;
+    h1 {
+      font-family: "Poppins", sans-serif;
+      color: #52006a;
+    }
+    .trackerData {
+      display: flex;
+      cursor: pointer;
+      p {
+        font-family: "Poppins", sans-serif;
+        color: white;
+        font-size: 1.2rem;
+      }
+      .tracker_confirmed {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border-radius: 5px;
+        p {
+          color: red;
+        }
+        &:hover {
+          transition: 0.4s ease-in-out;
+          background-color: rgb(255, 227, 227);
+        }
+      }
+      .tracker_active {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border-radius: 5px;
+        p {
+          color: orange;
+        }
+        &:hover {
+          transition: 0.4s ease-in-out;
+          background-color: rgb(252, 230, 186);
+        }
+        background-color: rgb(255, 241, 214);
+      }
+      .tracker_decased {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border-radius: 5px;
+        p {
+          color: gray;
+        }
+        &:hover {
+          transition: 0.4s ease-in-out;
+          background-color: rgb(236, 236, 236);
+        }
+      }
+      .tracker_recovered {
+        display: flex;
+        p {
+          color: green;
+        }
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border-radius: 5px;
+        &:hover {
+          transition: 0.4s ease-in-out;
+          background-color: rgb(212, 240, 212);
+        }
+      }
+      .tracker_FullVaccine {
+        display: none;
+        p {
+          color: blue;
+        }
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: rgb(209, 209, 255);
+        &:hover {
+          transition: 0.4s ease-in-out;
+          background-color: rgb(200, 200, 255);
+        }
+      }
+      .tracker_HalfVaccine {
+        display: none;
+        p {
+          color: #3c5186;
+        }
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border-radius: 5px;
+        &:hover {
+          transition: 0.4s ease-in-out;
+          background-color: #e2e9fd;
+        }
+      }
+    }
+  }
+}

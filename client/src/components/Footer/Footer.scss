@@ -1,0 +1,118 @@
+.footerContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(0, 25, 49);
+  padding: 20px;
+  color: white;
+  i {
+    color: white;
+  }
+  .gitHub{
+    a{
+      text-decoration: underline;
+      color: white;
+      margin-left:20px;
+      &:hover {
+        transition: 0.5s ease-in-out;
+        color: rgb(155, 155, 155);
+      }
+    }
+  }
+
+  align-items: center;
+}
+.footer {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(0, 25, 49);
+  height: 30vh;
+  padding: 50px;
+  .footer_Logo {
+    font-size: 2rem;
+    color: white;
+  }
+  .footer_navLinks {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    color: white;
+    a {
+      text-decoration: underline;
+      color: white;
+      &:hover {
+        transition: 0.5s ease-in-out;
+        color: rgb(155, 155, 155);
+      }
+    }
+  }
+  .footer__resources {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    color: white;
+    a {
+      text-decoration: underline;
+      color: white;
+      &:hover {
+        transition: 0.5s ease-in-out;
+        color: rgb(155, 155, 155);
+      }
+    }
+  }
+}
+@media only screen and (max-width: 600px) {
+  .footer {
+    width: 100vw;
+    display: flex;
+    align-items: flex-start;
+    background-color: rgb(0, 25, 49);
+    height: 30vh;
+    padding: 15px;
+    .footer_Logo {
+      display: flex;
+      align-items: flex-start;
+      font-size: 1rem;
+      color: white;
+    }
+    .footer_navLinks {
+      display: flex;
+      height: 50%;
+      margin-left: 20px;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      color: white;
+      a {
+        text-decoration: underline;
+        color: white;
+        &:hover {
+          transition: 0.5s ease-in-out;
+          color: rgb(155, 155, 155);
+        }
+      }
+    }
+    .footer__resources {
+      display: flex;
+      height: 50%;
+      margin: 0 20px;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-around;
+      color: white;
+      a {
+        text-decoration: underline;
+        color: white;
+        &:hover {
+          transition: 0.5s ease-in-out;
+          color: rgb(155, 155, 155);
+        }
+      }
+    }
+  }
+}

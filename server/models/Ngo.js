@@ -34,6 +34,9 @@ const NgoSchema = new Schema({
         type: Boolean,
         required: true,
     },
+    members: {
+        type: Array
+    }
 });
 
 export default mongoose.model('ngo', NgoSchema);

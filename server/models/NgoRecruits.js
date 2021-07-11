@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 const RecruitmentSchema = mongoose.Schema({
+    id: String,
     description: String,
     responsibility: String,
     qualification: String,

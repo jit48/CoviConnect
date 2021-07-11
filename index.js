@@ -7,6 +7,7 @@ import mongoose from 'mongoose';
 import volunteerRoutes from './server/routes/Volunteer.js';
 import ngoRoutes from './server/routes/Ngo.js';
 import facilityRoutes from './server/routes/Facility.js';
+import userRoutes from './server/routes/User.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ limit: '30mb', extended: true }));
 app.use('/volunteer', volunteerRoutes);
 app.use('/ngo', ngoRoutes);
 app.use('/facility', facilityRoutes);
+app.use('/users',userRoutes)
 
 mongoose
     .connect(URI, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false })

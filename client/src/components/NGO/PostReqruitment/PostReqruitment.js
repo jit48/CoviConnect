@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import Modal from '../../Modal/Modal';
 import Button from '../../Button/Button';
 import Input from '../../Input/Input';
@@ -8,12 +8,16 @@ import { useAuth } from '../../../contexts/AuthContext';
 const PostReqruitment = () => {
     const {
         user: {
-            user: { name },
+            user: { name, _id },
             token,
         },
     } = useAuth();
+
+
+
     const [openModal, setOpenModal] = useState(false);
     const [data, setData] = useState({
+        id: _id,
         organisation: name,
         description: '',
         responsibility: '',

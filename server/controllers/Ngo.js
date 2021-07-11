@@ -4,6 +4,7 @@ import Ngo from '../models/Ngo.js';
 import Recruitments from '../models/NgoRecruits.js';
 import FundRaise from '../models/FundRaise.js';
 
+
 const getNgoID = (token) => {
     const ngo = jwt.decode(token);
     if (!ngo) throw Error('Error decoding jwt token.');
@@ -193,6 +194,7 @@ export const getAllFunds = async (req, res) => {
 export const postRecruitments = async (req, res) => {
     try {
         const recruitment = new Recruitments({
+            id: req.body.id,
             organisation: req.body.organisation,
             description: req.body.description,
             responsibility: req.body.responsibility,
@@ -262,3 +264,81 @@ export const delAdoption = async (req, res) => {
         console.log(err);
     }
 };
+
+export const getAllRecruitments = async (req,res) =>{
+    const ngoId= req.params.id
+    Recruitments.find({id:ngoId},(err,foundRecruits)=>{
+        if(err){
+            console.log(err)
+        }else{
+            res.status(200).json(foundRecruits)
+        }
+    })
+
+}
+
+export const recruitDelete = async (req, res) => {
+    const id = req.params.id
+    const recruitId = req.params.recruitId
+    Recruitments.findByIdAndUpdate(
+        recruitId,
+        { $pull: { applications: { _id: id } } },
+
+        (err, recruitment) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.status(200).json(recruitment.applications);
+            }
+        }
+    );
+}
+
+export const recruitHire = async (req, res) => {
+    const id = req.params.id
+    const recruitId = req.params.recruitId
+    const ngoId = getNgoID(req.header('x-auth-token'))
+    const volunteer = req.body
+
+    await Ngo.findByIdAndUpdate(
+        ngoId,
+        {$push : {members: volunteer}},
+        {new: true}
+    )
+
+    Recruitments.findByIdAndUpdate(
+        recruitId,
+        { $pull: { applications: { _id: id } } },
+
+        (err, recruitment) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.status(200).json(recruitment.applications);
+            }
+        }
+    );
+}
+
+export const deleteRecruitDrive = (req,res) => {
+    const id = req.params.id;
+    Recruitments.findByIdAndDelete(id, (err, recruitments) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(recruitments);
+        }
+    });
+}
+
+export const getAllMembers = (req, res) => {
+    const id = req.params.id;
+    Ngo.find({_id:id},(err,ngo)=>{
+        if(err){
+            console.log(err)
+        }else{
+            res.status(200).json(ngo)
+            // console.log(ngo[0]);
+        }
+    })
+} 

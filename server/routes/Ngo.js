@@ -14,6 +14,12 @@ import {
     getAllFunds,
     deleteFund,
     delAdoption,
+    getAllRecruitments,
+    recruitHire,
+    recruitDelete,
+    deleteRecruitDrive,
+    getAllMembers
+
 } from '../controllers/Ngo.js';
 
 const router = Router();
@@ -35,5 +41,10 @@ router.get('/adoptionFormRequest', auth, adoptionFormRequest);
 router.get('/getAllFunds/:id', getAllFunds);
 router.delete('/deleteFund/:id', deleteFund);
 router.delete('/deleteAdoptionRequest/:id/:ngoId', delAdoption);
+router.get('/getAllRecruitments/:id',getAllRecruitments);
+router.post('/recruit/hire/:id/:recruitId', recruitHire);
+router.post('/recruit/delete/:id/:recruitId', recruitDelete);
+router.post('/delete/recruit/:id', deleteRecruitDrive);
+router.get('/getAllMembers/:id', getAllMembers);
 
 export default router;

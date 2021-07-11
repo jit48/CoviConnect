@@ -7,6 +7,9 @@
     flex-direction: column;
     gap: 2rem;
     padding: 80px;
+    @media (max-width: 800px) {
+        padding: 10px;
+    }
     h1 {
         font-size: 3rem;
         color: utils.color(black, base);

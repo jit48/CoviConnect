@@ -17,18 +17,18 @@ function Sidebar(props) {
           <NavLink to="/" onClick={closeHandler}>Home</NavLink>
         </div>
         <div className="border">
-          <NavLink to="/" onClick={closeHandler}>Blog</NavLink>
+          <NavLink to="/Coviconnect/CovidResource" onClick={closeHandler}>Get Informed</NavLink>
         </div>
         <div className="border">
-          <NavLink to="/" onClick={closeHandler}>About</NavLink>
+          <NavLink to="/" onClick={closeHandler}>Volunteers</NavLink>
         </div>
         <div className="border">
-          <NavLink to="/" onClick={closeHandler}>Contact</NavLink>
+          <NavLink to="/" onClick={closeHandler}>Ngo</NavLink>
         </div>
       </div>
       <div className="sidebar__auth">
-          <p>SignIn</p>  
-          <NavLink to="/" onClick={closeHandler}><i className="fas fa-2x fa-sign-in-alt"></i></NavLink>
+          <NavLink to="/login" onClick={closeHandler}>SignIn</NavLink>  
+          <NavLink to="/login" onClick={closeHandler}><i className="fas fa-2x fa-sign-in-alt"></i></NavLink>
       </div>
     </div>
   );

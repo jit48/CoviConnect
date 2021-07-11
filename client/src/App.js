@@ -14,6 +14,7 @@ import Register from './pages/Register';
 import DetailDonate from './components/Facility/Donate/DetailDonate';
 import Recruitments from './pages/Recruitments';
 import AdoptionCard from './components/Facility/Adoption/AdoptionCard';
+import KnowledgeTransfer from './pages/KnowledgeTransfer';
 
 const App = () => {
     const { user } = useAuth();
@@ -48,6 +49,7 @@ const App = () => {
                 <PrivateRoute path='/recruitments' component={Recruitments} />
                 <Route path='/facility/:type' component={Facility} />
                 <Route path='/fund/donate/:id' component={DetailDonate} />
+                <Route path="/Coviconnect/CovidResource" exact component = {KnowledgeTransfer} />
                 {user.isAuthorised ? (
                     <Route path={['/login', '/register']} exact>
                         <Redirect to='/dashboard' />

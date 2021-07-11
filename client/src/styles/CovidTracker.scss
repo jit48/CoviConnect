@@ -1,0 +1,68 @@
+@use "../styles/utils";
+.InfoPortal {
+  overflow-x: hidden;
+  .input {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    button {
+      margin: 10px;
+      padding: 10px;
+      height: 40px;
+      border-radius: 10px;
+      box-shadow: 0px 3px 5px 3px rgba(0, 0, 0, 0.22);
+      -webkit-box-shadow: 0px 3px 5px 3px rgba(0, 0, 0, 0.22);
+      -moz-box-shadow: 0px 3px 5px 3px rgba(0, 0, 0, 0.22);
+    }
+    input {
+      width: 60%;
+      height: 40px;
+      padding: 10px;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0px 3px 5px 3px rgba(0, 0, 0, 0.22);
+      -webkit-box-shadow: 0px 3px 5px 3px rgba(0, 0, 0, 0.22);
+      -moz-box-shadow: 0px 3px 5px 3px rgba(0, 0, 0, 0.22);
+      &::placeholder {
+        color: utils.color(grey, dark);
+      }
+    }
+    input[type="text"]:focus {
+      outline: none;
+    }
+  }
+}
+.InfoPortal__CovidTracker {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+.Covid__Vaccination{
+  padding: 40px;
+}
+.CovidTracker {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 20px 0;
+  center {
+    margin: 20px 0;
+  }
+  .CovidTrackerState {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 5px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .Covid__Vaccination{
+    padding: 0px;
+  }
+}

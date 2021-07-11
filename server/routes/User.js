@@ -1,9 +1,7 @@
 import express from "express";
-import { userUpvotes } from "../controllers/User.js";
-
+import {experience, getExperience} from "../controllers/User.js"
 const router = express.Router();
 
-router.post("/user/upVotedPosts", userUpvotes);
-
-
+router.get("/experience" ,  getExperience)
+router.post("/experience", experience);
 export default router;
