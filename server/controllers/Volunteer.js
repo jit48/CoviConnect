@@ -120,3 +120,37 @@ export const posts = async (req, res) => {
         res.status(500).json({ method: 'SERVER', status: res.statusCode, message: error.message });
     }
 };
+
+export const allVolunteer= async (req,res) =>{
+    try{
+        Volunteer.find({},(err,foundVolunteer)=>{
+            if(err){
+                console.log(err);
+            }else{
+                res.status(200).json(foundVolunteer);
+
+            }
+        })
+    }
+    catch(error){
+        res.status(404).json({ message: error.message });
+    }
+};
+
+export const volunteerLeads =async(req,res)=>{
+    try{
+        const id=req.params.id;
+        console.log(req.params.id);
+        Facility.find({volunteerID:id},(err,foundFacilities)=>{
+            if(err){
+                console.log(err);
+            }else{
+                res.status(200).json(foundFacilities);
+                console.log(foundFacilities);
+            }
+        })
+    }
+    catch(error){
+        res.status(404).json({ message: error.message });
+    }
+};

@@ -1,0 +1,52 @@
+@use '../../../styles/utils';
+
+.NgoCard{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin: 10px 20px;
+
+}
+.NgoContent {
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content:space-around;
+    border-radius: 5px;
+    height: 400px;
+    width: 320px;
+    margin: 10px 10px;
+    padding: 25px;
+    box-shadow: 0px 3px 11px 4px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow: 0px 3px 11px 4px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 3px 11px 4px rgba(0, 0, 0, 0.22);
+    .detailsButton{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: utils.color(purple,light);
+        color: white;
+        width: 60%;
+        height: 10%;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 10px 0 0 0;
+    }
+    .contactInfo{
+        i{
+           margin-right: 8px; 
+        }  
+        p{
+            font-size: 15px;
+        } 
+        
+    }
+    
+}
+.NgoName{
+    color: utils.color(purple,light);
+}

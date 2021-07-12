@@ -18,7 +18,9 @@ import {
     recruitHire,
     recruitDelete,
     deleteRecruitDrive,
-    getAllMembers
+    getAllMembers,
+    allNgo,
+    ngoProfile
 
 } from '../controllers/Ngo.js';
 
@@ -46,5 +48,7 @@ router.post('/recruit/hire/:id/:recruitId', recruitHire);
 router.post('/recruit/delete/:id/:recruitId', recruitDelete);
 router.post('/delete/recruit/:id', deleteRecruitDrive);
 router.get('/getAllMembers/:id', getAllMembers);
+router.get('/ngoProfile/:id',ngoProfile);
+router.get('/allNgo',allNgo);
 
 export default router;

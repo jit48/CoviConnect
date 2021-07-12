@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import RaiseFund from "./RaiseFund/RaiseFund";
-import Button from "../Button/Button";
 import RecruitApplication from "./RecruitApplication/RecruitApplication";
 import PostReqruitment from "./PostReqruitment/PostReqruitment";
 import api from "../../axios";
@@ -8,7 +7,6 @@ import AdoptionRequests from "./AdoptionRequests/AdoptionRequests";
 import FundDetails from "./FundDetails/FundDetails";
 import { useAuth } from "../../contexts/AuthContext";
 import Members from "./Members";
-import { Link } from "react-router-dom";
 import "./NGOdashboard.scss";
 
 const NGOdashboard = () => {
@@ -72,7 +70,7 @@ console.log(members);
     getFunds();
     recruitmentData();
     getMembers();
-  }, []);
+  }, [application]);
   const handleDeleteFund = async (fund) => {
     // console.log(fund._id)
     const respVar = await api
@@ -88,7 +86,7 @@ console.log(members);
       <div className="dashboard__Actions">
         <div className="dashboard__Actions__min">
           <RaiseFund />
-          <PostReqruitment />
+          <PostReqruitment onGoing={application.length} recruitment={recruitmentData}/>
         </div>
 
         <div className="responsiveActions">

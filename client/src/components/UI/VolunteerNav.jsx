@@ -28,10 +28,10 @@ function VolunteerNav() {
         <Sidebar isOpen={open} sidebarCloseHandler={sidebarCloseHandler} />
       </div>
       <div className="navbar__links">
-        <NavLink to="/">Profile</NavLink>
-        <NavLink to="/">Blog</NavLink>
-        <NavLink to="/">Volunteers</NavLink>
-        <NavLink to="/">Ngos</NavLink>
+        <NavLink to="/dashboard">Profile</NavLink>
+        <NavLink to="/Coviconnect/CovidResource">Get Informed</NavLink>
+        <NavLink to="/volunteer/allVolunteer">Volunteers</NavLink>
+        <NavLink to="/ngo/allNgo">Ngos</NavLink>
       </div>
 
       <div className="navbar__auth">

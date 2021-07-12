@@ -57,18 +57,25 @@ function Facility() {
       console.log(re);
     });
   };
-  useEffect(()=>{
-    getLocation();
-  },[checked])
-  useEffect(() => {
-    getFacility();
-  }, []);
   var arr = [];
-  facility.forEach(item =>{
-    if(item.info.city === userLocation.address.city.toLowerCase())
-    arr.push(item);
-  })
-  console.log(arr);
+  useEffect(()=>{
+    getFacility();
+    getLocation();
+    
+    facility.forEach(item =>{
+      if(item.info.city === userLocation.address.city.toLowerCase())
+      arr.push(item);
+    })
+  },[checked])
+  // useEffect(() => {
+  //   getFacility();
+  // }, []);
+  // var arr = [];
+  // facility.forEach(item =>{
+  //   if(item.info.city === userLocation.address.city.toLowerCase())
+  //   arr.push(item);
+  // })
+  // console.log(arr);
   const handleChange = (e) => {
     setInput(e.target.value);
   };

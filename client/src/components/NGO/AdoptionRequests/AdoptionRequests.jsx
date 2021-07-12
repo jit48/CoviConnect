@@ -46,7 +46,9 @@ const AdoptionRequests = () => {
                     <img src={kids_adoption} alt="kidsAdoption"></img>
                   </div>
                   <div className="cardHeaderText">
-                    <Button>{newUser.type}</Button>
+                    <h5 style={{
+                    background: 'hsl(100, 60%, 50%)',
+                }}>{newUser.type.toUpperCase()}</h5>
                   </div>
                 </div>
 
@@ -97,7 +99,9 @@ const AdoptionRequests = () => {
                     <img src={pets_adoption} alt="petsAdoption"></img>
                   </div>
                   <div className="cardHeaderText">
-                    <Button>{newUser.type}</Button>
+                    <h5 style={{
+                    background: 'hsl(0, 60%, 50%)',
+                }}>{newUser.type.toUpperCase()}</h5>
                   </div>
                 </div>
                 <p>

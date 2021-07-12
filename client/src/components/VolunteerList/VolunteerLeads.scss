@@ -1,0 +1,14 @@
+@use '../../styles/utils';
+
+.allLeads{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    gap: 1rem;
+    justify-content: center;
+    padding-top: 2rem;
+    margin: 0 auto;
+    width: 70%;
+
+
+}
