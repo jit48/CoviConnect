@@ -5,6 +5,7 @@ import image from '../Images/doctor.png';
 
 
 const Home = () => {
+
     return (
         <div className='Home'>
             <div className='Home__intro'>
@@ -24,11 +25,19 @@ const Home = () => {
                         </div>
                         <div className={facility.type}>{facility.type}</div>
                         <div className='Home__facility__discription'>{facility.discription}</div>
-                        <Link to={`/facility/${facility.link}`}>
-                            <div className='Home__facility__link'>
-                                <Link to={`/facility/${facility.link}`}>Explore</Link>
-                            </div>
-                        </Link>
+                        {facility.type!='Ngo'?
+                            (<Link to={`/facility/${facility.link}`}>
+                                <div className='Home__facility__link'>
+                                    <Link to={`/facility/${facility.link}`}>Explore</Link>
+                                </div>
+                            </Link> )
+                            :
+                            ( <Link to={`/ngo/allNgo`}>
+                                <div className='Home__facility__link'>
+                                    <Link to={`/ngo/allNgo}`}>Explore</Link>
+                                </div>
+                            </Link>)
+                        }
                     </div>
                 ))}
             </div>

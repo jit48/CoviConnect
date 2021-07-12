@@ -13,6 +13,10 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import DetailDonate from './components/Facility/Donate/DetailDonate';
 import Recruitments from './pages/Recruitments';
+import AllNgo from './components/Facility/AllNgo';
+import NGOProfile from './components/NGO/NGOProfile';
+import AllVolunteer from './components/Facility/AllVolunteer';
+import VolunteerLeads from './components/VolunteerList/VolunteerLeads';
 
 
 const App = () => {
@@ -47,8 +51,12 @@ const App = () => {
                     <PrivateRoute path='/dashboard' component={user.isVolunteer ? Volunteer : Ngo} />
                     <Route path='/facility/donate'><Donate funds={funds} /></Route>
                     <PrivateRoute path='/recruitments' component={Recruitments} />
-                    <Route path='/facility/:type' component={Facility} />
+                    <Route path='/facility/:type' exact component={Facility} />
+                    <Route path='/ngo/allNgo/:id' exact component={NGOProfile}/>
+                    <Route path='/ngo/allNgo' exact component={AllNgo} />
                     <Route path='/fund/donate/:id' component={DetailDonate} />
+                    <Route path='/volunteer/allVolunteer' exact component={AllVolunteer}/>
+                    <Route path='/volunteer/allVolunteer/:id' component={VolunteerLeads} />
                     {user.isAuthorised ? (
                         <Route path={['/login', '/register']} exact>
                             <Redirect to='/dashboard' />

@@ -14,7 +14,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const URI = `mongodb+srv://coviConnect:${process.env.DB_PASSWORD}@cluster0.54myv.mongodb.net/coviconnect?retryWrites=true&w=majority`;
 const corsOptions = {
-    origin: process.env.FRONTEND,
+    origin: "*",
 };
 
 app.use(helmet());

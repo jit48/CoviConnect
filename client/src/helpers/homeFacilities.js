@@ -62,6 +62,18 @@ const facilities = [
         link:"donate",
         discription:"Your extra is someone’s need.",
     },
+    {
+        img:Donate,
+        type:"Ngo",
+        link:"ngo",
+        discription:"When you can’t do it alone.",
+    },
+    {
+        img:Donate,
+        type:"Volunteer",
+        link:"volunteer",
+        discription:"When you can’t do it alone.",
+    }
 ]
 
 export default facilities;

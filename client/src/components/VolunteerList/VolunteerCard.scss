@@ -1,0 +1,76 @@
+@use '../../styles/utils';
+.volunteerCard{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin: 10px 20px;
+}
+.volunteerContent{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content:space-around;
+    border-radius: 5px;
+    height: 400px;
+    width: 300px;
+    margin: 10px 10px;
+    padding: 30px;
+    box-shadow: 0px 3px 11px 4px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow: 0px 3px 11px 4px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 3px 11px 4px rgba(0, 0, 0, 0.22);
+    .volunteerInfo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 0 0 15px 0 ;
+        
+    }
+    .volunteerName{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    .avatar{
+        border-radius: 100%;
+        img{
+            border-radius: 100%;
+            width:75px;
+
+        }
+    }
+    h5{
+        font-size: 15px;
+    }
+    p{
+        font-size: 15px;
+    }
+}
+
+.leadButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: utils.color(purple,light);
+    color: white;
+    width: 70%;
+    height: 10%;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px 0 0 0;
+}
+.volunteerContact{
+    display: flex;
+    flex-direction: column;
+    p{
+        i{
+            margin-right: 10px;
+            color: utils.color(purple,light);
+        }
+    }
+}

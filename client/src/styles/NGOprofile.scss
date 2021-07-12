@@ -1,0 +1,82 @@
+@use 'utils';
+.ngoContent{
+    // 
+    box-shadow: 0px 3px 11px 4px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow: 0px 3px 11px 4px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 3px 11px 4px rgba(0, 0, 0, 0.22);
+    @media (max-width: 1200px) {
+        box-shadow: none;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    // .ngoInfo{
+    //     display: flex;
+    //     flex-direction:row; 
+    //     justify-content: space-around;
+    //     align-items: center;
+    //     padding: 50px 0 50px 0;
+    //     .ngoImage{
+    //         display: flex;
+    //         justify-content: flex-end;
+    //     }
+    //     .ngoAbout{
+    //         h4{
+    //             font-size: 25px;
+    //         }
+    //         margin: 90px 40px 90px 90px;
+    //     }
+    // }
+    // img{
+    //     margin:0 50px 0 30px;
+    //     width: 500px;
+    //     height: 400px;
+    // }
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 40px 30px 50px 30px;
+    img{
+        width: 530px;
+        height: 400px;
+        @media (max-width: 540px) {
+            width: 300px;
+            height: 250px;
+        }
+    }
+
+    .ngoDetails{
+        margin: 0 40px 0 80px;
+    }
+}
+
+.ngoName{
+    font-size: 40px;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: utils.color(purple,light);
+   text-align: center;
+}
+.ngoAbout{
+    margin: 40px 0 40px 0;
+    text-align: center;
+}
+.contactInfo{
+    h4{
+        margin: 0 0 10px 0;
+    }
+    .contact{
+        margin: 0 0 10px 30px;
+        i{
+            margin-right: 10px ;
+            color: utils.color(purple,light);
+        }
+    }
+    .address{
+        text-transform: capitalize;
+        p{
+            margin: 0 0 10px 30px;
+        }
+        
+    }
+}

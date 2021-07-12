@@ -46,7 +46,7 @@ function Facility() {
       {matches.length > 0
         ? matches.map((item) => {
             if (item.type === "bed")
-              return <BedCard key={item._id} facility={item} />;
+              return <BedCard key={item._id} facility={item.info} />;
             if (item.type === "oxygen")
               return <OxygenCard key={item._id} facility={item.info} />;
             if (item.type === "bloodBank")

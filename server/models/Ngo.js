@@ -27,6 +27,10 @@ const NgoSchema = new Schema({
         type: String,
         required: true,
     },
+    file: {
+        type: String,
+        required: true,
+    },
 });
 
 export default mongoose.model('ngo', NgoSchema);

@@ -48,9 +48,9 @@ export const login = async (req, res) => {
 };
 
 export const register = async (req, res) => {
-    const { name, email, password, contact, about, address } = req.body;
+    const { name, email, password, contact, about, address,file } = req.body;
 
-    if (!name || !email || !password || !contact || !about || !address) {
+    if (!name || !email || !password || !contact || !about || !address ||!file) {
         return res.status(400).json({ method: 'SIGN_UP', status: res.statusCode, message: 'Required fields are empty. Enter all fields.' });
     }
 
@@ -83,6 +83,7 @@ export const register = async (req, res) => {
             contact,
             about,
             address,
+            file,
         });
 
         const savedNgo = await newNgo.save();
@@ -116,5 +117,34 @@ export const adoptions = async (req, res) => {
         res.status(200).json(adoptions);
     } catch (error) {
         res.status(500).json({ method: 'SERVER', status: res.statusCode, message: error.message });
+    }
+};
+
+
+
+export const ngoProfile = async (req,res) => {
+    try{
+        const id = req.params.id;
+        const ngo= await Ngo.findById(id).select('-password')
+        res.status(200).json(ngo);  
+        
+    }catch(error){
+        res.status(404).json({ message: error.message });
+    }
+}
+
+export const allNgo= async (req,res) =>{
+    try{
+        Ngo.find({},{password: 0, file: 0},(err,foundNgos)=>{
+            if(err){
+                console.log(err);
+            }else{
+                res.status(200).json(foundNgos);
+
+            }
+        })
+    }
+    catch(error){
+        res.status(404).json({ message: error.message });
     }
 };

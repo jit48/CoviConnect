@@ -1,9 +1,10 @@
-import { useRef } from 'react';
+import { useRef ,useState} from 'react';
 import styles from './Register.module.scss';
 import api from '../../axios';
-
+import FileBase from 'react-file-base64';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
+
 
 const Ngo = () => {
     const nameRef = useRef();
@@ -14,13 +15,14 @@ const Ngo = () => {
     const passwordRef = useRef();
     const confirmpasswordRef = useRef();
 
+    const [ data, setData ] = useState('');
     const ngoHandler = async (e) => {
         e.preventDefault();
 
         if (passwordRef.current.value !== confirmpasswordRef.current.value) {
             return console.log("passwords didn't match");
         }
-
+        
         const newNgo = {
             name: nameRef.current.value,
             about: aboutRef.current.value,
@@ -28,9 +30,11 @@ const Ngo = () => {
             email: emailRef.current.value,
             contact: contactRef.current.value,
             password: passwordRef.current.value,
+            file: data,
         };
-        console.log(newNgo);
 
+        // console.log(newNgo);
+        console.log(data);
         const res = await api.post('/ngo/register', newNgo).then((res) => res.data);
         console.log(res);
     };
@@ -45,6 +49,7 @@ const Ngo = () => {
             <Input label='Contact' type='tel' required={true} innerRef={contactRef} />
             <Input label='Password' type='password' required={true} innerRef={passwordRef} />
             <Input label='Confirm Password' type='password' required={true} innerRef={confirmpasswordRef} />
+            <FileBase type="file" multiple={false} onDone={({ base64 }) => setData( base64 )} /> 
             <div className={styles.registerbutton}>
                 <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta, eum!</span>
                 <Button variant='primary' type='submit'>
