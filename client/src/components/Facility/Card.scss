@@ -1,0 +1,111 @@
+@use '../../styles/utils';
+
+.Card {
+    display: flex;
+    margin: 20px 0;
+    padding: 10px;
+    height: 30vh;
+    border-radius: 5px;
+    box-shadow: 0px 3px 11px 4px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow: 0px 3px 11px 4px rgba(0, 0, 0, 0.22);
+    -moz-box-shadow: 0px 3px 11px 4px rgba(0, 0, 0, 0.22);
+    align-items: center;
+    b {
+        color: utils.color(purple, light);
+    }
+}
+.info{
+  margin: 5px ;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  border-radius: 5px;
+}
+
+.info p {
+    margin: 10px 0;
+}
+.location{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  color: utils.color(purple,light);
+}
+.location h1{
+  margin : 5px 20px ;
+}
+.location p{
+  margin : 5px 20px ;
+}
+.location i{
+  color: red;
+  margin: 0 5px 0 0;
+}
+.creator {
+    display: flex;
+    align-items: center;
+}
+
+.creator{ h1,h2,h3{
+  margin : 5px 20px ;
+}
+}
+.creator p{
+  margin-right:10px;
+}
+.hospital i{
+  color: red;
+  margin: 0 5px 0 0;
+  // transform : rotate(-30deg);
+}
+.hospital p{
+  margin : 5px 20px ;
+  color: utils.color(purple,light);
+}
+.Name{
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.Name i{
+  color: utils.color(grey,light);
+  margin : 5px 10px ;
+}
+
+.creatorName{
+  color: white;
+  display: flex;
+  align-items: center;
+  background-color: utils.color(purple,lighter);
+  border-radius: 5px;
+  cursor: pointer;
+  margin : 5px 3px 5px 20px;
+}
+
+.creatorName:hover{
+  transition: 0.5s ease-out;
+  background-color: utils.color(purple,dark);
+}
+.creatorDate{
+  color: white;
+  display: flex;
+  align-items: center;
+  background-color: utils.color(purple,lighter);
+  border-radius: 5px;
+  margin : 5px 3px 5px 20px;
+}
+@media only screen and (max-width: 600px) {
+  .info{
+   margin: 0 0 0 0;
+  }
+  .creator{
+    flex-direction: column;
+    align-items: flex-start;
+    margin:  0 0 5px 0;
+  }
+  .Card{
+    height: 55vh;
+  }
+}

@@ -1,0 +1,33 @@
+.form {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  gap: 1rem;
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+  .gender {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .registerbutton {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+
+    span {
+      width: 30ch;
+      font-size: 0.8rem;
+      text-align: right;
+    }
+  }
+}

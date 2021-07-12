@@ -7,6 +7,7 @@
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
     font-family: utils.$font-regular;
+    // overflow-x: hidden;
 }
 
 :root {
@@ -27,8 +28,18 @@ h6 {
     display: none;
 }
 
+::placeholder {
+    color: utils.color(grey, base);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 body {
     width: 100%;
     font-size: 1rem;
     scroll-behavior: smooth;
+    background-color: utils.color(grey, base);
 }

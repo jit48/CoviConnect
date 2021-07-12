@@ -1,0 +1,75 @@
+@use "../../../styles/utils";
+
+
+.sidebar{
+    position:fixed;
+    height :100vh;
+    width: 100vw;
+    background-color: utils.color(purple,light);
+    top:0;
+}
+
+.open{
+    transition: 0.1s ease-out;
+    right: 0vw;
+}
+.close{
+    transition: 0.1s ease-out;
+    right: -100vw;
+}
+
+.sidebar i{
+    color: white;
+    margin: 0 20px;
+}
+
+.sidebar__exit{
+    display: flex;
+    width: 100%;
+    height: 10vh;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid utils.color(grey,base);
+}
+
+.sidebar__exit p{
+    color: white;
+    font-size: 1.2rem;
+    margin: 0 20px;
+}
+
+.sidebar__links{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.sidebar__links a{
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.border{
+    width: 60vw;
+    height: 10vh;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid white
+}
+
+.sidebar__auth{
+    height: 10vh;
+    display: flex;
+    align-items:center;
+    justify-content: flex-end;
+}
+
+.sidebar__auth a{
+    color: white;
+    font-size: 1rem;
+}

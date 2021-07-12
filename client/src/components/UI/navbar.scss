@@ -1,0 +1,85 @@
+@use '../../styles/utils';
+
+
+.navbar{
+    position: sticky;
+    top: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem;
+    z-index: 2;
+    background-color: utils.color(grey,light);
+    box-shadow: 1px 1px 8px 1px #888888;
+}
+.navbar__logo{
+    // margin: 0 20px;
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar__logo a{
+    text-decoration: none;
+    color: utils.color(purple,light);
+}
+.navbar__links a{
+    margin : 0 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.navbar__links a:hover{
+    transition: 0.3s ease-out;
+    color: utils.color(purple,light);
+}
+
+.hamburger{
+    display: none;
+}
+
+.navbar__auth{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin : 0 20px;
+
+}
+.navbar__auth a{
+    margin : 0 20px;
+    border: none;
+    background: transparent;
+    text-decoration: none;
+    color: black;
+}
+
+.navbar__auth button{
+    margin : 0 20px;
+    border: none;
+    background: transparent;
+    text-decoration: none;
+    color: black;
+}
+
+.navbar__auth button:hover{
+    transition: 0.3s ease-out;
+    color: utils.color(purple,light);
+}
+
+.navbar__auth i{
+    color: utils.color(purple,light);
+}
+@media only screen  and (max-width: 600px){
+    .navbar__links{
+        display: none;
+    }
+    .navbar__auth{
+        display: none;
+    }
+    .hamburger{
+        display: block;
+    }
+    .hamburger i{
+        color: utils.color(purple,light);
+    }
+}

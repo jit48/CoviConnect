@@ -1,0 +1,92 @@
+@use '../../../styles/utils';
+
+.Adoption {
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+
+.AdoptionCard {
+  margin: 30px 20px;
+  box-shadow: 1px 1px 4px 1px #888888;
+  width: 550px;
+  padding: 10px;
+  border-radius: 5px;
+  height: 350px;
+
+  h5 {
+    pointer-events: none;
+    user-select: none;
+    border-radius: 0.3em;
+    color: utils.color(grey, lighter);
+    width: max-content;
+    padding: 0.25em 0.5em;
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+}
+}
+
+/* .dashboard{
+    display: flex;
+    flex-direction: column;
+} */
+
+.Adoption p {
+  margin: 10px 0;
+}
+
+.adoptUserInfo {
+  display: flex;
+}
+
+.adoptUserInfo p {
+  margin-right: 20px;
+}
+
+.adoptInfo {
+  display: flex;
+}
+
+.adoptInfo p {
+  margin-right: 20px;
+}
+
+a {
+  color: utils.color(purple, light);
+}
+
+.adoptionImage img {
+  width: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+.cardHeader {
+  display: flex;
+}
+
+.cardHeaderText {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.deleteAdoption {
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .AdoptionCard {
+    margin: 30px 0;
+    box-shadow: 1px 1px 4px 1px #888888;
+    width: 300px;
+    padding: 10px;
+    border-radius: 5px;
+    height: 370px;
+  }
+}

@@ -1,0 +1,32 @@
+@use "../../../styles/utils";
+
+// .upVotes{
+//     height: 20px;
+// }
+
+.score{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20px;
+}
+
+.score i{
+    margin: 0;
+    padding: 0;
+    color: utils.color(purple,light);
+}
+
+.red{
+    color: red
+}
+// .spinner{
+//     width: 20px;
+// }
+
+@media only screen and (max-width: 600px) {
+    .score{
+        margin: 0px 0px 0px 10px;
+    }
+  }
