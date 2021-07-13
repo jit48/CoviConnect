@@ -16,7 +16,6 @@ import PharmacyCard from "../components/Facility/PharmacyCard";
 import AmbulanceCard from "../components/Facility/Ambulance/AmbulanceCard";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Donate from "../components/Facility/Donate/Donate";
-import AdoptionCard from "../components/Facility/Adoption/AdoptionCard";
 
 function Facility() {
   const { type } = useParams();
