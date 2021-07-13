@@ -35,7 +35,7 @@ function KnowledgeTransfer() {
   const [experience,setExperience] = useState([]);
   const [clickStateName, setClickStateName] = useState("India");
   const [isLoading, setIsLoading] = useState(true);
-  const [pin, setPin] = useState("");
+  const [pin, ] = useState("");
 
   const getExperience = async () => {
     const res = await api.get("/users/experience").then(res => res.data);
@@ -60,9 +60,7 @@ function KnowledgeTransfer() {
     getCovidData();
     getExperience();
   }, []);
-  const handleChange = (e) => {
-    setPin(e.target.value);
-  };
+  
   const handleClickHandler = (data, state) => {
     setClickData(data[1]);
     setClickStateName(state);

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import api from '../../axios';
 
@@ -32,7 +32,7 @@ const Apply = (props) => {
         });
     };
     const applicationHandler = async () => {
-        const res = await api
+        await api
             .post('/ngo/application', { ...data, recruitmentId: props.applicationId }, { headers: { 'x-auth-token': token } })
             .then((res) => res.data);
             setOpenModal((prevState) =>{

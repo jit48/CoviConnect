@@ -7,7 +7,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import { stateData } from "../../helpers/stateCodes";
+
 
 const useStyles = makeStyles({
   table: {
@@ -19,15 +19,11 @@ const useStyles = makeStyles({
 });
 
 export default function DenseTable(props) {
-  const { data, handleClick, onClick,date } = props;
+  const { data, date } = props;
   var rows = [];
   rows=data;
   console.log(rows);
   const classes = useStyles();
-  const handleStateClick = (row, state) => {
-    handleClick(row, state);
-    onClick();
-  };
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} size="small" aria-label="a dense table">

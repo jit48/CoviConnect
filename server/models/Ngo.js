@@ -39,7 +39,6 @@ const NgoSchema = new Schema({
     },
     file: {
         type: String,
-        required: true,
     }
 });
 

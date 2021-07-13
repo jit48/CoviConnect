@@ -13,7 +13,7 @@ function VolunteerCard(props) {
             <div className="volunteerContent">
                 <div className="volunteerInfo">
                     <div className="avatar">
-                        <img src={volunteer.gender=='female'?volunteerFemale:volunteerMale} alt=""/>
+                        <img src={volunteer.gender==='female'?volunteerFemale:volunteerMale} alt=""/>
                     </div>
                     <div className="volunteerName">
                         <h4>{volunteer.name}</h4>
