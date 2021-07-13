@@ -4,7 +4,7 @@ import { useAuth } from '../contexts/AuthContext';
 import styles from '../styles/Volunteer.module.scss';
 import api from '../axios';
 
-import Input from '../components/Input/Input';
+
 import Button from '../components/Button/Button';
 import CreatePost from '../components/Volunteer/CreatePost/CreatePost';
 import Post from '../components/Volunteer/Post/Post';

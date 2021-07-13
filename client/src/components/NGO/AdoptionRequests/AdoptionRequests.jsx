@@ -9,16 +9,16 @@ import api from '../../../axios'
 const AdoptionRequests = () => {
 
   const {
-    user: { user, isAuthorised, token },
-    logout,
+    user: { user},
   } = useAuth()
 
-  const [openModal, setopenModal] = useState(false)
+  const [openModal, ] = useState(false)
 
   const [adoptionData, setAdoptionData] = useState(user.adoptionForm)
 
   useEffect(()=>{
     console.log(user.adoptionForm)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[adoptionData])
 
   const deleteAdoptionData = async (newUser) => {
@@ -38,7 +38,7 @@ const AdoptionRequests = () => {
       {user.isAdoption &&
         adoptionData.map((newUser) => {
           
-          if (newUser.type == 'kids') {
+          if (newUser.type === 'kids') {
             return (
               <div className="AdoptionCard">
                 <div className="cardHeader">
@@ -46,41 +46,43 @@ const AdoptionRequests = () => {
                     <img src={kids_adoption} alt="kidsAdoption"></img>
                   </div>
                   <div className="cardHeaderText">
-                    <Button>{newUser.type}</Button>
+                    <h5 style={{
+                    background: 'hsl(100, 60%, 50%)',
+                }}>{newUser.type.toUpperCase()}</h5>
                   </div>
                 </div>
 
                 <p>
-                  <a>Name of adopter :</a>
+                  Name of adopter :
                   {newUser.name}
                 </p>
 
                 <p>
-                  <a>Marital status of adopter :</a>
+                  Marital status of adopter :
                   {newUser.maritalStatus}
                 </p>
 
                 <div className="adoptUserInfo">
                   <p>
-                    <a>
+                    
                       <i class="fas fa-phone-alt"></i>{' '}
-                    </a>{' '}
+                    {' '}
                     {newUser.phNum}
                   </p>{' '}
                   <p>
-                    <a>
+                    
                       <i class="fas fa-envelope-open"></i>
-                    </a>{' '}
+                    {' '}
                     {newUser.email}
                   </p>{' '}
                 </div>
 
                 <div className="adoptInfo">
                   <p>
-                    <a>No. of adoptions requested:</a> {newUser.noOfAdopions}
+                    No. of adoptions requested: {newUser.noOfAdopions}
                   </p>
                   <p>
-                    <a>Age group of kids :</a> {newUser.age}
+                    Age group of kids: {newUser.age}
                   </p>
                 </div>
                 <div className="deleteAdoption">
@@ -89,7 +91,7 @@ const AdoptionRequests = () => {
               </div>
             )
           }
-          if (newUser.type == 'pets') {
+          else {
             return (
               <div className="AdoptionCard">
                 <div className="cardHeader">
@@ -97,36 +99,38 @@ const AdoptionRequests = () => {
                     <img src={pets_adoption} alt="petsAdoption"></img>
                   </div>
                   <div className="cardHeaderText">
-                    <Button>{newUser.type}</Button>
+                    <h5 style={{
+                    background: 'hsl(0, 60%, 50%)',
+                }}>{newUser.type.toUpperCase()}</h5>
                   </div>
                 </div>
                 <p>
-                  <a>Name of adopter :</a> {newUser.name}
+                  Name of adopter: {newUser.name}
                 </p>
                 <div className="adoptUserInfo">
                   <p>
-                    <a>
+                    
                       <i class="fas fa-phone-alt"></i>
-                    </a>{' '}
+                    {' '}
                     {newUser.phNum}
                   </p>{' '}
                   <p>
-                    <a>
+                    
                       <i class="fas fa-envelope-open"></i>
-                    </a>{' '}
+                    {' '}
                     {newUser.email}
                   </p>
                 </div>
                 <div className="adoptInfo">
                   <p>
-                    <a>No. of adoptions requested:</a> {newUser.noOfAdopions}
+                    No. of adoptions requested: {newUser.noOfAdopions}
                   </p>
                   <p>
-                    <a>Age group of pets :</a> {newUser.age}
+                    Age group of pets : {newUser.age}
                   </p>
                 </div>
                 <p>
-                  <a>Cats/Dogs/Others:</a> {newUser.animalType}
+                  Cats/Dogs/Others: {newUser.animalType}
                 </p>
                 <div className="deleteAdoption">
                   <Button onClick={()=>deleteAdoptionData(newUser)}>Close Request</Button>

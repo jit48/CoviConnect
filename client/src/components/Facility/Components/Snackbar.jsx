@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Snackbars(props) {
     const {showSnackBar,handleSnackBarCLose} = props
   const classes = useStyles();
-  const [open, setOpen] = React.useState(showSnackBar);
+  const [open, ] = React.useState(showSnackBar);
 console.log(showSnackBar)
 //   const handleOpen = () => {
 //     setOpen(true);

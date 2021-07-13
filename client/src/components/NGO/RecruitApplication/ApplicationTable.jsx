@@ -121,6 +121,7 @@ const ApplicationTable = (props) => {
 
         useEffect(()=>{
           getApplications()
+          // eslint-disable-next-line react-hooks/exhaustive-deps
         },[applications])
 
         return (

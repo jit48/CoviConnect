@@ -342,3 +342,30 @@ export const getAllMembers = (req, res) => {
         }
     })
 } 
+
+export const ngoProfile = async (req,res) => {
+    try{
+        const id = req.params.id;
+        const ngo= await Ngo.findById(id).select('-password')
+        res.status(200).json(ngo);  
+        
+    }catch(error){
+        res.status(404).json({ message: error.message });
+    }
+}
+
+export const allNgo= async (req,res) =>{
+    try{
+        Ngo.find({},{password: 0, file: 0},(err,foundNgos)=>{
+            if(err){
+                console.log(err);
+            }else{
+                res.status(200).json(foundNgos);
+
+            }
+        })
+    }
+    catch(error){
+        res.status(404).json({ message: error.message });
+    }
+};

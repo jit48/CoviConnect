@@ -6,7 +6,6 @@ import Symptoms from "./Symptoms";
 import Info from "../../Images/Info.png";
 function Information() {
   const [param, setParam] = useState("Overview");
-  const [active,setActive] = useState(true)
   const renderSwitch = (param) => {
     switch (param) {
       case "Overview": {

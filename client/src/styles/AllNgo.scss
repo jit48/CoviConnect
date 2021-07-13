@@ -1,0 +1,9 @@
+@use 'utils';
+
+.ngoCard{
+    @include utils.center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}

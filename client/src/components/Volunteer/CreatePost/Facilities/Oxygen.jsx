@@ -15,6 +15,7 @@ const Oxygen = (props) => {
         serviceProvider: '',
         location: '',
         contactNum: 0,
+        city: ''
     });
 
     const [postSuccess, setPostSuccess] = useState('none');
@@ -58,6 +59,14 @@ const Oxygen = (props) => {
                         label='Contact Number'
                         onChange={(event) => {
                             setData({ ...data, contactNum: event.target.value });
+                        }}
+                    />
+                    <br/>
+                    <Input
+                        type='text'
+                        label='City'
+                        onChange={(event) => {
+                            setData({ ...data, city: event.target.value });
                         }}
                     />
                     <br />

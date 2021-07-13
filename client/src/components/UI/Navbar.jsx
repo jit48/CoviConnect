@@ -25,8 +25,8 @@ function Navbar() {
       <div className="navbar__links">
         <NavLink to="/">Home</NavLink>
         <NavLink to="/Coviconnect/CovidResource">Get Informed</NavLink>
-        <NavLink to="/">Volunteers</NavLink>
-        <NavLink to="/">Ngos</NavLink>
+        <NavLink to="/volunteer/allVolunteer">Volunteers</NavLink>
+        <NavLink to="/ngo/allNgo">Ngos</NavLink>
       </div>
 
       <div className="navbar__auth">

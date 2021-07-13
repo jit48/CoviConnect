@@ -7,7 +7,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { stateData } from '../../helpers/stateCodes';
 
 
 const useStyles = makeStyles({
@@ -20,9 +19,7 @@ const useStyles = makeStyles({
   });
 
 const Members = (props) => {
-    var rows = []
     const {members} = props;
-    rows=members;
 
   const classes = useStyles();
     

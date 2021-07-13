@@ -1,10 +1,9 @@
 import axios from "axios";
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import VaccineTable from "./UI/VaccineTable";
 
 function VaccineSlots(props) {
-  const { pinCode } = props;
   const [data, setData] = useState([]);
   const [input, setInput] = useState("");
   const date = new Date();

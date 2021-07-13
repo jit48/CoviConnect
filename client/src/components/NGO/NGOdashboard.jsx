@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import RaiseFund from "./RaiseFund/RaiseFund";
-import Button from "../Button/Button";
 import RecruitApplication from "./RecruitApplication/RecruitApplication";
 import PostReqruitment from "./PostReqruitment/PostReqruitment";
 import api from "../../axios";
@@ -8,7 +7,6 @@ import AdoptionRequests from "./AdoptionRequests/AdoptionRequests";
 import FundDetails from "./FundDetails/FundDetails";
 import { useAuth } from "../../contexts/AuthContext";
 import Members from "./Members";
-import { Link } from "react-router-dom";
 import "./NGOdashboard.scss";
 
 const NGOdashboard = () => {
@@ -17,13 +15,12 @@ const NGOdashboard = () => {
   const [fundData, setFundData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [application, setApplication] = useState([{members:""}]);
-  const [fetching, isfetching] = useState(false);
+  const [ , isfetching] = useState(false);
   const [openMembers, setOpenMembers] = useState(false);
   const [members, setMembers] = useState([]);
 
   const {
-    user: { user, isAuthorised, token },
-    logout,
+    user: { user},
   } = useAuth();
   const openFundHandler = () => {
     setOpenFund(!openFund);
@@ -72,7 +69,8 @@ console.log(members);
     getFunds();
     recruitmentData();
     getMembers();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [application]);
   const handleDeleteFund = async (fund) => {
     // console.log(fund._id)
     const respVar = await api
@@ -88,7 +86,7 @@ console.log(members);
       <div className="dashboard__Actions">
         <div className="dashboard__Actions__min">
           <RaiseFund />
-          <PostReqruitment />
+          <PostReqruitment onGoing={application.length} recruitment={recruitmentData}/>
         </div>
 
         <div className="responsiveActions">
