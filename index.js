@@ -24,7 +24,7 @@ app.use(express.urlencoded({ limit: '30mb', extended: true }));
 app.use('/volunteer', volunteerRoutes);
 app.use('/ngo', ngoRoutes);
 app.use('/facility', facilityRoutes);
-app.use('/users',userRoutes)
+app.use('/users', userRoutes);
 
 mongoose
     .connect(URI, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false })
