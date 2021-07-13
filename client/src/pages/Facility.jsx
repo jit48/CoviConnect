@@ -1,9 +1,8 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import Switch from '@material-ui/core/Switch';
 import api from '../axios';
-import axios from 'axios';
+
 import '../styles/Facility.scss';
 
 import SideNav from './UI/SideNav';
@@ -19,11 +18,12 @@ import Donate from '../components/Facility/Donate/Donate';
 
 function Facility() {
     const { type } = useParams();
-    const [checked, isChecked] = useState(false);
+    const [checked, ] = useState(false);
     const [facility, setfacility] = useState([]);
     const [loading, setLoading] = useState(false);
     const [input, setInput] = useState('');
-    const [userLocation, setUserLocation] = useState({ address: { city: '' } });
+    const [userLocation,] = useState({ address: { city: '' } });
+
 
     function compare(a, b) {
         if (a.votes > b.votes) {
@@ -41,49 +41,24 @@ function Facility() {
         facility.sort(compare);
         setfacility(facility);
     };
-    const getLocation = () => {
-        return window.navigator.geolocation.getCurrentPosition(async (position) => {
-            console.log(position);
-            console.log('hi');
-            setLoading(false);
-            const re = await axios
-                .get(
-                    `https://us1.locationiq.com/v1/reverse.php?key=pk.6c3dbb323e37a1f86081c3d059dcbdc7&lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json`
-                )
-                .then((res) => res.data);
-            setUserLocation(re);
-            setLoading(true);
-            console.log(re);
-        });
-    };
-    useEffect(() => {
-        getLocation();
-    }, [checked]);
+
     useEffect(() => {
         getFacility();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    var arr = [];
-    facility.forEach((item) => {
-        if(userLocation.address.city){
-            if (item.info.city === userLocation.address.city?.toLowerCase()) arr.push(item);
-        }
-    });
-    console.log(arr);
+
     const handleChange = (e) => {
         setInput(e.target.value);
     };
+
     const matches = facility.filter((d) => {
         const string = input.toString().replace(/\\/g, '\\\\');
         const regex = new RegExp(`^${string}`, 'gi');
         const reg = new RegExp(`${string}`, 'gi');
         return d.info.serviceProvider.match(regex) || d.info.city.match(reg);
     });
-    const handleClick = () => {
-        isChecked(!checked);
 
-        setLoading(true);
-    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
     };
@@ -91,31 +66,18 @@ function Facility() {
         <div className='facilitySearch-page'>
             <div className='facility-sideNav'>
                 <SideNav />
+
             </div>
             <div className='facility'>
+                <br />
+                <h2>{`Search for ${type.toUpperCase()}`}</h2>
                 <div className='searchBar'>
                     <input type='text' placeholder={`Search for ${type} Facilities Arround You By city, Hopital Name`} onChange={handleChange} />
                     <button type='submit' onSubmit={handleSubmit}>
                         Search
                     </button>
                 </div>
-                <div className='switch'>
-                    <p>
-                        <b>
-                            <span className='numberFont'>{`${checked ? arr.length : matches.length} `}</span> Results Found
-                        </b>
-                    </p>
-                    <div className='displayFlex'>
-                        <p>{`${checked ? 'Disable' : 'Enable'} Location Filter`}</p>
-                        <Switch
-                            checked={checked}
-                            onChange={handleClick}
-                            name='checkedA'
-                            color='primary'
-                            inputProps={{ 'aria-label': 'secondary checkbox' }}
-                        />
-                    </div>
-                </div>
+
                 {checked ? (
                     loading ? (
                         matches.map((item) => {
@@ -158,6 +120,7 @@ function Facility() {
                     </div>
                 )}
             </div>
+
         </div>
     );
 }

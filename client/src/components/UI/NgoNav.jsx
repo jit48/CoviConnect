@@ -5,7 +5,11 @@ import { useAuth } from "../../contexts/AuthContext";
 import Sidebar from "./sidebar/Sidebar";
 
 function NgoNav() {
-  const { logout } = useAuth();
+  const { logout, user:{
+    user:{
+      _id
+    }
+  } } = useAuth();
   const [open, isOpen] = useState(false);
 
   const sidebarCloseHandler = () => {
@@ -25,7 +29,7 @@ function NgoNav() {
         <Sidebar isOpen={open} sidebarCloseHandler={sidebarCloseHandler} />
       </div>
       <div className="navbar__links">
-        <NavLink to="/">Profile</NavLink>
+        <NavLink to={`/ngo/allNgo/${_id}`}>Profile</NavLink>
         <NavLink to="/dashboard">Dashboard</NavLink>
         <NavLink to="/volunteer/allVolunteer">Volunteers</NavLink>
         <NavLink to="/ngo/allNgo">Ngos</NavLink>

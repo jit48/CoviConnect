@@ -74,9 +74,9 @@ export const login = async (req, res) => {
 };
 
 export const register = async (req, res) => {
-    const { name, email, password, contact, about, address } = req.body;
+    const { name, email, password, contact, about, address, file } = req.body;
 
-    if (!name || !email || !password || !contact || !about || !address) {
+    if (!name || !email || !password || !contact || !about || !address || !file) {
         return res.status(400).json({
             method: 'SIGN_UP',
             status: res.statusCode,
@@ -123,6 +123,7 @@ export const register = async (req, res) => {
             contact,
             about,
             address,
+            file
         });
 
         const savedNgo = await newNgo.save();
