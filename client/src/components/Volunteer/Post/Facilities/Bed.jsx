@@ -25,7 +25,7 @@ const Bed = (props) => {
                 <b>
                     <em>Address : </em>
                 </b>
-                {props.post.info.address}
+                {props.post.info.location}
             </p>
             <p>
                 <b>

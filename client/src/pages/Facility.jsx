@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import api from '../axios';
+
 import '../styles/Facility.scss';
 
 import SideNav from './UI/SideNav';
@@ -22,6 +23,7 @@ function Facility() {
     const [loading, setLoading] = useState(false);
     const [input, setInput] = useState('');
     const [userLocation,] = useState({ address: { city: '' } });
+
 
     function compare(a, b) {
         if (a.votes > b.votes) {
@@ -56,6 +58,7 @@ function Facility() {
         return d.info.serviceProvider.match(regex) || d.info.city.match(reg);
     });
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
     };
@@ -63,6 +66,7 @@ function Facility() {
         <div className='facilitySearch-page'>
             <div className='facility-sideNav'>
                 <SideNav />
+
             </div>
             <div className='facility'>
                 <br />
@@ -116,6 +120,7 @@ function Facility() {
                     </div>
                 )}
             </div>
+
         </div>
     );
 }
