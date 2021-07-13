@@ -20,22 +20,22 @@ const getVolunteerName = async (token) => {
 };
 
 export const postBed = async (req, res) => {
-    try {
-        const postData = new Facility({
-            volunteerID: getVolunteerID(req.header('x-auth-token')),
-            volunteerName: await getVolunteerName(req.header('x-auth-token')),
-            type: 'bed',
-            votes: 0,
-            info: {
-                hospitalName: req.body.info.hospitalName,
-                serviceProvider: req.body.info.hospitalName,
-                date: new Date().toLocaleString(),
-                location: req.body.info.location,
-                city: req.body.info.city.toLowerCase(),
-                contactNum: req.body.info.contactNum,
-                beds: req.body.info.beds,
-            },
-        });
+  try {
+    const postData = new Facility({
+      volunteerID: getVolunteerID(req.header("x-auth-token")),
+      volunteerName: await getVolunteerName(req.header("x-auth-token")),
+      type: "bed",
+      votes: 0,
+      info: {
+        hospitalName: req.body.info.hospitalName,
+        serviceProvider: req.body.info.hospitalName,
+        date: new Date().toLocaleString(),
+        address: req.body.info.address,
+        city: req.body.info.city.toLowerCase(),
+        contactNum: req.body.info.contactNum,
+        beds: req.body.info.beds,
+      },
+    });
 
         postData.save();
         // geoAddress(req.body.address);
@@ -46,20 +46,20 @@ export const postBed = async (req, res) => {
 };
 
 export const postAmbulance = async (req, res) => {
-    try {
-        const postData = new Facility({
-            volunteerID: getVolunteerID(req.header('x-auth-token')),
-            volunteerName: await getVolunteerName(req.header('x-auth-token')),
-            type: 'ambulance',
-            votes: 0,
-            info: {
-                serviceProvider: req.body.info.serviceProvider,
-                location: req.body.info.location,
-                city: req.body.info.city.toLowerCase(),
-                date: new Date().toLocaleString(),
-                contactNum: req.body.info.contactNum,
-            },
-        });
+  try {
+    const postData = new Facility({
+      volunteerID: getVolunteerID(req.header("x-auth-token")),
+      volunteerName: await getVolunteerName(req.header("x-auth-token")),
+      type: "ambulance",
+      votes: 0,
+      info: {
+        serviceProvider: req.body.info.serviceProvider,
+        location: req.body.info.location, 
+        city:req.body.info.city.toLowerCase(),                     
+        date: new Date().toLocaleString(),
+        contactNum: req.body.info.contactNum,
+      },
+    });
 
         postData.save();
 
@@ -70,20 +70,20 @@ export const postAmbulance = async (req, res) => {
 };
 
 export const postBloodBank = async (req, res) => {
-    try {
-        const postData = new Facility({
-            volunteerID: getVolunteerID(req.header('x-auth-token')),
-            volunteerName: await getVolunteerName(req.header('x-auth-token')),
-            type: 'bloodbank',
-            votes: 0,
-            info: {
-                serviceProvider: req.body.info.serviceProvider,
-                location: req.body.info.location,
-                city: req.body.info.city.toLowerCase(),
-                date: new Date().toLocaleString(),
-                contactNum: req.body.info.contactNum,
-            },
-        });
+  try {
+    const postData = new Facility({
+      volunteerID: getVolunteerID(req.header("x-auth-token")),
+      volunteerName: await getVolunteerName(req.header("x-auth-token")),
+      type: "bloodbank",
+      votes: 0,
+      info: {
+        serviceProvider: req.body.info.serviceProvider,
+        location: req.body.info.location,
+        city:req.body.info.city.toLowerCase(),
+        date: new Date().toLocaleString(),
+        contactNum: req.body.info.contactNum,
+      },
+    });
 
         postData.save();
 
@@ -94,21 +94,21 @@ export const postBloodBank = async (req, res) => {
 };
 
 export const postDiagnostic = async (req, res) => {
-    try {
-        const postData = new Facility({
-            volunteerID: getVolunteerID(req.header('x-auth-token')),
-            volunteerName: await getVolunteerName(req.header('x-auth-token')),
-            type: 'diagnosticcenter',
-            votes: 0,
-            info: {
-                centreName: req.body.info.centreName,
-                serviceProvider: req.body.info.centreName,
-                location: req.body.info.location,
-                city: req.body.info.city.toLowerCase(),
-                date: new Date().toLocaleString(),
-                contactNum: req.body.info.contactNum,
-            },
-        });
+  try {
+    const postData = new Facility({
+      volunteerID: getVolunteerID(req.header("x-auth-token")),
+      volunteerName: await getVolunteerName(req.header("x-auth-token")),
+      type: "diagnosticcenter",
+      votes: 0,
+      info: {
+        centreName: req.body.info.centreName,
+        serviceProvider: req.body.info.centreName,
+        location: req.body.info.location,
+        city:req.body.info.city.toLowerCase(),
+        date: new Date().toLocaleString(),
+        contactNum: req.body.info.contactNum,
+      },
+    });
 
         postData.save();
 
@@ -119,20 +119,20 @@ export const postDiagnostic = async (req, res) => {
 };
 
 export const postMeals = async (req, res) => {
-    try {
-        const postData = new Facility({
-            volunteerID: getVolunteerID(req.header('x-auth-token')),
-            volunteerName: await getVolunteerName(req.header('x-auth-token')),
-            type: 'meals',
-            votes: 0,
-            info: {
-                serviceProvider: req.body.info.serviceProvider,
-                location: req.body.info.location,
-                city: req.body.info.city.toLowerCase(),
-                date: new Date().toLocaleString(),
-                contactNum: req.body.info.contactNum,
-            },
-        });
+  try {
+    const postData = new Facility({
+      volunteerID: getVolunteerID(req.header("x-auth-token")),
+      volunteerName: await getVolunteerName(req.header("x-auth-token")),
+      type: "meals",
+      votes: 0,
+      info: {
+        serviceProvider: req.body.info.serviceProvider,
+        location: req.body.info.location,
+        city:req.body.info.city.toLowerCase(),
+        date: new Date().toLocaleString(),
+        contactNum: req.body.info.contactNum,
+      },
+    });
 
         postData.save();
 
@@ -143,20 +143,20 @@ export const postMeals = async (req, res) => {
 };
 
 export const postOxygen = async (req, res) => {
-    try {
-        const postData = new Facility({
-            volunteerID: getVolunteerID(req.header('x-auth-token')),
-            volunteerName: await getVolunteerName(req.header('x-auth-token')),
-            type: 'oxygen',
-            votes: 0,
-            info: {
-                serviceProvider: req.body.info.serviceProvider,
-                location: req.body.info.location,
-                city: req.body.info.city.toLowerCase(),
-                date: new Date().toLocaleString(),
-                contactNum: req.body.info.contactNum,
-            },
-        });
+  try {
+    const postData = new Facility({
+      volunteerID: getVolunteerID(req.header("x-auth-token")),
+      volunteerName: await getVolunteerName(req.header("x-auth-token")),
+      type: "oxygen",
+      votes: 0,
+      info: {
+        serviceProvider: req.body.info.serviceProvider,
+        location: req.body.info.location,
+        city:req.body.info.city.toLowerCase(),
+        date: new Date().toLocaleString(),
+        contactNum: req.body.info.contactNum,
+      },
+    });
 
         postData.save();
 
@@ -167,20 +167,20 @@ export const postOxygen = async (req, res) => {
 };
 
 export const postPharmacy = async (req, res) => {
-    try {
-        const postData = new Facility({
-            volunteerID: getVolunteerID(req.header('x-auth-token')),
-            volunteerName: await getVolunteerName(req.header('x-auth-token')),
-            type: 'pharmacies',
-            votes: 0,
-            info: {
-                serviceProvider: req.body.info.serviceProvider,
-                location: req.body.info.location,
-                city: req.body.info.city.toLowerCase(),
-                date: new Date().toLocaleString(),
-                contactNum: req.body.info.contactNum,
-            },
-        });
+  try {
+    const postData = new Facility({
+      volunteerID: getVolunteerID(req.header("x-auth-token")),
+      volunteerName: await getVolunteerName(req.header("x-auth-token")),
+      type: "pharmacies",
+      votes: 0,
+      info: {
+        serviceProvider: req.body.info.serviceProvider,
+        location: req.body.info.location,
+        city:req.body.info.city.toLowerCase(),
+        date: new Date().toLocaleString(),
+        contactNum: req.body.info.contactNum,
+      },
+    });
 
         postData.save();
         res.status(201).json(postData);

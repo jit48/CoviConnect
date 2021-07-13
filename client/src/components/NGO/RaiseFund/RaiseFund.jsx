@@ -98,7 +98,7 @@ const RaiseFund = () => {
                     }}
                 />
                 <br />
-                <h4>Upload an image to support ypur cause</h4>
+                <h4>Upload an image to support your cause</h4>
                 <FileBase type='file' multiple={false} onDone={({ base64 }) => setData({ ...data, file: base64 })} />
                 <br />
                 <br/>

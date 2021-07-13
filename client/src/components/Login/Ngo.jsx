@@ -3,20 +3,17 @@ import { useAuth } from '../../contexts/AuthContext';
 import { Link } from "react-router-dom";
 import Input from '../Input/Input';
 import Button from '../Button/Button';
-import { useHistory } from 'react-router';
 
 const Ngo = (props) => {
     const { ngoLogin } = useAuth();
-    const history = useHistory();
-
+   
     const [login, setLogin] = useState({
         email: '',
         password: '',
     });
 
-    const ngoLoginHandler = () => {
-        ngoLogin({ email: login.email, password: login.password });
-        history.push('/dashboard');
+    const ngoLoginHandler = async () => {
+        await ngoLogin({ email: login.email, password: login.password });
     };
 
     return (

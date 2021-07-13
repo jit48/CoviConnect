@@ -24,21 +24,32 @@ export const AuthProvider = ({ children }) => {
     };
 
     const volunteerLogin = async ({ email, password }) => {
-        setLoading(true);
-        const res = await api.post('/volunteer/login', { email, password }).then((res) => res.data);
-        setLocalToken(res.token, true);
-        const resUser = await getVolunteer(res.token);
-        setUser({ user: resUser, isAuthorised: true, isVolunteer: true, token: res.token });
-        setLoading(false);
+        try {
+            setLoading(true);
+            const res = await api.post('/volunteer/login', { email, password }).then((res) => res.data);
+            console.log(res)
+            setLocalToken(res.token, true);
+            const resUser = await getVolunteer(res.token);
+            setUser({ user: resUser, isAuthorised: true, isVolunteer: true, token: res.token });
+            setLoading(false);
+        } catch (error) {
+            alert(`Invalid Credentials`)
+            window.location.replace(`/`)
+        }
     };
 
     const ngoLogin = async ({ email, password }) => {
+        try {
         setLoading(true);
-        const res = await api.post('/ngo/login', { email, password }).then((res) => res.data);
+        const res = await api.post('/ngo/login', { email, password }).then((res) => res.data)
         setLocalToken(res.token, false);
         const resUser = await getNgo(res.token);
         setUser({ user: resUser, isAuthorised: true, isVolunteer: false, token: res.token });
         setLoading(false);
+        } catch (error) {
+            alert(`Invalid Credentials`)
+            window.location.replace(`/`)
+        }
     };
 
     const logout = () => {

@@ -74,9 +74,9 @@ export const login = async (req, res) => {
 };
 
 export const register = async (req, res) => {
-    const { name, email, password, contact, about, address, file } = req.body;
+    const { name, email, password, contact, about, address, file, isAdoption } = req.body;
 
-    if (!name || !email || !password || !contact || !about || !address || !file) {
+    if (!name || !email || !password || !contact || !about || !address || !file || !isAdoption) {
         return res.status(400).json({
             method: 'SIGN_UP',
             status: res.statusCode,
@@ -122,6 +122,7 @@ export const register = async (req, res) => {
             password: hash,
             contact,
             about,
+            isAdoption,
             address,
             file
         });
