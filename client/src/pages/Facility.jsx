@@ -1,9 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-// import Switch from '@material-ui/core/Switch';
 import api from '../axios';
-// import axios from 'axios';
 import '../styles/Facility.scss';
 
 import SideNav from './UI/SideNav';
