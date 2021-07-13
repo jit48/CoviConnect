@@ -98,8 +98,10 @@ const RaiseFund = () => {
                     }}
                 />
                 <br />
+                <h4>Upload an image to support ypur cause</h4>
                 <FileBase type='file' multiple={false} onDone={({ base64 }) => setData({ ...data, file: base64 })} />
                 <br />
+                <br/>
                 <div className='buttonGroup' style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Button variant='secondary' onClick={openModalHandler}>
                         Back

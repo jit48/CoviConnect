@@ -1,11 +1,13 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import styles from './Register.module.scss';
 import api from '../../axios';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
+import FileBase from 'react-file-base64';
 
 const Ngo = () => {
+    const [ data, setData ] = useState('');
     const nameRef = useRef();
     const aboutRef = useRef();
     const emailRef = useRef();
@@ -28,6 +30,7 @@ const Ngo = () => {
             email: emailRef.current.value,
             contact: contactRef.current.value,
             password: passwordRef.current.value,
+            file: data,
         };
         console.log(newNgo);
 
@@ -44,6 +47,8 @@ const Ngo = () => {
             <Input label='Contact' type='tel' required={true} innerRef={contactRef} />
             <Input label='Password' type='password' required={true} innerRef={passwordRef} />
             <Input label='Confirm Password' type='password' required={true} innerRef={confirmpasswordRef} />
+            <h4>Upload a profile picture</h4>
+            <FileBase type="file" multiple={false} onDone={({ base64 }) => setData( base64 )} /> 
             <div className={styles.registerbutton}>
                 <p>
                     Already have account? <Link to={`/login`}>Login</Link>
