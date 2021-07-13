@@ -31,7 +31,7 @@ export const postBed = async (req, res) => {
         serviceProvider: req.body.info.hospitalName,
         date: new Date().toLocaleString(),
         address: req.body.info.address,
-        city: req.body.city.toLowerCase(),
+        city: req.body.info.city.toLowerCase(),
         contactNum: req.body.info.contactNum,
         beds: req.body.info.beds,
       },
@@ -55,7 +55,7 @@ export const postAmbulance = async (req, res) => {
       info: {
         serviceProvider: req.body.info.serviceProvider,
         location: req.body.info.location, 
-        city:req.body.city.toLowerCase(),                     
+        city:req.body.info.city.toLowerCase(),                     
         date: new Date().toLocaleString(),
         contactNum: req.body.info.contactNum,
       },
@@ -79,7 +79,7 @@ export const postBloodBank = async (req, res) => {
       info: {
         serviceProvider: req.body.info.serviceProvider,
         location: req.body.info.location,
-        city:req.body.city.toLowerCase(),
+        city:req.body.info.city.toLowerCase(),
         date: new Date().toLocaleString(),
         contactNum: req.body.info.contactNum,
       },
@@ -104,7 +104,7 @@ export const postDiagnostic = async (req, res) => {
         centreName: req.body.info.centreName,
         serviceProvider: req.body.info.centreName,
         location: req.body.info.location,
-        city:req.body.city.toLowerCase(),
+        city:req.body.info.city.toLowerCase(),
         date: new Date().toLocaleString(),
         contactNum: req.body.info.contactNum,
       },
@@ -128,7 +128,7 @@ export const postMeals = async (req, res) => {
       info: {
         serviceProvider: req.body.info.serviceProvider,
         location: req.body.info.location,
-        city:req.body.city.toLowerCase(),
+        city:req.body.info.city.toLowerCase(),
         date: new Date().toLocaleString(),
         contactNum: req.body.info.contactNum,
       },
@@ -152,7 +152,7 @@ export const postOxygen = async (req, res) => {
       info: {
         serviceProvider: req.body.info.serviceProvider,
         location: req.body.info.location,
-        city:req.body.city.toLowerCase(),
+        city:req.body.info.city.toLowerCase(),
         date: new Date().toLocaleString(),
         contactNum: req.body.info.contactNum,
       },
@@ -176,7 +176,7 @@ export const postPharmacy = async (req, res) => {
       info: {
         serviceProvider: req.body.info.serviceProvider,
         location: req.body.info.location,
-        city:req.body.city.toLowerCase(),
+        city:req.body.info.city.toLowerCase(),
         date: new Date().toLocaleString(),
         contactNum: req.body.info.contactNum,
       },

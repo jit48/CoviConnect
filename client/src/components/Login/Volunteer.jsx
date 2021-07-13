@@ -3,20 +3,19 @@ import { useAuth } from '../../contexts/AuthContext';
 import { Link } from "react-router-dom";
 import Input from '../Input/Input';
 import Button from '../Button/Button';
-import { useHistory } from 'react-router';
+
 
 const Volunteer = (props) => {
     const { volunteerLogin } = useAuth();
-    const history = useHistory();
+
 
     const [login, setLogin] = useState({
         email: '',
         password: '',
     });
 
-    const volunteerLoginHandler = () => {
-        volunteerLogin({ email: login.email, password: login.password });
-        history.push('/dashboard');
+    const volunteerLoginHandler = async () => {
+        await volunteerLogin({ email: login.email, password: login.password });
     };
 
     return (

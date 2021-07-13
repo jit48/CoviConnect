@@ -5,10 +5,12 @@ import { Link } from 'react-router-dom';
 import Input from '../Input/Input';
 import RadioInput from '../RadioInput/RadioInput';
 import Button from '../Button/Button';
+import { useHistory } from 'react-router';
 
 const Volunteer = () => {
     const [gender, setGender] = useState('male');
     const nameRef = useRef();
+    const history = useHistory();
     const bioRef = useRef();
     const emailRef = useRef();
     const contactRef = useRef();
@@ -36,6 +38,7 @@ const Volunteer = () => {
 
         const res = await api.post('/volunteer/register', newVolunteer).then((res) => res.data);
         console.log(res);
+        history.push('/login');
     };
 
     return (
