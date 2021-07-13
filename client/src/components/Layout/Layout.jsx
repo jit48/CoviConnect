@@ -5,8 +5,7 @@ import NgoNav from '../UI/NgoNav';
 import { useAuth } from '../../contexts/AuthContext';
 const Layout = (props) => {
     const {
-        user: { user, isAuthorised, token,isVolunteer },
-        logout,
+        user: { isAuthorised, isVolunteer }
       } = useAuth();
     return (
         <main className={styles.layout}>

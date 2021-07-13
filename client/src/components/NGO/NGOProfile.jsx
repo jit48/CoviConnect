@@ -3,7 +3,6 @@ import api from '../../axios'
 import { useEffect,useState} from 'react'
 import { useParams } from 'react-router'
 import '../../styles/NGOProfile.scss'
-import Ngo from '../Register/Ngo';
 
 function NGOProfile() {
     const {id}= useParams();
@@ -17,13 +16,14 @@ function NGOProfile() {
     
     useEffect(() => {
         getNgos();  
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
         <div className="Outer">
         <div className="ngoContent">
             <div className="ngoImage">
-                <img src={Ngos.file}/>
+                <img src={Ngos.file} alt="NGO"/>
             </div> 
             <div className= "ngoDetails">
                 <div className="ngoName">

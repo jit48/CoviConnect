@@ -1,5 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
-import api from "../../../axios";
+import { Fragment } from "react";
 import "./Donate.scss";
 import Button from "../../Button/Button";
 import SideNav from "../../../pages/UI/SideNav";

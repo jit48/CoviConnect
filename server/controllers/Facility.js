@@ -3,6 +3,7 @@ import Volunteer from "../models/Volunteer.js";
 import jwt from "jsonwebtoken";
 import FundRaise from "../models/FundRaise.js";
 import { response } from "express";
+import Ngo from "../models/Ngo.js";
 import Razorpay from "razorpay";
 import dotenv from "dotenv";
 dotenv.config();

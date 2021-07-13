@@ -4,22 +4,20 @@ import { useParams } from "react-router";
 import api from '../../axios'
 import './VolunteerLeads.scss'
 import styles from '../Volunteer/Post/Post.module.scss'
-import Post from '../Volunteer/Post/Post';
 import Male from '../../Images/Male.jpg'
 
 function VolunteerLeads() {
     const {id}=useParams();
     const [Leads, setLeads] = useState([])
-    // const [name,setName]=useState("")
     const getLeads = async () => {
         const data = await api.get(`/volunteer/allVolunteer/${id}`).then((res)=>res.data)
         setLeads(data);
-        // data.length>0 ?  setName(data[0].volunteerName) : setName("")
-        // console.log(data);
+
     };
     
     useEffect(() => {
         getLeads();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (<div className='allLeads'>

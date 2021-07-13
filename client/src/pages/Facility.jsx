@@ -16,7 +16,7 @@ import PharmacyCard from "../components/Facility/PharmacyCard";
 import AmbulanceCard from "../components/Facility/Ambulance/AmbulanceCard";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Donate from "../components/Facility/Donate/Donate";
-import AdoptionCard from "../components/Facility/Adoption/AdoptionCard";
+
 
 function Facility() {
   const { type } = useParams();
@@ -25,7 +25,7 @@ function Facility() {
   const [loading, setLoading] = useState(false);
   const [input, setInput] = useState("");
   const [userLocation, setUserLocation] = useState({ address: { city: "" } });
-  const [locationResults, setLocationResults] = useState([]);
+  
   function compare(a, b) {
     if (a.votes > b.votes) {
       return -1;
@@ -66,6 +66,7 @@ function Facility() {
       if(item.info.city === userLocation.address.city.toLowerCase())
       arr.push(item);
     })
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   },[checked])
   // useEffect(() => {
   //   getFacility();
@@ -162,7 +163,11 @@ function Facility() {
                 item.info.city === userLocation.address.city.toLowerCase()
               )
                 return <AmbulanceCard key={item._id} facility={item} />;
-            })
+              else
+                return <p>No results found</p>
+            }
+            )
+           
           ) : (
             <div className="spinner">
               <CircularProgress color="inherit" />
@@ -186,6 +191,8 @@ function Facility() {
               return <AmbulanceCard key={item._id} facility={item} />;
             if (item.type === "donate")
               return <Donate key={item._id} facility={item} />;
+            else 
+              return <p>No results found</p>
           })
         ) : (
           <div className="spinner">

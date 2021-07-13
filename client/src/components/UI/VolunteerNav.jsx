@@ -6,7 +6,6 @@ import Sidebar from "./sidebar/Sidebar";
 
 function VolunteerNav() {
   const {
-    user: { user, isAuthorised, token, isVolunteer },
     logout,
   } = useAuth();
   const [open, isOpen] = useState(false);

@@ -4,7 +4,7 @@ import axios from '../../../axios';
 
 import Snackbars from './Snackbar';
 function UpVotes(props) {
-    const { facility, handleUpVotes } = props;
+    const { facility } = props;
     const [updateVote, setUpdateVote] = useState(facility);
     const [showSnackBar, setShowSnackBar] = useState(false);
     const [loading, isLoading] = useState(true);
@@ -14,7 +14,7 @@ function UpVotes(props) {
         isLoading(true);
         if (update.votes >= 0) {
             setUpdateVote(update);
-            const upvote = await axios
+             await axios
                 .post(`/user/upVotedPosts`, update)
                 .then((res) => console.log(res))
                 .catch((err) => console.log(err));
