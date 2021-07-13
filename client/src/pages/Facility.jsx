@@ -65,7 +65,9 @@ function Facility() {
     }, []);
     var arr = [];
     facility.forEach((item) => {
-        if (item.info.city === userLocation.address.city.toLowerCase()) arr.push(item);
+        if(userLocation.address.city){
+            if (item.info.city === userLocation.address.city?.toLowerCase()) arr.push(item);
+        }
     });
     console.log(arr);
     const handleChange = (e) => {
@@ -75,7 +77,7 @@ function Facility() {
         const string = input.toString().replace(/\\/g, '\\\\');
         const regex = new RegExp(`^${string}`, 'gi');
         const reg = new RegExp(`${string}`, 'gi');
-        return d.info.serviceProvider.match(regex) || d.info.location.match(reg);
+        return d.info.serviceProvider.match(regex) || d.info.city.match(reg);
     });
     const handleClick = () => {
         isChecked(!checked);
@@ -92,7 +94,7 @@ function Facility() {
             </div>
             <div className='facility'>
                 <div className='searchBar'>
-                    <input type='text' placeholder={`Search for ${type} Facilities Arround You`} onChange={handleChange} />
+                    <input type='text' placeholder={`Search for ${type} Facilities Arround You By city, Hopital Name`} onChange={handleChange} />
                     <button type='submit' onSubmit={handleSubmit}>
                         Search
                     </button>
