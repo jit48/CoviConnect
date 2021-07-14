@@ -22,12 +22,12 @@ export const login = async (req, res) => {
         });
     }
 
-    if (!/^[^s@]+@[^s@]+$/.test(email))
-        return res.status(400).json({
-            method: 'SIGN_IN',
-            status: res.statusCode,
-            message: 'Invalid email. Try signing in again.',
-        });
+//     if (!/^[^s@]+@[^s@]+$/.test(email))
+//         return res.status(400).json({
+//             method: 'SIGN_IN',
+//             status: res.statusCode,
+//             message: 'Invalid email. Try signing in again.',
+//         });
 
     try {
         const ngo = await Ngo.findOne({ email });
@@ -84,12 +84,12 @@ export const register = async (req, res) => {
         });
     }
 
-    if (!/^[^s@]+@[^s@]+$/.test(email))
-        return res.status(400).json({
-            method: 'SIGN_UP',
-            status: res.statusCode,
-            message: 'Invalid email. Try signing up again.',
-        });
+//     if (!/^[^s@]+@[^s@]+$/.test(email))
+//         return res.status(400).json({
+//             method: 'SIGN_UP',
+//             status: res.statusCode,
+//             message: 'Invalid email. Try signing up again.',
+//         });
 
     try {
         const ngo = await Ngo.findOne({ email });
