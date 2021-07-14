@@ -30,7 +30,7 @@ export const postBed = async (req, res) => {
         hospitalName: req.body.info.hospitalName,
         serviceProvider: req.body.info.hospitalName,
         date: new Date().toLocaleString(),
-        address: req.body.info.address,
+        address: req.body.info.location,
         city: req.body.info.city.toLowerCase(),
         contactNum: req.body.info.contactNum,
         beds: req.body.info.beds,
