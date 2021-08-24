@@ -45,7 +45,7 @@ function KnowledgeTransfer() {
   const getCovidData = async () => {
     setIsLoading(false);
     const res = await axios
-      .get("https://api.covid19india.org/v4/min/data.min.json")
+      .get("https://data.covid19india.org/v4/min/data.min.json")
       .then((res) => res.data);
     setIsLoading(true);
     const arr = Object.entries(res);
